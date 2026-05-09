@@ -280,14 +280,11 @@ h2.section-title{
 }
 .sponsor svg{width:auto;height:48px}
 .sponsor img.logo-img{
-  max-height:56px;width:auto;max-width:84%;display:block;
-  filter:brightness(0) invert(1);
-  opacity:.88;
-  transition:filter .3s ease, opacity .3s ease, transform .3s ease;
+  max-height:60px;width:auto;max-width:88%;display:block;
+  opacity:.95;
+  transition:opacity .3s ease, transform .3s ease;
 }
-.sponsor:hover img.logo-img{filter:none;opacity:1;transform:scale(1.04)}
-.sponsor img.logo-img.no-invert{filter:none;opacity:.95}
-.sponsor:hover img.logo-img.no-invert{opacity:1;transform:scale(1.04)}
+.sponsor:hover img.logo-img{opacity:1;transform:scale(1.04)}
 .sponsor .name{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);letter-spacing:.06em;line-height:1.35}
 .sponsor::after{
   content:attr(data-meta);position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;
