@@ -220,6 +220,16 @@ section + section{padding-top:40px}
 }
 .stat .num{font-family:'JetBrains Mono',monospace;font-size:30px;color:var(--accent);font-weight:700;letter-spacing:-.02em}
 .stat .lbl{font-size:12px;color:var(--fg-2);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.stat-breakdown{
+  display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px;
+  padding-top:10px;border-top:1px dashed var(--line);
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);
+}
+.stat-breakdown span{display:inline-flex;gap:5px;align-items:baseline}
+.stat-breakdown b{color:var(--accent);font-weight:700;font-size:13px}
+.stat-breakdown span:nth-child(2) b{color:var(--accent-3)}
+.stat-breakdown span:nth-child(3) b{color:var(--accent-2)}
+.stat-breakdown i{font-style:normal;letter-spacing:.04em;text-transform:uppercase}
 
 /* ---------- section title ---------- */
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:24px;flex-wrap:wrap}
@@ -485,7 +495,15 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     </div>
 
     <div class="hero-stats">
-      <div class="stat"><div class="num">11</div><div class="lbl" data-i18n="hero.stat1">Papers authored</div></div>
+      <div class="stat">
+        <div class="num">11</div>
+        <div class="lbl" data-i18n="hero.stat1">Papers authored</div>
+        <div class="stat-breakdown">
+          <span><b>8</b><i data-i18n="hero.stat1a">1st</i></span>
+          <span><b>2</b><i data-i18n="hero.stat1b">Co-1st</i></span>
+          <span><b>1</b><i data-i18n="hero.stat1c">Co-auth</i></span>
+        </div>
+      </div>
       <div class="stat"><div class="num">7</div><div class="lbl" data-i18n="hero.stat2">Institutions</div></div>
       <div class="stat"><div class="num">4</div><div class="lbl" data-i18n="hero.stat3">Reviewer roles</div></div>
       <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="hero.stat4">Students supervised</div></div>
@@ -1094,6 +1112,28 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 </footer>
 
 <script>
+/* ===================== scroll behavior ===================== */
+// stop the browser from auto-restoring scroll on refresh (was sometimes
+// landing the user at the bottom of the page on reload).
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+window.addEventListener('load', () => {
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) {
+      const html = document.documentElement;
+      const prev = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      requestAnimationFrame(() => {
+        target.scrollIntoView();
+        html.style.scrollBehavior = prev;
+      });
+    }
+  } else {
+    window.scrollTo(0, 0);
+  }
+});
+
 /* ===================== i18n ===================== */
 const I18N = {
   en: {
@@ -1105,6 +1145,9 @@ const I18N = {
     "hero.cta1":"Read my work",
     "hero.cta2":"Get in touch",
     "hero.stat1":"Papers authored",
+    "hero.stat1a":"1st",
+    "hero.stat1b":"Co-1st",
+    "hero.stat1c":"Co-auth",
     "hero.stat2":"Institutions",
     "hero.stat3":"Reviewer roles",
     "hero.stat4":"Students supervised",
@@ -1230,6 +1273,9 @@ const I18N = {
     "hero.cta1":"看我的工作",
     "hero.cta2":"联系我",
     "hero.stat1":"论文",
+    "hero.stat1a":"一作",
+    "hero.stat1b":"共一",
+    "hero.stat1c":"合作",
     "hero.stat2":"学术机构",
     "hero.stat3":"审稿身份",
     "hero.stat4":"指导学生",
