@@ -1,0 +1,1409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Yuanzhi He — Robotics & RL PhD Researcher</title>
+<meta name="description" content="Yuanzhi He · PhD researcher at Cardiff University working on deep reinforcement learning, evolutionary strategies, and vision-language-action models for robotic manipulation." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-0:#06080f;
+  --bg-1:#0b0f1c;
+  --bg-2:#11172a;
+  --line:#1d2540;
+  --fg-0:#e6e9f5;
+  --fg-1:#a8b0c8;
+  --fg-2:#6f7794;
+  --accent:#5cf2d6;        /* cyan */
+  --accent-2:#a884ff;      /* violet */
+  --accent-3:#ff7a9c;      /* pink */
+  --warn:#ffd166;
+  --ok:#5cf2a3;
+  --shadow:0 20px 60px -20px rgba(92,242,214,.18);
+  --radius:14px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg-0);color:var(--fg-0);font-family:'Space Grotesk',system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--accent);color:#001017}
+
+/* ---------- background grid + canvas ---------- */
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-grid{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(92,242,214,.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(168,132,255,.10), transparent 45%),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:auto, auto, 60px 60px, 60px 60px;
+}
+.scanline{
+  position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:.18;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.05) 0 1px, transparent 1px 3px);
+}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+section{padding:120px 0;position:relative;z-index:2}
+section + section{padding-top:40px}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;backdrop-filter:blur(14px);background:rgba(6,8,15,.55);
+  border-bottom:1px solid transparent;transition:border-color .3s ease;
+}
+.nav.scrolled{border-bottom-color:var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:.04em}
+.brand .dot{
+  width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2) 70%, transparent 71%);
+  box-shadow:0 0 16px rgba(92,242,214,.5),0 0 28px rgba(168,132,255,.3);
+  animation:pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);filter:hue-rotate(0deg)}
+  50%{transform:scale(1.15);filter:hue-rotate(40deg)}
+}
+.brand .mono{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fg-2)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{
+  font-size:13px;color:var(--fg-1);padding:8px 12px;border-radius:8px;
+  transition:color .2s ease, background .2s ease;
+}
+.nav-links a:hover{color:var(--fg-0);background:rgba(255,255,255,.04)}
+.nav-tools{display:flex;align-items:center;gap:8px}
+.lang-toggle{
+  display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+}
+.lang-toggle button{
+  appearance:none;background:transparent;color:var(--fg-2);border:0;
+  padding:6px 12px;cursor:pointer;letter-spacing:.08em;
+}
+.lang-toggle button.active{background:var(--accent);color:#001017;font-weight:700}
+.menu-btn{display:none}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .menu-btn{
+    display:inline-flex;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg-1);
+    padding:6px 10px;font-size:13px;cursor:pointer
+  }
+  .nav-mobile{
+    position:fixed;top:62px;right:16px;z-index:60;display:none;flex-direction:column;
+    background:var(--bg-1);border:1px solid var(--line);border-radius:12px;padding:8px;min-width:200px;
+  }
+  .nav-mobile.open{display:flex}
+  .nav-mobile a{padding:10px 12px;font-size:14px;color:var(--fg-1);border-radius:8px}
+  .nav-mobile a:hover{background:rgba(255,255,255,.04);color:var(--fg-0)}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-top:160px;padding-bottom:60px;min-height:90vh;display:flex;align-items:center}
+.hero .terminal-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);
+  border:1px solid rgba(92,242,214,.3);background:rgba(92,242,214,.06);
+  padding:6px 12px;border-radius:999px;margin-bottom:24px;
+}
+.hero .terminal-tag::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 8px var(--accent);
+}
+.hero h1{
+  font-size:clamp(48px,7vw,96px);line-height:.98;letter-spacing:-.02em;margin:0 0 20px;
+  font-weight:600;
+}
+.hero h1 .glitch{
+  background:linear-gradient(120deg, var(--fg-0) 30%, var(--accent) 50%, var(--accent-2) 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% 100%;animation:sheen 6s ease-in-out infinite;
+}
+@keyframes sheen{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.hero .role{
+  font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--fg-2);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;
+}
+.hero .typed-line{
+  font-size:clamp(18px,2vw,22px);color:var(--fg-1);max-width:720px;line-height:1.55;
+  margin:0 0 36px;min-height:64px;
+}
+.hero .typed-line .cursor{display:inline-block;width:8px;height:1.1em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;border-radius:999px;font-weight:500;font-size:14px;
+  border:1px solid var(--line);transition:transform .2s ease, border-color .2s ease, background .2s ease;
+  cursor:pointer;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#001017;border-color:var(--accent);box-shadow:0 0 0 0 rgba(92,242,214,.4)}
+.btn-primary:hover{box-shadow:0 0 0 6px rgba(92,242,214,.12)}
+.btn-ghost{background:transparent;color:var(--fg-0)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.kbd{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,255,.05);border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:var(--fg-2)}
+
+.hero-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:64px}
+@media (max-width:780px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:rgba(11,15,28,.45);
+  position:relative;overflow:hidden;
+}
+.stat::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.5;
+}
+.stat .num{font-family:'JetBrains Mono',monospace;font-size:30px;color:var(--accent);font-weight:700;letter-spacing:-.02em}
+.stat .lbl{font-size:12px;color:var(--fg-2);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+
+/* ---------- section title ---------- */
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.section-tag{
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;
+}
+.section-tag::before{content:"// "}
+h2.section-title{
+  font-size:clamp(32px,4.5vw,52px);font-weight:600;letter-spacing:-.02em;margin:0;line-height:1.05;max-width:720px;
+}
+.section-sub{color:var(--fg-1);font-size:15px;max-width:420px;line-height:1.6;margin:0}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+@media (max-width:880px){.about-grid{grid-template-columns:1fr}}
+.about-grid p{color:var(--fg-1);line-height:1.75;font-size:16px;margin:0 0 16px}
+.about-grid p strong{color:var(--fg-0);font-weight:600}
+.about-card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:linear-gradient(180deg,rgba(17,23,42,.6),rgba(17,23,42,.2));
+}
+.about-card h4{margin:0 0 14px;font-size:13px;color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.focus-list{display:flex;flex-direction:column;gap:14px}
+.focus-row{display:flex;align-items:center;gap:14px;color:var(--fg-1);font-size:14px}
+.focus-row .b{
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px rgba(92,242,214,.12);flex-shrink:0;
+}
+.focus-row.alt .b{background:var(--accent-2);box-shadow:0 0 0 4px rgba(168,132,255,.12)}
+.focus-row.alt2 .b{background:var(--accent-3);box-shadow:0 0 0 4px rgba(255,122,156,.14)}
+
+/* ---------- sponsors / affiliations ---------- */
+.sponsor-strip{
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;
+}
+@media (max-width:1000px){.sponsor-strip{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.sponsor-strip{grid-template-columns:repeat(2,1fr)}}
+.sponsor{
+  position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  aspect-ratio: 1.05/1; display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,rgba(17,23,42,.55),rgba(11,15,28,.6));
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  text-align:center;padding:14px;
+}
+.sponsor:hover{transform:translateY(-4px);border-color:rgba(92,242,214,.4);box-shadow:var(--shadow)}
+.sponsor .logo{
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
+}
+.sponsor svg{width:auto;height:48px}
+.sponsor .name{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);letter-spacing:.06em;line-height:1.35}
+.sponsor::after{
+  content:attr(data-meta);position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--fg-2);letter-spacing:.08em;
+}
+
+/* ---------- timeline (education/experience-ish) ---------- */
+.timeline{position:relative;display:flex;flex-direction:column;gap:24px}
+.timeline::before{content:"";position:absolute;top:0;bottom:0;left:14px;width:1px;background:linear-gradient(to bottom,var(--accent),transparent)}
+.tl{
+  display:grid;grid-template-columns:auto 1fr;gap:24px;padding-left:0;
+  border:1px solid var(--line);background:linear-gradient(180deg,rgba(17,23,42,.55),rgba(11,15,28,.4));
+  border-radius:var(--radius);padding:22px 22px 22px 50px;position:relative;
+}
+.tl::before{
+  content:"";position:absolute;left:8px;top:28px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg-0);border:2px solid var(--accent);box-shadow:0 0 0 4px rgba(92,242,214,.12);
+}
+.tl .meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.06em;margin-bottom:6px}
+.tl h3{margin:0 0 4px;font-size:18px;font-weight:600}
+.tl .org{color:var(--fg-1);font-size:14px;margin-bottom:10px}
+.tl ul{margin:8px 0 0;padding-left:18px;color:var(--fg-1);font-size:14px;line-height:1.65}
+
+/* ---------- pub categories ---------- */
+.pub-cat{margin-top:48px}
+.pub-cat:first-of-type{margin-top:24px}
+.cat-head{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+.cat-head .cat-num{
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);
+  border:1px solid rgba(92,242,214,.3);background:rgba(92,242,214,.06);
+  padding:3px 10px;border-radius:999px;letter-spacing:.06em;
+}
+.cat-head h3{font-size:20px;font-weight:600;margin:0;letter-spacing:-.01em}
+.cat-head .cat-count{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-2)}
+.cat-line{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin-bottom:18px}
+
+/* ---------- publication / project cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:880px){.cards{grid-template-columns:1fr}}
+.card{
+  position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+  background:linear-gradient(180deg,rgba(17,23,42,.55),rgba(11,15,28,.4));
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--accent),transparent);opacity:.7;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(92,242,214,.45);box-shadow:var(--shadow)}
+.card .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.badge{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;
+  padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--fg-2);
+}
+.badge.published{background:rgba(92,242,163,.1);color:var(--ok);border-color:rgba(92,242,163,.3)}
+.badge.submitted{background:rgba(255,209,102,.1);color:var(--warn);border-color:rgba(255,209,102,.3)}
+.badge.prep{background:rgba(168,132,255,.12);color:var(--accent-2);border-color:rgba(168,132,255,.3)}
+.badge.lead{background:rgba(92,242,214,.1);color:var(--accent);border-color:rgba(92,242,214,.3)}
+.badge.co1st{background:rgba(255,122,156,.10);color:var(--accent-3);border-color:rgba(255,122,156,.32)}
+.badge.coauth{background:rgba(255,255,255,.04);color:var(--fg-1);border-color:var(--line)}
+.card h3{margin:0 0 6px;font-size:17px;line-height:1.35;font-weight:600}
+.card .venue{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-2);margin-bottom:10px}
+.card p{color:var(--fg-1);font-size:14px;line-height:1.65;margin:0}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);
+  padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--line)
+}
+
+/* ---------- reviewer ---------- */
+.review-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:880px){.review-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.review-grid{grid-template-columns:1fr}}
+.review{
+  position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+  background:linear-gradient(180deg,rgba(17,23,42,.55),rgba(11,15,28,.4));
+  transition:transform .25s ease, border-color .25s ease;
+}
+.review:hover{transform:translateY(-4px);border-color:rgba(168,132,255,.45)}
+.review .yr{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:700;color:var(--accent-2);letter-spacing:-.02em}
+.review .name{margin-top:6px;font-size:18px;font-weight:600}
+.review .desc{margin-top:8px;color:var(--fg-1);font-size:13px;line-height:1.55}
+
+/* ---------- skills ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:880px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.skills-grid{grid-template-columns:1fr}}
+.skillcol{
+  border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+  background:linear-gradient(180deg,rgba(17,23,42,.55),rgba(11,15,28,.4));
+}
+.skillcol h4{margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.skill-list{display:flex;flex-direction:column;gap:10px}
+.skill{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--fg-1)}
+.skill .bar{flex:1;height:4px;margin-left:14px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;position:relative}
+.skill .bar > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px;width:var(--w,80%)}
+
+/* ---------- contact ---------- */
+.contact-card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:36px;
+  background:
+    radial-gradient(700px 300px at 0% 0%, rgba(92,242,214,.08), transparent 60%),
+    radial-gradient(700px 300px at 100% 100%, rgba(168,132,255,.08), transparent 60%),
+    linear-gradient(180deg,rgba(17,23,42,.55),rgba(11,15,28,.4));
+  display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;
+}
+@media (max-width:880px){.contact-card{grid-template-columns:1fr}}
+.contact-card h3{font-size:clamp(26px,3vw,36px);margin:0 0 12px;line-height:1.15;font-weight:600}
+.contact-card p{color:var(--fg-1);margin:0 0 18px;line-height:1.65}
+.contact-list{display:flex;flex-direction:column;gap:10px}
+.contact-row{display:flex;align-items:center;gap:12px;color:var(--fg-1);font-family:'JetBrains Mono',monospace;font-size:13px}
+.contact-row .ic{
+  width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--accent);flex-shrink:0
+}
+.contact-row a:hover{color:var(--accent)}
+
+/* ---------- footer ---------- */
+footer{padding:40px 0;border-top:1px solid var(--line);position:relative;z-index:2;color:var(--fg-2);font-size:12px;font-family:'JetBrains Mono',monospace}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- hide while loading lang switch ---------- */
+[data-i18n]{transition:opacity .15s ease}
+</style>
+</head>
+<body>
+
+<canvas class="bg-canvas" id="bg-canvas"></canvas>
+<div class="bg-grid"></div>
+<div class="scanline"></div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="brand">
+    <span class="dot"></span>
+    <span>Yuanzhi&nbsp;He</span>
+    <span class="mono">/&nbsp;何远知</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#affil" data-i18n="nav.affil">Affiliations</a>
+    <a href="#edu" data-i18n="nav.edu">Education</a>
+    <a href="#pub" data-i18n="nav.pub">Publications</a>
+    <a href="#proj" data-i18n="nav.proj">Projects</a>
+    <a href="#review" data-i18n="nav.review">Reviewer</a>
+    <a href="#skills" data-i18n="nav.skills">Skills</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </div>
+  <div class="nav-tools">
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button id="lang-en" class="active" type="button">EN</button>
+      <button id="lang-zh" type="button">中</button>
+    </div>
+    <button class="menu-btn" id="menu-btn" aria-label="menu">≡</button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#about" data-i18n="nav.about">About</a>
+  <a href="#affil" data-i18n="nav.affil">Affiliations</a>
+  <a href="#edu" data-i18n="nav.edu">Education</a>
+  <a href="#pub" data-i18n="nav.pub">Publications</a>
+  <a href="#proj" data-i18n="nav.proj">Projects</a>
+  <a href="#review" data-i18n="nav.review">Reviewer</a>
+  <a href="#skills" data-i18n="nav.skills">Skills</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="terminal-tag" data-i18n="hero.tag">PhD · Cardiff University · School of Computer Science &amp; Informatics</div>
+    <h1>
+      <span class="glitch" data-i18n="hero.name">Yuanzhi He</span>
+    </h1>
+    <div class="role" data-i18n="hero.role">Robotic Manipulation × Reinforcement Learning × Vision-Language-Action</div>
+    <p class="typed-line"><span id="typed"></span><span class="cursor"></span></p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#pub"><span data-i18n="hero.cta1">Read my work</span> →</a>
+      <a class="btn btn-ghost" href="#contact"><span data-i18n="hero.cta2">Get in touch</span></a>
+      <a class="btn btn-ghost" href="https://github.com/YuanzhiHe" target="_blank" rel="noopener">GitHub <span class="kbd">↗</span></a>
+      <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=iEUvnwgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar <span class="kbd">↗</span></a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="num">10</div><div class="lbl" data-i18n="hero.stat1">Papers authored</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl" data-i18n="hero.stat2">Institutions</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl" data-i18n="hero.stat3">Reviewer roles</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="hero.stat4">Students supervised</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="about.tag">about</div>
+        <h2 class="section-title" data-i18n="about.title">Teaching robots to learn — sample‑efficiently.</h2>
+      </div>
+      <p class="section-sub" data-i18n="about.sub">PhD researcher fascinated by how robots can acquire dexterous skills with minimal data, by combining deep RL, evolutionary search and modern VLA models.</p>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p data-i18n="about.p1">I'm <strong>Yuanzhi He</strong>, a fully‑funded PhD student at Cardiff University's School of Computer Science &amp; Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision‑language‑action</strong> models — applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.</p>
+        <p data-i18n="about.p2">I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. From mid‑2026 I'm joining the <strong>National Institute of Informatics (NII, Tokyo)</strong> to work on sim‑to‑real for dual‑arm VLA manipulation.</p>
+        <p data-i18n="about.p3">Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.</p>
+      </div>
+      <aside class="about-card">
+        <h4 data-i18n="about.focus">Research focus</h4>
+        <div class="focus-list">
+          <div class="focus-row"><span class="b"></span><span data-i18n="about.f1">Deep Reinforcement Learning</span></div>
+          <div class="focus-row alt"><span class="b"></span><span data-i18n="about.f2">Evolutionary Strategies</span></div>
+          <div class="focus-row alt2"><span class="b"></span><span data-i18n="about.f3">Vision-Language-Action Models</span></div>
+          <div class="focus-row"><span class="b"></span><span data-i18n="about.f4">Flow Matching</span></div>
+          <div class="focus-row alt"><span class="b"></span><span data-i18n="about.f5">Hierarchical Task Decomposition</span></div>
+          <div class="focus-row alt2"><span class="b"></span><span data-i18n="about.f6">Sim-to-Real Transfer</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AFFILIATIONS / SPONSORS ===== -->
+<section id="affil">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="affil.tag">affiliations</div>
+        <h2 class="section-title" data-i18n="affil.title">Where I've trained, interned &amp; researched.</h2>
+      </div>
+      <p class="section-sub" data-i18n="affil.sub">A small constellation of universities and labs that shaped my work — from Birmingham to Zurich, Shenzhen to Tokyo.</p>
+    </div>
+
+    <div class="sponsor-strip">
+
+      <!-- PUMCH (upcoming) -->
+      <div class="sponsor" data-meta="2026.12 — " title="Peking Union Medical College Hospital · Chinese Academy of Medical Sciences">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g transform="translate(20,14)">
+              <rect x="0" y="13" width="32" height="6" fill="#ff7a9c"/>
+              <rect x="13" y="0" width="6" height="32" fill="#ff7a9c"/>
+            </g>
+            <text x="125" y="38" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#e6e9f5">PUMCH · 协和</text>
+          </svg>
+          <div class="name">PUMCH · Incoming Visit</div>
+        </div>
+      </div>
+
+      <!-- Cardiff -->
+      <div class="sponsor" data-meta="2023 — 2027" title="Cardiff University · PhD">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#5cf2d6"/><stop offset="1" stop-color="#a884ff"/></linearGradient></defs>
+            <text x="100" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="34" font-weight="700" fill="url(#g1)" letter-spacing="-1">CARDIFF</text>
+          </svg>
+          <div class="name">Cardiff University · PhD</div>
+        </div>
+      </div>
+
+      <!-- Birmingham -->
+      <div class="sponsor" data-meta="2019 — 2023" title="University of Birmingham · MEng">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <text x="100" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="32" font-weight="700" fill="#e6e9f5" letter-spacing="-1">BIRMINGHAM</text>
+          </svg>
+          <div class="name">University of Birmingham · MEng</div>
+        </div>
+      </div>
+
+      <!-- NII -->
+      <div class="sponsor" data-meta="2026" title="National Institute of Informatics, Tokyo">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="20" y="14" width="22" height="32" fill="#5cf2d6"/>
+            <rect x="50" y="14" width="22" height="32" fill="#a884ff"/>
+            <rect x="80" y="14" width="22" height="32" fill="#ff7a9c"/>
+            <text x="160" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="28" font-weight="700" fill="#e6e9f5">NII</text>
+          </svg>
+          <div class="name">NII Tokyo · Research Intern</div>
+        </div>
+      </div>
+
+      <!-- ETH Zurich -->
+      <div class="sponsor" data-meta="2022" title="ETH Zurich · EXCITE Summer School">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <text x="100" y="42" text-anchor="middle" font-family="Space Grotesk" font-size="34" font-weight="700" fill="#e6e9f5" letter-spacing="-1">ETH<tspan fill="#5cf2d6">·</tspan>Zürich</text>
+          </svg>
+          <div class="name">ETH Zürich · EXCITE Summer School</div>
+        </div>
+      </div>
+
+      <!-- GienTech -->
+      <div class="sponsor" data-meta="2021 — 2022" title="GienTech · CV in RPA Intern">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="36" cy="30" r="14" fill="none" stroke="#5cf2d6" stroke-width="3"/>
+            <circle cx="36" cy="30" r="6" fill="#a884ff"/>
+            <text x="120" y="38" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#e6e9f5">GienTech</text>
+          </svg>
+          <div class="name">GienTech · CV / RPA Intern</div>
+        </div>
+      </div>
+
+      <!-- Shenzhen University -->
+      <div class="sponsor" data-meta="2021" title="Shenzhen University · National Big Data Lab">
+        <div class="logo">
+          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M30 44 L46 16 L62 44 Z" fill="none" stroke="#a884ff" stroke-width="3"/>
+            <text x="130" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#e6e9f5">SZU · 深大</text>
+          </svg>
+          <div class="name">Shenzhen Univ. · Big Data Lab</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="edu">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="edu.tag">education &amp; experience</div>
+        <h2 class="section-title" data-i18n="edu.title">A research path across three countries.</h2>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl">
+        <div>
+          <div class="meta">10/2023 — 07/2027 · Cardiff, UK</div>
+          <h3 data-i18n="edu.cardiff.title">PhD, Computer Science &amp; Informatics</h3>
+          <div class="org" data-i18n="edu.cardiff.org">Cardiff University · Fully-funded scholarship</div>
+          <ul>
+            <li data-i18n="edu.cardiff.b1">Researching deep RL, evolutionary strategies, flow matching, and vision-language-action methods for robotic manipulation.</li>
+            <li data-i18n="edu.cardiff.b2">Awarded 1st prize, PGR Summer Workshop 2024.</li>
+            <li data-i18n="edu.cardiff.b3">Co-supervised 1 MSc and 4 BSc dissertations with positive feedback.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="meta">12/2026 —  · Beijing, China</div>
+          <h3 data-i18n="edu.pumch.title">Visiting Researcher · PUMCH (incoming)</h3>
+          <div class="org" data-i18n="edu.pumch.org">Peking Union Medical College Hospital · Chinese Academy of Medical Sciences</div>
+          <ul>
+            <li data-i18n="edu.pumch.b1">Bringing robot-learning &amp; medical-imaging research to a top clinical research setting; planned focus on AI-assisted clinical workflows.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="meta">07/2026 — 12/2026 · Tokyo, Japan</div>
+          <h3 data-i18n="edu.nii.title">Research Intern · NII (incoming)</h3>
+          <div class="org" data-i18n="edu.nii.org">National Institute of Informatics</div>
+          <ul>
+            <li data-i18n="edu.nii.b1">Sim-to-real transfer with vision-language-action models for dual-arm robotic manipulation.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="meta">09/2019 — 06/2023 · Birmingham, UK</div>
+          <h3 data-i18n="edu.bham.title">MEng, Computer Science &amp; Software Engineering</h3>
+          <div class="org" data-i18n="edu.bham.org">University of Birmingham · International Achievement &amp; Excellence Scholarships</div>
+          <ul>
+            <li data-i18n="edu.bham.b1">Integrated 4-year undergraduate-Master programme.</li>
+            <li data-i18n="edu.bham.b2">£1,500 International Achievement Bursary in 19/20 and 20/21; £1,500 International Excellence Scholarship in 19/20.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="meta">09/2022 · Zürich, Switzerland</div>
+          <h3 data-i18n="edu.eth.title">EXCITE Summer School · Biomedical Imaging</h3>
+          <div class="org">ETH Zürich</div>
+          <ul>
+            <li data-i18n="edu.eth.b1">Multimodal/multiscale imaging and computer-aided analysis; project on medical image classification &amp; segmentation with deep learning.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="meta">10/2021 — 01/2022 · Changsha, China</div>
+          <h3 data-i18n="edu.gien.title">CV in RPA · Intern</h3>
+          <div class="org">GienTech</div>
+          <ul>
+            <li data-i18n="edu.gien.b1">Reorganised cascade R-CNN for target element detection on financial websites; mAP &gt; 0.95 across all label classes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="meta">05/2021 — 08/2021 · Shenzhen, China</div>
+          <h3 data-i18n="edu.szu.title">Uncertainty in Meta-Learning · Intern</h3>
+          <div class="org" data-i18n="edu.szu.org">Shenzhen University · National Big Data Engineering Lab</div>
+          <ul>
+            <li data-i18n="edu.szu.b1">Refined uncertainty model under Prof. Xizhao Wang; built a self-training model replacing self-ensembling for 3D medical image segmentation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section id="pub">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="pub.tag">publications</div>
+        <h2 class="section-title" data-i18n="pub.title">Research across robotic learning, vision &amp; bio-AI.</h2>
+      </div>
+      <p class="section-sub" data-i18n="pub.sub">Ten papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing and bio-medical AI.</p>
+    </div>
+    <!-- ===== Category 1: Robotic Manipulation & Planning ===== -->
+    <div class="pub-cat">
+      <div class="cat-head">
+        <span class="cat-num">01</span>
+        <h3 data-i18n="pub.cat1">Robotic Manipulation &amp; Planning</h3>
+        <span class="cat-count">6 papers</span>
+      </div>
+      <div class="cat-line"></div>
+      <div class="cards">
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge published" data-i18n="pub.published">Published</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Few-shot Transfer Learning for Deep Reinforcement Learning on Robotic Manipulation Tasks</h3>
+          <div class="venue">TAROS 2024 · Towards Autonomous Robotic Systems</div>
+          <p data-i18n="pub.p1">Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.</p>
+          <div class="tags"><span class="tag">DRL</span><span class="tag">Transfer Learning</span><span class="tag">MuJoCo</span><span class="tag">Fetch</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Sample-efficient Low-level Motion Planning for Robotic Manipulation Tasks via Zero-shot Transfer Learning</h3>
+          <div class="venue">ICANN 2026 · 35th Int. Conf. on Artificial Neural Networks</div>
+          <p data-i18n="pub.p2">A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks — validated on a real Franka Emika robot.</p>
+          <div class="tags"><span class="tag">Evolutionary Strategies</span><span class="tag">Zero-shot</span><span class="tag">Franka FR3</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Enhancing Deep Reinforcement Learning for Robotic Motion Planning via Task Decomposition</h3>
+          <div class="venue">ICANN 2026 · 35th Int. Conf. on Artificial Neural Networks</div>
+          <p data-i18n="pub.p3">Improving performance on MuJoCo Fetch manipulation tasks through transfer learning for deep reinforcement learning, guided by task decomposition.</p>
+          <div class="tags"><span class="tag">DRL</span><span class="tag">Task Decomposition</span><span class="tag">MuJoCo</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge prep" data-i18n="pub.prep">In Preparation</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Hierarchical Motion Planning for Robotic Manipulation via Evolutionary Low-Level Optimization and Task Decomposition</h3>
+          <div class="venue" data-i18n="pub.venue4">Manuscript in preparation</div>
+          <p data-i18n="pub.p4">A novel hierarchical TD framework that improves manipulation performance while maintaining the fast inference and scalability of prior solutions.</p>
+          <div class="tags"><span class="tag">Hierarchical RL</span><span class="tag">Evolutionary</span><span class="tag">TD</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Diagnosing Benchmark-Faithful Evaluation in CALVIN: Export Truncation, Teacher Semantics, and Symbolic Reset Fidelity</h3>
+          <div class="venue">Journal of Supercomputing</div>
+          <p data-i18n="pub.p7">A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics — examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.</p>
+          <div class="tags"><span class="tag">CALVIN</span><span class="tag">Benchmarking</span><span class="tag">VLA</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Observation-Contract Audits Reveal State Dominance in Diffusion Policy Benchmarks</h3>
+          <div class="venue">Applied Intelligence</div>
+          <p data-i18n="pub.p10">An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.</p>
+          <div class="tags"><span class="tag">Diffusion Policy</span><span class="tag">Benchmarking</span><span class="tag">Auditing</span></div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ===== Category 2: Computer Vision ===== -->
+    <div class="pub-cat">
+      <div class="cat-head">
+        <span class="cat-num">02</span>
+        <h3 data-i18n="pub.cat2">Computer Vision</h3>
+        <span class="cat-count">1 paper</span>
+      </div>
+      <div class="cat-line"></div>
+      <div class="cards">
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>EvoMask: Evolutionary Multi-Signal Mask Scoring for Training-Free Indoor Instance Segmentation</h3>
+          <div class="venue">PRCV · Pattern Recognition and Computer Vision</div>
+          <p data-i18n="pub.p6">A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy — no per-domain fine-tuning required.</p>
+          <div class="tags"><span class="tag">Instance Seg.</span><span class="tag">Training-free</span><span class="tag">Evolutionary</span></div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ===== Category 3: Biomedical AI ===== -->
+    <div class="pub-cat">
+      <div class="cat-head">
+        <span class="cat-num">03</span>
+        <h3 data-i18n="pub.cat3">Biomedical Engineering / Bio-AI</h3>
+        <span class="cat-count">2 papers</span>
+      </div>
+      <div class="cat-line"></div>
+      <div class="cards">
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
+          </div>
+          <h3>Heterogeneous Graph Learning with Pretrained Node Representations for Spatial Transcriptomic Tumor Immune Microenvironment Classification</h3>
+          <div class="venue">Information Fusion</div>
+          <p data-i18n="pub.p8">A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.</p>
+          <div class="tags"><span class="tag">Graph Learning</span><span class="tag">Spatial Omics</span><span class="tag">Bio-AI</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge coauth" data-i18n="pub.coauth">Co-author</span>
+          </div>
+          <h3>A Single-Cell Feature Selection Method Based on Subspace and Minimum Redundancy, Applicable to Multi-Omics</h3>
+          <div class="venue">Pattern Recognition</div>
+          <p data-i18n="pub.p9">A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.</p>
+          <div class="tags"><span class="tag">Feature Selection</span><span class="tag">Single-cell</span><span class="tag">Multi-omics</span></div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ===== Category 4: Game AI ===== -->
+    <div class="pub-cat">
+      <div class="cat-head">
+        <span class="cat-num">04</span>
+        <h3 data-i18n="pub.cat4">Game AI</h3>
+        <span class="cat-count">1 paper</span>
+      </div>
+      <div class="cat-line"></div>
+      <div class="cards">
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge prep" data-i18n="pub.prep">In Preparation</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>AlphaLiar: An Easy-to-use Hybrid Learning Agent for the Liar's Dice Game</h3>
+          <div class="venue" data-i18n="pub.venue5">Manuscript in preparation · Game AI</div>
+          <p data-i18n="pub.p5">A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning — wrapped in an easy-to-use UI for casual play and analysis.</p>
+          <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">Game AI</span></div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="proj">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="proj.tag">projects</div>
+        <h2 class="section-title" data-i18n="proj.title">Selected projects I've shipped or contributed to.</h2>
+      </div>
+      <p class="section-sub" data-i18n="proj.sub">Research prototypes, internship deliverables and side projects across robotics, vision and game AI.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card">
+        <div class="meta"><span class="badge lead">Lead</span><span class="badge published" data-i18n="proj.active">2024 — present</span></div>
+        <h3 data-i18n="proj.t1">Hierarchical Evolutionary Manipulation Framework</h3>
+        <div class="venue">PhD research · Cardiff University</div>
+        <p data-i18n="proj.p1">An end-to-end hierarchical TD framework that combines evolutionary low-level optimisation with high-level task decomposition. Targets fast inference and zero-shot generalisation across manipulation tasks on the Franka Emika FR3.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">MuJoCo</span><span class="tag">Isaac Sim</span><span class="tag">ROS 2</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge lead">Incoming</span><span class="badge submitted">2026</span></div>
+        <h3 data-i18n="proj.t2">Sim-to-Real VLA on Dual-Arm Manipulation</h3>
+        <div class="venue">Research Intern · NII Tokyo</div>
+        <p data-i18n="proj.p2">Exploring vision-language-action models for sim-to-real transfer on dual-arm manipulation, with an emphasis on robustness and language-conditioned generalisation.</p>
+        <div class="tags"><span class="tag">VLA</span><span class="tag">Sim-to-Real</span><span class="tag">Dual-Arm</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge lead">Lead</span></div>
+        <h3 data-i18n="proj.t3">AlphaLiar — Hybrid Game-AI Agent</h3>
+        <div class="venue" data-i18n="proj.v3">Independent project · 2024</div>
+        <p data-i18n="proj.p3">An agent for the imperfect-information dice game Liar's Dice, blending Monte Carlo Tree Search with a deep autoencoder belief model and reinforcement-learned policy. Comes with a friendly play-against-the-AI UI.</p>
+        <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">UI</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge lead">Lead</span><span class="badge published">2024</span></div>
+        <h3 data-i18n="proj.t4">Few-shot DRL Transfer for Fetch Tasks</h3>
+        <div class="venue">TAROS 2024</div>
+        <p data-i18n="proj.p4">Few-shot transfer learning recipe for deep RL agents on MuJoCo Fetch manipulation benchmarks — boosting sample efficiency and task success rates.</p>
+        <div class="tags"><span class="tag">DRL</span><span class="tag">Transfer</span><span class="tag">Fetch</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge">Intern</span></div>
+        <h3 data-i18n="proj.t5">CV for Robotic Process Automation</h3>
+        <div class="venue">GienTech · 2021–22</div>
+        <p data-i18n="proj.p5">Restructured a Cascade R-CNN pipeline to detect target UI elements on financial-institution websites, achieving mAP &gt; 0.95 across label classes.</p>
+        <div class="tags"><span class="tag">Cascade R-CNN</span><span class="tag">CV</span><span class="tag">RPA</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge">Research</span></div>
+        <h3 data-i18n="proj.t6">Uncertainty Modelling in Meta-Learning</h3>
+        <div class="venue">Shenzhen University · 2021</div>
+        <p data-i18n="proj.p6">Refined an uncertainty model and built a self-training pipeline (replacing self-ensembling) for 3D medical image segmentation, under Prof. Xizhao Wang.</p>
+        <div class="tags"><span class="tag">Meta-Learning</span><span class="tag">Self-Training</span><span class="tag">Med-Image</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge">Teaching</span></div>
+        <h3 data-i18n="proj.t7">Student Supervision</h3>
+        <div class="venue" data-i18n="proj.v7">Cardiff University · 2024–present</div>
+        <p data-i18n="proj.p7">Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV — providing weekly mentorship, technical guidance and feedback on writing.</p>
+        <div class="tags"><span class="tag">Mentorship</span><span class="tag">Dissertation</span></div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="badge">Summer School</span></div>
+        <h3 data-i18n="proj.t8">Biomedical Imaging Project</h3>
+        <div class="venue">EXCITE · ETH Zürich · 2022</div>
+        <p data-i18n="proj.p8">Project on deep-learning-based medical image classification &amp; segmentation, alongside lectures on multimodal/multiscale imaging.</p>
+        <div class="tags"><span class="tag">DL</span><span class="tag">Med-Image</span><span class="tag">Segmentation</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWER ===== -->
+<section id="review">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="review.tag">academic service</div>
+        <h2 class="section-title" data-i18n="review.title">Reviewer for international robotics &amp; AI venues.</h2>
+      </div>
+      <p class="section-sub" data-i18n="review.sub">Giving back to the community by reviewing for top robotics and neural-network conferences.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review">
+        <div class="yr">2026</div>
+        <div class="name">ICRA</div>
+        <div class="desc" data-i18n="review.icra">IEEE International Conference on Robotics and Automation — the flagship robotics conference.</div>
+      </div>
+      <div class="review">
+        <div class="yr">2026</div>
+        <div class="name">ICANN</div>
+        <div class="desc" data-i18n="review.icann">International Conference on Artificial Neural Networks (CCF C).</div>
+      </div>
+      <div class="review">
+        <div class="yr">2026</div>
+        <div class="name">CBS</div>
+        <div class="desc" data-i18n="review.cbs">IEEE International Conference on Cyborg and Bionic Systems.</div>
+      </div>
+      <div class="review">
+        <div class="yr">2024</div>
+        <div class="name">TAROS</div>
+        <div class="desc" data-i18n="review.taros">Towards Autonomous Robotic Systems — the UK's annual robotics conference.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-tag" data-i18n="skills.tag">stack</div>
+        <h2 class="section-title" data-i18n="skills.title">Tools, languages and toys I work with.</h2>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skillcol">
+        <h4 data-i18n="skills.prog">Programming</h4>
+        <div class="skill-list">
+          <div class="skill"><span>Python</span><div class="bar"><span style="--w:96%"></span></div></div>
+          <div class="skill"><span>C++</span><div class="bar"><span style="--w:78%"></span></div></div>
+          <div class="skill"><span>MATLAB</span><div class="bar"><span style="--w:70%"></span></div></div>
+          <div class="skill"><span>Java</span><div class="bar"><span style="--w:65%"></span></div></div>
+        </div>
+      </div>
+      <div class="skillcol">
+        <h4 data-i18n="skills.robot">Robotics</h4>
+        <div class="skill-list">
+          <div class="skill"><span>ROS 2</span><div class="bar"><span style="--w:88%"></span></div></div>
+          <div class="skill"><span>Isaac Sim</span><div class="bar"><span style="--w:84%"></span></div></div>
+          <div class="skill"><span>MuJoCo</span><div class="bar"><span style="--w:92%"></span></div></div>
+          <div class="skill"><span>PyBullet</span><div class="bar"><span style="--w:80%"></span></div></div>
+          <div class="skill"><span>Gazebo</span><div class="bar"><span style="--w:75%"></span></div></div>
+          <div class="skill"><span>CoppeliaSim</span><div class="bar"><span style="--w:70%"></span></div></div>
+          <div class="skill"><span>Franka FR3</span><div class="bar"><span style="--w:82%"></span></div></div>
+        </div>
+      </div>
+      <div class="skillcol">
+        <h4 data-i18n="skills.ml">ML / DL</h4>
+        <div class="skill-list">
+          <div class="skill"><span>PyTorch</span><div class="bar"><span style="--w:94%"></span></div></div>
+          <div class="skill"><span>TensorFlow</span><div class="bar"><span style="--w:78%"></span></div></div>
+          <div class="skill"><span>OpenCV</span><div class="bar"><span style="--w:82%"></span></div></div>
+        </div>
+      </div>
+      <div class="skillcol">
+        <h4 data-i18n="skills.lang">Languages</h4>
+        <div class="skill-list">
+          <div class="skill"><span data-i18n="skills.l1">Mandarin · Native</span><div class="bar"><span style="--w:100%"></span></div></div>
+          <div class="skill"><span data-i18n="skills.l2">English · Fluent</span><div class="bar"><span style="--w:92%"></span></div></div>
+          <div class="skill"><span data-i18n="skills.l3">Japanese · Basic</span><div class="bar"><span style="--w:38%"></span></div></div>
+          <div class="skill"><span data-i18n="skills.l4">French · Basic</span><div class="bar"><span style="--w:34%"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="contact-card">
+      <div>
+        <div class="section-tag" data-i18n="contact.tag">contact</div>
+        <h3 data-i18n="contact.title">Open to research collaborations, internships &amp; chats about robot learning.</h3>
+        <p data-i18n="contact.p1">Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work — drop a line.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="mailto:HeY65@cardiff.ac.uk">HeY65@cardiff.ac.uk</a>
+          <a class="btn btn-ghost" href="https://github.com/YuanzhiHe" target="_blank" rel="noopener">github.com/YuanzhiHe ↗</a>
+        </div>
+      </div>
+      <div class="contact-list">
+        <div class="contact-row"><span class="ic">@</span><a href="mailto:HeY65@cardiff.ac.uk">HeY65@cardiff.ac.uk</a></div>
+        <div class="contact-row"><span class="ic">in</span><a href="https://linkedin.com/in/yuanzhi-he-26272b195" target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="contact-row"><span class="ic">⌥</span><a href="https://github.com/YuanzhiHe" target="_blank" rel="noopener">GitHub · YuanzhiHe</a></div>
+        <div class="contact-row"><span class="ic">G</span><a href="https://scholar.google.com/citations?user=iEUvnwgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a></div>
+        <div class="contact-row"><span class="ic">☎</span><a href="tel:+447579932386">+44 7579 932386</a></div>
+        <div class="contact-row"><span class="ic">⌖</span><span data-i18n="contact.loc">Cardiff, United Kingdom</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Yuanzhi He · 何远知</span>
+    <span data-i18n="footer.note">Built with vanilla HTML/CSS/JS · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+/* ===================== i18n ===================== */
+const I18N = {
+  en: {
+    "nav.about":"About","nav.affil":"Affiliations","nav.edu":"Education","nav.pub":"Publications","nav.proj":"Projects","nav.review":"Reviewer","nav.skills":"Skills","nav.contact":"Contact",
+
+    "hero.tag":"PhD · Cardiff University · School of Computer Science & Informatics",
+    "hero.name":"Yuanzhi He",
+    "hero.role":"Robotic Manipulation × Reinforcement Learning × Vision-Language-Action",
+    "hero.cta1":"Read my work",
+    "hero.cta2":"Get in touch",
+    "hero.stat1":"Papers authored",
+    "hero.stat2":"Institutions",
+    "hero.stat3":"Reviewer roles",
+    "hero.stat4":"Students supervised",
+    "hero.typed": [
+      "Teaching robots to learn — sample-efficiently.",
+      "Bridging deep RL, evolutionary search and VLA models.",
+      "From MuJoCo Fetch to a real Franka FR3.",
+      "Sim · to · Real."
+    ],
+
+    "about.tag":"about",
+    "about.title":"Teaching robots to learn — sample-efficiently.",
+    "about.sub":"PhD researcher fascinated by how robots can acquire dexterous skills with minimal data, by combining deep RL, evolutionary search and modern VLA models.",
+    "about.p1":"I'm <strong>Yuanzhi He</strong>, a fully-funded PhD student at Cardiff University's School of Computer Science & Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision-language-action</strong> models — applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.",
+    "about.p2":"I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. From mid-2026 I'm joining the <strong>National Institute of Informatics (NII, Tokyo)</strong> to work on sim-to-real for dual-arm VLA manipulation.",
+    "about.p3":"Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.",
+    "about.focus":"Research focus",
+    "about.f1":"Deep Reinforcement Learning",
+    "about.f2":"Evolutionary Strategies",
+    "about.f3":"Vision-Language-Action Models",
+    "about.f4":"Flow Matching",
+    "about.f5":"Hierarchical Task Decomposition",
+    "about.f6":"Sim-to-Real Transfer",
+
+    "affil.tag":"affiliations",
+    "affil.title":"Where I've trained, interned & researched.",
+    "affil.sub":"A small constellation of universities and labs that shaped my work — from Birmingham to Zurich, Shenzhen to Tokyo.",
+
+    "edu.tag":"education & experience",
+    "edu.title":"A research path across three countries.",
+    "edu.cardiff.title":"PhD, Computer Science & Informatics",
+    "edu.cardiff.org":"Cardiff University · Fully-funded scholarship",
+    "edu.cardiff.b1":"Researching deep RL, evolutionary strategies, flow matching, and vision-language-action methods for robotic manipulation.",
+    "edu.cardiff.b2":"Awarded 1st prize, PGR Summer Workshop 2024.",
+    "edu.cardiff.b3":"Co-supervised 1 MSc and 4 BSc dissertations with positive feedback.",
+    "edu.nii.title":"Research Intern · NII (incoming)",
+    "edu.nii.org":"National Institute of Informatics",
+    "edu.nii.b1":"Sim-to-real transfer with vision-language-action models for dual-arm robotic manipulation.",
+    "edu.pumch.title":"Visiting Researcher · PUMCH (incoming)",
+    "edu.pumch.org":"Peking Union Medical College Hospital · Chinese Academy of Medical Sciences",
+    "edu.pumch.b1":"Bringing robot-learning & medical-imaging research to a top clinical research setting; planned focus on AI-assisted clinical workflows.",
+    "edu.bham.title":"MEng, Computer Science & Software Engineering",
+    "edu.bham.org":"University of Birmingham · International Achievement & Excellence Scholarships",
+    "edu.bham.b1":"Integrated 4-year undergraduate-Master programme.",
+    "edu.bham.b2":"£1,500 International Achievement Bursary in 19/20 and 20/21; £1,500 International Excellence Scholarship in 19/20.",
+    "edu.eth.title":"EXCITE Summer School · Biomedical Imaging",
+    "edu.eth.b1":"Multimodal/multiscale imaging and computer-aided analysis; project on medical image classification & segmentation with deep learning.",
+    "edu.gien.title":"CV in RPA · Intern",
+    "edu.gien.b1":"Reorganised cascade R-CNN for target element detection on financial websites; mAP > 0.95 across all label classes.",
+    "edu.szu.title":"Uncertainty in Meta-Learning · Intern",
+    "edu.szu.org":"Shenzhen University · National Big Data Engineering Lab",
+    "edu.szu.b1":"Refined uncertainty model under Prof. Xizhao Wang; built a self-training model replacing self-ensembling for 3D medical image segmentation.",
+
+    "pub.tag":"publications",
+    "pub.title":"Research across robotic learning, vision & bio-AI.",
+    "pub.sub":"Ten papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing and bio-medical AI.",
+    "pub.published":"Published","pub.submitted":"Submitted","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.coauth":"Co-author",
+    "pub.cat1":"Robotic Manipulation & Planning",
+    "pub.cat2":"Computer Vision",
+    "pub.cat3":"Biomedical Engineering / Bio-AI",
+    "pub.cat4":"Game AI",
+    "pub.p1":"Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.",
+    "pub.p2":"A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks — validated on a real Franka Emika robot.",
+    "pub.p3":"Improving performance on MuJoCo Fetch manipulation tasks through transfer learning for deep reinforcement learning, guided by task decomposition.",
+    "pub.p4":"A novel hierarchical TD framework that improves manipulation performance while maintaining the fast inference and scalability of prior solutions.",
+    "pub.p5":"A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning — wrapped in an easy-to-use UI for casual play and analysis.",
+    "pub.p6":"A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy — no per-domain fine-tuning required.",
+    "pub.p7":"A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics — examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.",
+    "pub.p8":"A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.",
+    "pub.p9":"A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.",
+    "pub.p10":"An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.",
+    "pub.venue4":"Manuscript in preparation",
+    "pub.venue5":"Manuscript in preparation · Game AI",
+
+    "proj.tag":"projects",
+    "proj.title":"Selected projects I've shipped or contributed to.",
+    "proj.sub":"Research prototypes, internship deliverables and side projects across robotics, vision and game AI.",
+    "proj.active":"2024 — present",
+    "proj.t1":"Hierarchical Evolutionary Manipulation Framework",
+    "proj.p1":"An end-to-end hierarchical TD framework that combines evolutionary low-level optimisation with high-level task decomposition. Targets fast inference and zero-shot generalisation across manipulation tasks on the Franka Emika FR3.",
+    "proj.t2":"Sim-to-Real VLA on Dual-Arm Manipulation",
+    "proj.p2":"Exploring vision-language-action models for sim-to-real transfer on dual-arm manipulation, with an emphasis on robustness and language-conditioned generalisation.",
+    "proj.t3":"AlphaLiar — Hybrid Game-AI Agent",
+    "proj.v3":"Independent project · 2024",
+    "proj.p3":"An agent for the imperfect-information dice game Liar's Dice, blending Monte Carlo Tree Search with a deep autoencoder belief model and reinforcement-learned policy. Comes with a friendly play-against-the-AI UI.",
+    "proj.t4":"Few-shot DRL Transfer for Fetch Tasks",
+    "proj.p4":"Few-shot transfer learning recipe for deep RL agents on MuJoCo Fetch manipulation benchmarks — boosting sample efficiency and task success rates.",
+    "proj.t5":"CV for Robotic Process Automation",
+    "proj.p5":"Restructured a Cascade R-CNN pipeline to detect target UI elements on financial-institution websites, achieving mAP > 0.95 across label classes.",
+    "proj.t6":"Uncertainty Modelling in Meta-Learning",
+    "proj.p6":"Refined an uncertainty model and built a self-training pipeline (replacing self-ensembling) for 3D medical image segmentation, under Prof. Xizhao Wang.",
+    "proj.t7":"Student Supervision",
+    "proj.v7":"Cardiff University · 2024–present",
+    "proj.p7":"Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV — providing weekly mentorship, technical guidance and feedback on writing.",
+    "proj.t8":"Biomedical Imaging Project",
+    "proj.p8":"Project on deep-learning-based medical image classification & segmentation, alongside lectures on multimodal/multiscale imaging.",
+
+    "review.tag":"academic service",
+    "review.title":"Reviewer for international robotics & AI venues.",
+    "review.sub":"Giving back to the community by reviewing for top robotics and neural-network conferences.",
+    "review.icra":"IEEE International Conference on Robotics and Automation — the flagship robotics conference.",
+    "review.icann":"International Conference on Artificial Neural Networks (CCF C).",
+    "review.cbs":"IEEE International Conference on Cyborg and Bionic Systems.",
+    "review.taros":"Towards Autonomous Robotic Systems — the UK's annual robotics conference.",
+
+    "skills.tag":"stack",
+    "skills.title":"Tools, languages and toys I work with.",
+    "skills.prog":"Programming","skills.robot":"Robotics","skills.ml":"ML / DL","skills.lang":"Languages",
+    "skills.l1":"Mandarin · Native","skills.l2":"English · Fluent","skills.l3":"Japanese · Basic","skills.l4":"French · Basic",
+
+    "contact.tag":"contact",
+    "contact.title":"Open to research collaborations, internships & chats about robot learning.",
+    "contact.p1":"Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work — drop a line.",
+    "contact.loc":"Cardiff, United Kingdom",
+
+    "footer.note":"Built with vanilla HTML/CSS/JS · hosted on GitHub Pages"
+  },
+  zh: {
+    "nav.about":"关于","nav.affil":"学术轨迹","nav.edu":"教育经历","nav.pub":"论文发表","nav.proj":"项目作品","nav.review":"审稿经历","nav.skills":"技能栈","nav.contact":"联系方式",
+
+    "hero.tag":"博士生 · 卡迪夫大学 · 计算机科学与信息学院",
+    "hero.name":"何远知",
+    "hero.role":"机器人操作 × 强化学习 × 视觉-语言-动作模型",
+    "hero.cta1":"看我的工作",
+    "hero.cta2":"联系我",
+    "hero.stat1":"论文",
+    "hero.stat2":"学术机构",
+    "hero.stat3":"审稿身份",
+    "hero.stat4":"指导学生",
+    "hero.typed": [
+      "教机器人——以更少的数据，学到更多的技能。",
+      "在深度强化学习、进化算法与 VLA 模型之间架桥。",
+      "从 MuJoCo Fetch 到真实的 Franka FR3。",
+      "仿真 · 到 · 实机。"
+    ],
+
+    "about.tag":"关于",
+    "about.title":"教机器人学习 — 但要更高的样本效率。",
+    "about.sub":"博士研究方向：让机器人在最小数据下学到灵巧技能，融合深度强化学习、进化搜索与现代 VLA 模型。",
+    "about.p1":"我是 <strong>何远知</strong>，卡迪夫大学计算机科学与信息学院全奖博士生。研究方向集中在<strong>深度强化学习</strong>、<strong>进化策略</strong>、<strong>流匹配（Flow Matching）</strong>与<strong>视觉-语言-动作模型</strong>，并应用到 <strong>Franka Emika FR3</strong> 等真实机器人操作任务上。",
+    "about.p2":"我尤其关注 <em>样本效率</em>：迁移学习、任务分解与分层控制如何让真实机器人在不依赖巨量仿真步数的前提下，学到复杂技能。2026 年中起，我将前往<strong>国立情报学研究所（NII，东京）</strong>担任研究实习生，研究双臂 VLA 操作的仿真到实机迁移。",
+    "about.p3":"实验室之外，我经常出现在羽毛球场、壁球馆、自行车骑行路上，或者一盘围棋的对面。",
+    "about.focus":"研究方向",
+    "about.f1":"深度强化学习",
+    "about.f2":"进化策略",
+    "about.f3":"视觉-语言-动作模型",
+    "about.f4":"流匹配 Flow Matching",
+    "about.f5":"分层任务分解",
+    "about.f6":"仿真到实机迁移",
+
+    "affil.tag":"学术轨迹",
+    "affil.title":"我学习、实习与研究过的地方。",
+    "affil.sub":"一串塑造了我研究脉络的学校与实验室——从伯明翰到苏黎世，从深圳到东京。",
+
+    "edu.tag":"教育与经历",
+    "edu.title":"横跨三国的研究路径。",
+    "edu.cardiff.title":"博士 · 计算机科学与信息学",
+    "edu.cardiff.org":"卡迪夫大学 · 全额奖学金",
+    "edu.cardiff.b1":"研究深度强化学习、进化策略、流匹配与视觉-语言-动作方法在机器人操作中的应用。",
+    "edu.cardiff.b2":"获 2024 年研究生院暑期研讨会一等奖。",
+    "edu.cardiff.b3":"协助指导 1 名硕士生与 4 名本科生毕业论文，反馈良好。",
+    "edu.nii.title":"研究实习生 · NII（即将赴任）",
+    "edu.nii.org":"国立情报学研究所，日本东京",
+    "edu.nii.b1":"在双臂机器人操作场景下，研究基于 VLA 模型的仿真到实机迁移。",
+    "edu.pumch.title":"访问研究员 · 协和（即将赴任）",
+    "edu.pumch.org":"中国医学科学院 · 北京协和医院",
+    "edu.pumch.b1":"将机器人学习与医学影像研究带入顶级临床研究环境，计划聚焦 AI 辅助的临床流程。",
+    "edu.bham.title":"工学硕士 · 计算机科学与软件工程",
+    "edu.bham.org":"伯明翰大学 · 国际成就/卓越奖学金",
+    "edu.bham.b1":"四年制本硕连读项目。",
+    "edu.bham.b2":"19/20、20/21 学年各获国际成就奖学金 1500 英镑；19/20 学年另获国际卓越奖学金 1500 英镑。",
+    "edu.eth.title":"EXCITE 暑期学校 · 生物医学成像",
+    "edu.eth.b1":"系统学习多模态、多尺度成像与计算机辅助分析；完成基于深度学习的医学图像分类与分割项目。",
+    "edu.gien.title":"机器人流程自动化中的计算机视觉 · 实习生",
+    "edu.gien.b1":"重构 Cascade R-CNN，用于识别金融机构网站中的目标元素，所有标签类别 mAP > 0.95。",
+    "edu.szu.title":"元学习中的不确定性建模 · 实习生",
+    "edu.szu.org":"深圳大学 · 大数据系统计算技术国家工程实验室",
+    "edu.szu.b1":"在王熙照教授指导下改进不确定性模型；构建自训练模型替代自集成模型，应用于 3D 医学图像分割。",
+
+    "pub.tag":"论文发表",
+    "pub.title":"覆盖机器人学习、计算机视觉与生物医学 AI 的研究。",
+    "pub.sub":"十篇论文，涵盖迁移学习、进化运动规划、分层控制、实例分割、扩散策略评测，以及生物医学 AI。",
+    "pub.published":"已发表","pub.submitted":"在投","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.coauth":"合作作者",
+    "pub.cat1":"机器人操作与运动规划",
+    "pub.cat2":"计算机视觉",
+    "pub.cat3":"生物医学工程 / Bio-AI",
+    "pub.cat4":"博弈 AI",
+    "pub.p1":"通过结合迁移学习与深度强化学习，提升 MuJoCo Fetch 系列机器人操作任务上的表现。",
+    "pub.p2":"提出一种结合迁移学习与奖励重构的新框架，在现有与新提出的机器人操作任务上提升进化算法效果，并在真实 Franka Emika 机器人上得到验证。",
+    "pub.p3":"以任务分解为引导，使用迁移学习提升深度强化学习在 MuJoCo Fetch 任务上的表现。",
+    "pub.p4":"提出一种新颖的分层任务分解（TD）框架，在保持已有方案推理速度与可扩展性的前提下，提升机器人操作任务的表现。",
+    "pub.p5":"结合蒙特卡洛树搜索、深度自编码器与强化学习的混合智能体，并配套易于使用的人机对战界面。",
+    "pub.p6":"一种无需训练的室内实例分割方法，使用进化式多信号掩码评分策略，无需逐域微调。",
+    "pub.p7":"对 CALVIN 评测流水线偏离原始语义的诊断研究，分析导出截断、教师语义与符号化重置一致性等问题，并给出具体修复方案。",
+    "pub.p8":"一种异构图学习方法，借助预训练节点表示，对空间转录组数据中的肿瘤免疫微环境进行分类。",
+    "pub.p9":"基于子空间与最小冗余准则的特征选择方法，针对单细胞分析场景设计，适用于多组学数据。",
+    "pub.p10":"提出一种 Observation-Contract 审计框架，揭示状态主导信号如何影响扩散策略评测分数，推动更公正的协议设计。",
+    "pub.venue4":"撰写中",
+    "pub.venue5":"撰写中 · 博弈 AI",
+
+    "proj.tag":"项目作品",
+    "proj.title":"我做过/参与过的精选项目。",
+    "proj.sub":"涵盖机器人、计算机视觉与博弈 AI 的研究原型、实习项目以及个人作品。",
+    "proj.active":"2024 — 至今",
+    "proj.t1":"分层进化机器人操作框架",
+    "proj.p1":"端到端的分层 TD 框架：底层使用进化算法做运动优化，顶层做任务分解。目标是在 Franka FR3 上以快速推理实现操作任务的零样本泛化。",
+    "proj.t2":"双臂机器人 Sim-to-Real VLA",
+    "proj.p2":"探索 VLA 模型在双臂机器人操作上的仿真到实机迁移，重点研究鲁棒性与语言条件下的泛化能力。",
+    "proj.t3":"AlphaLiar — 混合学习的博弈 AI",
+    "proj.v3":"个人项目 · 2024",
+    "proj.p3":"针对不完全信息骰子游戏「骗子骰」的智能体：MCTS + 深度自编码器（信念建模）+ 强化学习策略，并提供「人 vs AI」对战界面。",
+    "proj.t4":"Few-shot DRL 迁移在 Fetch 任务上的应用",
+    "proj.p4":"为 MuJoCo Fetch 操作基准设计的少样本迁移学习方案，显著提升样本效率与任务成功率。",
+    "proj.t5":"机器人流程自动化中的 CV",
+    "proj.p5":"重构 Cascade R-CNN 流水线，用于识别金融机构网站中的目标 UI 元素，全部标签 mAP > 0.95。",
+    "proj.t6":"元学习中的不确定性建模",
+    "proj.p6":"在王熙照教授指导下改进不确定性模型，构建自训练流水线替代自集成模型，用于 3D 医学图像分割。",
+    "proj.t7":"指导学生科研",
+    "proj.v7":"卡迪夫大学 · 2024 至今",
+    "proj.p7":"协助指导 1 名硕士与 4 名本科生的毕设项目，方向涵盖机器人、强化学习与 CV，提供每周指导、技术答疑与写作反馈。",
+    "proj.t8":"生物医学成像实战项目",
+    "proj.p8":"基于深度学习的医学图像分类与分割项目，配合多模态/多尺度成像与计算机辅助分析等课程。",
+
+    "review.tag":"学术服务",
+    "review.title":"机器人与 AI 国际会议审稿人。",
+    "review.sub":"以审稿的方式回馈学术社区，参与多场顶级机器人与神经网络会议的同行评审。",
+    "review.icra":"IEEE 国际机器人与自动化大会，机器人领域旗舰会议。",
+    "review.icann":"国际人工神经网络大会（CCF C 类）。",
+    "review.cbs":"IEEE 类生命体与仿生系统国际会议。",
+    "review.taros":"英国一年一度的机器人会议 Towards Autonomous Robotic Systems。",
+
+    "skills.tag":"技能栈",
+    "skills.title":"我在用的工具、语言与「玩具」。",
+    "skills.prog":"编程语言","skills.robot":"机器人","skills.ml":"机器学习 / 深度学习","skills.lang":"语言",
+    "skills.l1":"中文 · 母语","skills.l2":"英文 · 流利","skills.l3":"日语 · 基础","skills.l4":"法语 · 基础",
+
+    "contact.tag":"联系",
+    "contact.title":"欢迎合作、实习以及一切关于机器人学习的讨论。",
+    "contact.p1":"无论你是想找机器人方向联合指导的学生，还是有进化强化学习「奇思妙想」的研究员，又或者是对我的工作感兴趣的招聘方——欢迎联系我。",
+    "contact.loc":"英国卡迪夫",
+
+    "footer.note":"使用原生 HTML/CSS/JS 构建 · 部署在 GitHub Pages"
+  }
+};
+
+/* ===================== language switching ===================== */
+let currentLang = (localStorage.getItem('yh_lang') || (navigator.language||'en').slice(0,2));
+if(!I18N[currentLang]) currentLang = 'en';
+
+function applyLang(lang){
+  currentLang = lang;
+  localStorage.setItem('yh_lang', lang);
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const val = dict[key];
+    if(typeof val === 'string'){
+      el.innerHTML = val;
+    }
+  });
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-zh').classList.toggle('active', lang==='zh');
+  // restart typed line
+  startTyped();
+}
+document.getElementById('lang-en').addEventListener('click', ()=>applyLang('en'));
+document.getElementById('lang-zh').addEventListener('click', ()=>applyLang('zh'));
+
+/* ===================== typed line ===================== */
+let typedTimer = null;
+function startTyped(){
+  if(typedTimer) clearTimeout(typedTimer);
+  const lines = I18N[currentLang]['hero.typed'];
+  const el = document.getElementById('typed');
+  let i=0, j=0, deleting=false;
+  function tick(){
+    const full = lines[i];
+    if(!deleting){
+      j++;
+      el.textContent = full.slice(0,j);
+      if(j>=full.length){ deleting = true; typedTimer = setTimeout(tick, 1700); return; }
+    }else{
+      j--;
+      el.textContent = full.slice(0,j);
+      if(j<=0){ deleting=false; i=(i+1)%lines.length; }
+    }
+    typedTimer = setTimeout(tick, deleting? 22 : 42);
+  }
+  tick();
+}
+
+/* ===================== reveal on scroll ===================== */
+const io = new IntersectionObserver((ents)=>{
+  ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===================== nav ===================== */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', ()=>{
+  nav.classList.toggle('scrolled', window.scrollY > 8);
+});
+const menuBtn = document.getElementById('menu-btn');
+const navMobile = document.getElementById('nav-mobile');
+menuBtn.addEventListener('click', ()=>navMobile.classList.toggle('open'));
+navMobile.addEventListener('click', e=>{ if(e.target.tagName==='A') navMobile.classList.remove('open'); });
+
+/* ===================== year ===================== */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===================== neural network particle bg ===================== */
+(function(){
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W=0, H=0, dpr=Math.min(window.devicePixelRatio||1, 2);
+  function resize(){
+    W = canvas.clientWidth = window.innerWidth;
+    H = canvas.clientHeight = window.innerHeight;
+    canvas.width = W*dpr; canvas.height = H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const N = Math.max(48, Math.min(110, Math.floor((W*H)/22000)));
+  const nodes = [];
+  for(let i=0;i<N;i++){
+    nodes.push({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35,
+      r:Math.random()*1.6+.4,
+      hue: Math.random() < .5 ? 0 : 1, // 0 cyan, 1 violet
+    });
+  }
+  let mouse = {x:-1e3, y:-1e3, active:false};
+  window.addEventListener('mousemove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; mouse.active=true; });
+  window.addEventListener('mouseleave', ()=>{mouse.active=false});
+
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    // edges
+    for(let i=0;i<N;i++){
+      const a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if(a.x<0||a.x>W) a.vx*=-1;
+      if(a.y<0||a.y>H) a.vy*=-1;
+      // mouse repel/attract subtly
+      if(mouse.active){
+        const dx=a.x-mouse.x, dy=a.y-mouse.y, d2=dx*dx+dy*dy;
+        if(d2 < 140*140){
+          const f = (140 - Math.sqrt(d2))/140 * .6;
+          a.vx += (dx/Math.sqrt(d2+.01))*f*.05;
+          a.vy += (dy/Math.sqrt(d2+.01))*f*.05;
+        }
+      }
+      a.vx = Math.max(-.6, Math.min(.6, a.vx));
+      a.vy = Math.max(-.6, Math.min(.6, a.vy));
+
+      for(let j=i+1;j<N;j++){
+        const b = nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<140){
+          const t = 1 - d/140;
+          const isCyan = (a.hue+b.hue)%2===0;
+          ctx.strokeStyle = isCyan
+            ? `rgba(92,242,214,${.10*t})`
+            : `rgba(168,132,255,${.10*t})`;
+          ctx.lineWidth = .8;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    for(const n of nodes){
+      const grd = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4);
+      const c = n.hue===0 ? '92,242,214' : '168,132,255';
+      grd.addColorStop(0, `rgba(${c},.95)`);
+      grd.addColorStop(1, `rgba(${c},0)`);
+      ctx.fillStyle = grd;
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+applyLang(currentLang);
+</script>
+</body>
+</html>
