@@ -109,6 +109,58 @@ section + section{padding-top:40px}
 
 /* ---------- hero ---------- */
 .hero{padding-top:160px;padding-bottom:60px;min-height:90vh;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:60px;align-items:center}
+@media (max-width:920px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+
+.portrait-wrap{
+  position:relative;justify-self:end;width:100%;max-width:380px;
+}
+@media (max-width:920px){.portrait-wrap{justify-self:center;max-width:320px;order:-1}}
+.portrait-frame{
+  position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;
+  background:linear-gradient(180deg, rgba(17,23,42,.6), rgba(11,15,28,.4));
+  box-shadow:0 30px 80px -20px rgba(92,242,214,.28), 0 0 0 1px var(--line);
+  isolation:isolate;
+}
+.portrait-frame::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(92,242,214,.18);
+  background:
+    linear-gradient(180deg, rgba(6,8,15,0) 60%, rgba(6,8,15,.5) 100%),
+    radial-gradient(120% 60% at 0% 0%, rgba(92,242,214,.18), transparent 55%),
+    radial-gradient(120% 60% at 100% 100%, rgba(168,132,255,.20), transparent 55%);
+  mix-blend-mode:screen;
+}
+.portrait-frame::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.06) 0 1px, transparent 1px 4px);
+  opacity:.18;mix-blend-mode:overlay;
+}
+.portrait-frame img{
+  width:100%;height:100%;object-fit:cover;display:block;z-index:1;position:relative;
+  filter:contrast(1.02) saturate(.95);
+  transition:transform .6s ease;
+}
+.portrait-frame:hover img{transform:scale(1.02)}
+.portrait-corner{
+  position:absolute;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);
+  letter-spacing:.18em;text-transform:uppercase;z-index:4;pointer-events:none;opacity:.85;
+}
+.portrait-corner.tl{top:14px;left:14px}
+.portrait-corner.br{bottom:14px;right:14px;color:var(--accent-2)}
+.portrait-frame .corner-mark{
+  position:absolute;width:18px;height:18px;border:1px solid var(--accent);z-index:4;pointer-events:none;
+}
+.portrait-frame .corner-mark.tl{top:10px;left:10px;border-right:0;border-bottom:0}
+.portrait-frame .corner-mark.tr{top:10px;right:10px;border-left:0;border-bottom:0}
+.portrait-frame .corner-mark.bl{bottom:10px;left:10px;border-right:0;border-top:0;border-color:var(--accent-2)}
+.portrait-frame .corner-mark.br{bottom:10px;right:10px;border-left:0;border-top:0;border-color:var(--accent-2)}
+.portrait-noimg{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  color:var(--fg-2);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;
+  text-align:center;padding:20px;z-index:0;
+}
+.portrait-noimg .big{font-size:60px;color:var(--accent);font-weight:700;letter-spacing:-.04em;margin-bottom:10px}
 .hero .terminal-tag{
   display:inline-flex;align-items:center;gap:10px;
   font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);
@@ -279,6 +331,13 @@ h2.section-title{
 .badge.co1st{background:rgba(255,122,156,.10);color:var(--accent-3);border-color:rgba(255,122,156,.32)}
 .badge.coauth{background:rgba(255,255,255,.04);color:var(--fg-1);border-color:var(--line)}
 .card h3{margin:0 0 6px;font-size:17px;line-height:1.35;font-weight:600}
+.card h3 a{color:inherit;transition:color .25s ease}
+.card h3 a::before{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--radius)}
+.card h3 a::after{content:" ↗";font-family:'JetBrains Mono',monospace;font-size:.7em;color:var(--accent);opacity:.7;font-weight:400;letter-spacing:.04em;margin-left:4px}
+.card:has(h3 a){cursor:pointer}
+.card:has(h3 a):hover h3 a{color:var(--accent)}
+.card:has(h3 a):hover{border-color:rgba(92,242,214,.6)}
+.card .tags, .card .tag{position:relative;z-index:2}
 .card .venue{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fg-2);margin-bottom:10px}
 .card p{color:var(--fg-1);font-size:14px;line-height:1.65;margin:0}
 .card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
@@ -392,21 +451,41 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 <!-- ===== HERO ===== -->
 <header class="hero">
   <div class="wrap">
-    <div class="terminal-tag" data-i18n="hero.tag">PhD · Cardiff University · School of Computer Science &amp; Informatics</div>
-    <h1>
-      <span class="glitch" data-i18n="hero.name">Yuanzhi He</span>
-    </h1>
-    <div class="role" data-i18n="hero.role">Robotic Manipulation × Reinforcement Learning × Vision-Language-Action</div>
-    <p class="typed-line"><span id="typed"></span><span class="cursor"></span></p>
-    <div class="ctas">
-      <a class="btn btn-primary" href="#pub"><span data-i18n="hero.cta1">Read my work</span> →</a>
-      <a class="btn btn-ghost" href="#contact"><span data-i18n="hero.cta2">Get in touch</span></a>
-      <a class="btn btn-ghost" href="https://github.com/YuanzhiHe" target="_blank" rel="noopener">GitHub <span class="kbd">↗</span></a>
-      <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=iEUvnwgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar <span class="kbd">↗</span></a>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="terminal-tag" data-i18n="hero.tag">PhD · Cardiff University · School of Computer Science &amp; Informatics</div>
+        <h1>
+          <span class="glitch" data-i18n="hero.name">Yuanzhi He</span>
+        </h1>
+        <div class="role" data-i18n="hero.role">Robotic Manipulation × Reinforcement Learning × Vision-Language-Action</div>
+        <p class="typed-line"><span id="typed"></span><span class="cursor"></span></p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#pub"><span data-i18n="hero.cta1">Read my work</span> →</a>
+          <a class="btn btn-ghost" href="#contact"><span data-i18n="hero.cta2">Get in touch</span></a>
+          <a class="btn btn-ghost" href="https://github.com/YuanzhiHe" target="_blank" rel="noopener">GitHub <span class="kbd">↗</span></a>
+          <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=iEUvnwgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar <span class="kbd">↗</span></a>
+        </div>
+      </div>
+
+      <div class="portrait-wrap">
+        <div class="portrait-frame">
+          <span class="corner-mark tl"></span>
+          <span class="corner-mark tr"></span>
+          <span class="corner-mark bl"></span>
+          <span class="corner-mark br"></span>
+          <span class="portrait-corner tl">// PhD_Researcher</span>
+          <span class="portrait-corner br">CDF · 2026</span>
+          <img src="portrait.jpg" alt="Yuanzhi He" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="portrait-noimg" style="display:none">
+            <div class="big">YH</div>
+            <div>portrait.jpg<br>not found in project root</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-stats">
-      <div class="stat"><div class="num">10</div><div class="lbl" data-i18n="hero.stat1">Papers authored</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl" data-i18n="hero.stat1">Papers authored</div></div>
       <div class="stat"><div class="num">7</div><div class="lbl" data-i18n="hero.stat2">Institutions</div></div>
       <div class="stat"><div class="num">4</div><div class="lbl" data-i18n="hero.stat3">Reviewer roles</div></div>
       <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="hero.stat4">Students supervised</div></div>
@@ -655,7 +734,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
             <span class="badge published" data-i18n="pub.published">Published</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
           </div>
-          <h3>Few-shot Transfer Learning for Deep Reinforcement Learning on Robotic Manipulation Tasks</h3>
+          <h3><a href="https://link.springer.com/chapter/10.1007/978-3-031-72062-8_8" target="_blank" rel="noopener">Few-shot Transfer Learning for Deep Reinforcement Learning on Robotic Manipulation Tasks</a></h3>
           <div class="venue">TAROS 2024 · Towards Autonomous Robotic Systems</div>
           <p data-i18n="pub.p1">Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.</p>
           <div class="tags"><span class="tag">DRL</span><span class="tag">Transfer Learning</span><span class="tag">MuJoCo</span><span class="tag">Fetch</span></div>
@@ -747,8 +826,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="pub-cat">
       <div class="cat-head">
         <span class="cat-num">03</span>
-        <h3 data-i18n="pub.cat3">Biomedical Engineering / Bio-AI</h3>
-        <span class="cat-count">2 papers</span>
+        <h3 data-i18n="pub.cat3">AI for Biomedical Engineering</h3>
+        <span class="cat-count">3 papers</span>
       </div>
       <div class="cat-line"></div>
       <div class="cards">
@@ -775,6 +854,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="tags"><span class="tag">Feature Selection</span><span class="tag">Single-cell</span><span class="tag">Multi-omics</span></div>
         </article>
 
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge co1st" data-i18n="pub.co1st_3rd">Co-1st (3rd)</span>
+          </div>
+          <h3><a href="https://arxiv.org/abs/2604.24796" target="_blank" rel="noopener">A Multi-Stage Soft Computing Framework for Complex Disease Modelling and Decision Support: A Liver Cirrhosis Case Study</a></h3>
+          <div class="venue">Applied Soft Computing</div>
+          <p data-i18n="pub.p11">A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study — combining interpretable feature selection, fuzzy modelling and clinical decision rules.</p>
+          <div class="tags"><span class="tag">Soft Computing</span><span class="tag">Decision Support</span><span class="tag">Clinical AI</span></div>
+        </article>
+
       </div>
     </div>
 
@@ -790,11 +880,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
         <article class="card">
           <div class="meta">
-            <span class="badge prep" data-i18n="pub.prep">In Preparation</span>
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
           </div>
           <h3>AlphaLiar: An Easy-to-use Hybrid Learning Agent for the Liar's Dice Game</h3>
-          <div class="venue" data-i18n="pub.venue5">Manuscript in preparation · Game AI</div>
+          <div class="venue">IEEE Transactions on Games</div>
           <p data-i18n="pub.p5">A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning — wrapped in an easy-to-use UI for casual play and analysis.</p>
           <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">Game AI</span></div>
         </article>
@@ -898,8 +988,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="review-grid">
       <div class="review">
         <div class="yr">2026</div>
-        <div class="name">ICRA</div>
-        <div class="desc" data-i18n="review.icra">IEEE International Conference on Robotics and Automation — the flagship robotics conference.</div>
+        <div class="name">ICRA <span class="badge co1st" style="margin-left:6px;font-size:10px">CCF B</span></div>
+        <div class="desc" data-i18n="review.icra">IEEE International Conference on Robotics and Automation — flagship robotics conference (CCF B).</div>
       </div>
       <div class="review">
         <div class="yr">2026</div>
@@ -914,7 +1004,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div class="review">
         <div class="yr">2024</div>
         <div class="name">TAROS</div>
-        <div class="desc" data-i18n="review.taros">Towards Autonomous Robotic Systems — the UK's annual robotics conference.</div>
+        <div class="desc" data-i18n="review.taros">Towards Autonomous Robotic Systems — IEEE-sponsored UK annual robotics conference.</div>
       </div>
     </div>
   </div>
@@ -1000,7 +1090,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 <footer>
   <div class="wrap">
     <span>© <span id="year"></span> Yuanzhi He · 何远知</span>
-    <span data-i18n="footer.note">Built with vanilla HTML/CSS/JS · hosted on GitHub Pages</span>
   </div>
 </footer>
 
@@ -1071,11 +1160,11 @@ const I18N = {
 
     "pub.tag":"publications",
     "pub.title":"Research across robotic learning, vision & bio-AI.",
-    "pub.sub":"Ten papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing and bio-medical AI.",
-    "pub.published":"Published","pub.submitted":"Submitted","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.coauth":"Co-author",
+    "pub.sub":"Eleven papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing, AI for biomedical engineering and game AI.",
+    "pub.published":"Published","pub.submitted":"Submitted","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.coauth":"Co-author",
     "pub.cat1":"Robotic Manipulation & Planning",
     "pub.cat2":"Computer Vision",
-    "pub.cat3":"Biomedical Engineering / Bio-AI",
+    "pub.cat3":"AI for Biomedical Engineering",
     "pub.cat4":"Game AI",
     "pub.p1":"Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.",
     "pub.p2":"A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks — validated on a real Franka Emika robot.",
@@ -1087,6 +1176,7 @@ const I18N = {
     "pub.p8":"A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.",
     "pub.p9":"A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.",
     "pub.p10":"An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.",
+    "pub.p11":"A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study — combining interpretable feature selection, fuzzy modelling and clinical decision rules.",
     "pub.venue4":"Manuscript in preparation",
     "pub.venue5":"Manuscript in preparation · Game AI",
 
@@ -1116,10 +1206,10 @@ const I18N = {
     "review.tag":"academic service",
     "review.title":"Reviewer for international robotics & AI venues.",
     "review.sub":"Giving back to the community by reviewing for top robotics and neural-network conferences.",
-    "review.icra":"IEEE International Conference on Robotics and Automation — the flagship robotics conference.",
+    "review.icra":"IEEE International Conference on Robotics and Automation — flagship robotics conference (CCF B).",
     "review.icann":"International Conference on Artificial Neural Networks (CCF C).",
     "review.cbs":"IEEE International Conference on Cyborg and Bionic Systems.",
-    "review.taros":"Towards Autonomous Robotic Systems — the UK's annual robotics conference.",
+    "review.taros":"Towards Autonomous Robotic Systems — IEEE-sponsored UK annual robotics conference.",
 
     "skills.tag":"stack",
     "skills.title":"Tools, languages and toys I work with.",
@@ -1129,9 +1219,7 @@ const I18N = {
     "contact.tag":"contact",
     "contact.title":"Open to research collaborations, internships & chats about robot learning.",
     "contact.p1":"Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work — drop a line.",
-    "contact.loc":"Cardiff, United Kingdom",
-
-    "footer.note":"Built with vanilla HTML/CSS/JS · hosted on GitHub Pages"
+    "contact.loc":"Cardiff, United Kingdom"
   },
   zh: {
     "nav.about":"关于","nav.affil":"学术轨迹","nav.edu":"教育经历","nav.pub":"论文发表","nav.proj":"项目作品","nav.review":"审稿经历","nav.skills":"技能栈","nav.contact":"联系方式",
@@ -1197,11 +1285,11 @@ const I18N = {
 
     "pub.tag":"论文发表",
     "pub.title":"覆盖机器人学习、计算机视觉与生物医学 AI 的研究。",
-    "pub.sub":"十篇论文，涵盖迁移学习、进化运动规划、分层控制、实例分割、扩散策略评测，以及生物医学 AI。",
-    "pub.published":"已发表","pub.submitted":"在投","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.coauth":"合作作者",
+    "pub.sub":"十一篇论文，涵盖迁移学习、进化运动规划、分层控制、实例分割、扩散策略评测、AI 在生物医学工程的应用，以及博弈 AI。",
+    "pub.published":"已发表","pub.submitted":"在投","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.coauth":"合作作者",
     "pub.cat1":"机器人操作与运动规划",
     "pub.cat2":"计算机视觉",
-    "pub.cat3":"生物医学工程 / Bio-AI",
+    "pub.cat3":"人工智能在生物医学工程的应用",
     "pub.cat4":"博弈 AI",
     "pub.p1":"通过结合迁移学习与深度强化学习，提升 MuJoCo Fetch 系列机器人操作任务上的表现。",
     "pub.p2":"提出一种结合迁移学习与奖励重构的新框架，在现有与新提出的机器人操作任务上提升进化算法效果，并在真实 Franka Emika 机器人上得到验证。",
@@ -1213,6 +1301,7 @@ const I18N = {
     "pub.p8":"一种异构图学习方法，借助预训练节点表示，对空间转录组数据中的肿瘤免疫微环境进行分类。",
     "pub.p9":"基于子空间与最小冗余准则的特征选择方法，针对单细胞分析场景设计，适用于多组学数据。",
     "pub.p10":"提出一种 Observation-Contract 审计框架，揭示状态主导信号如何影响扩散策略评测分数，推动更公正的协议设计。",
+    "pub.p11":"一个面向复杂疾病建模与决策支持的多阶段软计算框架，并以肝硬化案例进行验证——结合可解释特征选择、模糊建模与临床决策规则。",
     "pub.venue4":"撰写中",
     "pub.venue5":"撰写中 · 博弈 AI",
 
@@ -1242,10 +1331,10 @@ const I18N = {
     "review.tag":"学术服务",
     "review.title":"机器人与 AI 国际会议审稿人。",
     "review.sub":"以审稿的方式回馈学术社区，参与多场顶级机器人与神经网络会议的同行评审。",
-    "review.icra":"IEEE 国际机器人与自动化大会，机器人领域旗舰会议。",
+    "review.icra":"IEEE 国际机器人与自动化大会，机器人领域旗舰会议（CCF B 类）。",
     "review.icann":"国际人工神经网络大会（CCF C 类）。",
     "review.cbs":"IEEE 类生命体与仿生系统国际会议。",
-    "review.taros":"英国一年一度的机器人会议 Towards Autonomous Robotic Systems。",
+    "review.taros":"IEEE 主办的英国年度机器人会议 Towards Autonomous Robotic Systems。",
 
     "skills.tag":"技能栈",
     "skills.title":"我在用的工具、语言与「玩具」。",
@@ -1255,9 +1344,7 @@ const I18N = {
     "contact.tag":"联系",
     "contact.title":"欢迎合作、实习以及一切关于机器人学习的讨论。",
     "contact.p1":"无论你是想找机器人方向联合指导的学生，还是有进化强化学习「奇思妙想」的研究员，又或者是对我的工作感兴趣的招聘方——欢迎联系我。",
-    "contact.loc":"英国卡迪夫",
-
-    "footer.note":"使用原生 HTML/CSS/JS 构建 · 部署在 GitHub Pages"
+    "contact.loc":"英国卡迪夫"
   }
 };
 
