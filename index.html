@@ -279,6 +279,15 @@ h2.section-title{
   display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
 }
 .sponsor svg{width:auto;height:48px}
+.sponsor img.logo-img{
+  max-height:56px;width:auto;max-width:84%;display:block;
+  filter:brightness(0) invert(1);
+  opacity:.88;
+  transition:filter .3s ease, opacity .3s ease, transform .3s ease;
+}
+.sponsor:hover img.logo-img{filter:none;opacity:1;transform:scale(1.04)}
+.sponsor img.logo-img.no-invert{filter:none;opacity:.95}
+.sponsor:hover img.logo-img.no-invert{opacity:1;transform:scale(1.04)}
 .sponsor .name{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);letter-spacing:.06em;line-height:1.35}
 .sponsor::after{
   content:attr(data-meta);position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;
@@ -340,6 +349,10 @@ h2.section-title{
 .badge.lead{background:rgba(92,242,214,.1);color:var(--accent);border-color:rgba(92,242,214,.3)}
 .badge.co1st{background:rgba(255,122,156,.10);color:var(--accent-3);border-color:rgba(255,122,156,.32)}
 .badge.coauth{background:rgba(255,255,255,.04);color:var(--fg-1);border-color:var(--line)}
+.badge.ccf{background:rgba(255,209,102,.10);color:var(--warn);border-color:rgba(255,209,102,.32);font-weight:600}
+.badge.q1{background:rgba(92,242,163,.10);color:var(--ok);border-color:rgba(92,242,163,.32);font-weight:600}
+.badge.q2{background:rgba(168,132,255,.10);color:var(--accent-2);border-color:rgba(168,132,255,.32);font-weight:600}
+.badge.q3{background:rgba(255,122,156,.10);color:var(--accent-3);border-color:rgba(255,122,156,.32);font-weight:600}
 .card h3{margin:0 0 6px;font-size:17px;line-height:1.35;font-weight:600}
 .card h3 a{color:inherit;transition:color .25s ease}
 .card h3 a::before{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--radius)}
@@ -558,13 +571,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- PUMCH (upcoming) -->
       <div class="sponsor" data-meta="2026.12 — " title="Peking Union Medical College Hospital · Chinese Academy of Medical Sciences">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g transform="translate(20,14)">
-              <rect x="0" y="13" width="32" height="6" fill="#ff7a9c"/>
-              <rect x="13" y="0" width="6" height="32" fill="#ff7a9c"/>
-            </g>
-            <text x="125" y="38" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#e6e9f5">PUMCH · 协和</text>
-          </svg>
+          <img class="logo-img no-invert" src="PUMCH.jpeg" alt="PUMCH" loading="lazy">
           <div class="name">PUMCH · Incoming Visit</div>
         </div>
       </div>
@@ -572,10 +579,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- Cardiff -->
       <div class="sponsor" data-meta="2023 — 2027" title="Cardiff University · PhD">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#5cf2d6"/><stop offset="1" stop-color="#a884ff"/></linearGradient></defs>
-            <text x="100" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="34" font-weight="700" fill="url(#g1)" letter-spacing="-1">CARDIFF</text>
-          </svg>
+          <img class="logo-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cardiff_University_(logo).svg" alt="Cardiff University" loading="lazy">
           <div class="name">Cardiff University · PhD</div>
         </div>
       </div>
@@ -583,9 +587,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- Birmingham -->
       <div class="sponsor" data-meta="2019 — 2023" title="University of Birmingham · MEng">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <text x="100" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="32" font-weight="700" fill="#e6e9f5" letter-spacing="-1">BIRMINGHAM</text>
-          </svg>
+          <img class="logo-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shield_of_the_University_of_Birmingham.svg" alt="University of Birmingham" loading="lazy">
           <div class="name">University of Birmingham · MEng</div>
         </div>
       </div>
@@ -593,12 +595,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- NII -->
       <div class="sponsor" data-meta="2026" title="National Institute of Informatics, Tokyo">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="20" y="14" width="22" height="32" fill="#5cf2d6"/>
-            <rect x="50" y="14" width="22" height="32" fill="#a884ff"/>
-            <rect x="80" y="14" width="22" height="32" fill="#ff7a9c"/>
-            <text x="160" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="28" font-weight="700" fill="#e6e9f5">NII</text>
-          </svg>
+          <img class="logo-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Nii_logo.svg" alt="National Institute of Informatics" loading="lazy">
           <div class="name">NII Tokyo · Research Intern</div>
         </div>
       </div>
@@ -606,9 +603,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- ETH Zurich -->
       <div class="sponsor" data-meta="2022" title="ETH Zurich · EXCITE Summer School">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <text x="100" y="42" text-anchor="middle" font-family="Space Grotesk" font-size="34" font-weight="700" fill="#e6e9f5" letter-spacing="-1">ETH<tspan fill="#5cf2d6">·</tspan>Zürich</text>
-          </svg>
+          <img class="logo-img no-invert" src="https://commons.wikimedia.org/wiki/Special:FilePath/ETH_Z%C3%BCrich_Logo_white.svg" alt="ETH Zurich" loading="lazy">
           <div class="name">ETH Zürich · EXCITE Summer School</div>
         </div>
       </div>
@@ -616,11 +611,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- GienTech -->
       <div class="sponsor" data-meta="2021 — 2022" title="GienTech · CV in RPA Intern">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="36" cy="30" r="14" fill="none" stroke="#5cf2d6" stroke-width="3"/>
-            <circle cx="36" cy="30" r="6" fill="#a884ff"/>
-            <text x="120" y="38" text-anchor="middle" font-family="Space Grotesk" font-size="26" font-weight="700" fill="#e6e9f5">GienTech</text>
-          </svg>
+          <img class="logo-img no-invert" src="GienTech.png" alt="GienTech" loading="lazy">
           <div class="name">GienTech · CV / RPA Intern</div>
         </div>
       </div>
@@ -628,10 +619,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- Shenzhen University -->
       <div class="sponsor" data-meta="2021" title="Shenzhen University · National Big Data Lab">
         <div class="logo">
-          <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M30 44 L46 16 L62 44 Z" fill="none" stroke="#a884ff" stroke-width="3"/>
-            <text x="130" y="40" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#e6e9f5">SZU · 深大</text>
-          </svg>
+          <img class="logo-img" src="https://en.wikipedia.org/wiki/Special:FilePath/Shenzhen_University_Logo.svg" alt="Shenzhen University" loading="lazy">
           <div class="name">Shenzhen Univ. · Big Data Lab</div>
         </div>
       </div>
@@ -762,6 +750,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccf">CCF C</span>
           </div>
           <h3>Sample-efficient Low-level Motion Planning for Robotic Manipulation Tasks via Zero-shot Transfer Learning</h3>
           <div class="venue">ICANN 2026 · 35th Int. Conf. on Artificial Neural Networks</div>
@@ -773,6 +762,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccf">CCF C</span>
           </div>
           <h3>Enhancing Deep Reinforcement Learning for Robotic Motion Planning via Task Decomposition</h3>
           <div class="venue">ICANN 2026 · 35th Int. Conf. on Artificial Neural Networks</div>
@@ -795,6 +785,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q2">JCR Q2 · IF 2.7</span>
           </div>
           <h3>Diagnosing Benchmark-Faithful Evaluation in CALVIN: Export Truncation, Teacher Semantics, and Symbolic Reset Fidelity</h3>
           <div class="venue">Journal of Supercomputing</div>
@@ -806,6 +797,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q2">JCR Q2 · IF 3.5</span>
           </div>
           <h3>Observation-Contract Audits Reveal State Dominance in Diffusion Policy Benchmarks</h3>
           <div class="venue">Applied Intelligence</div>
@@ -830,6 +822,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccf">CCF C</span>
           </div>
           <h3>EvoMask: Evolutionary Multi-Signal Mask Scoring for Training-Free Indoor Instance Segmentation</h3>
           <div class="venue">PRCV · Pattern Recognition and Computer Vision</div>
@@ -854,6 +847,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
+            <span class="badge q1">JCR Q1 · IF 15.5</span>
           </div>
           <h3>Heterogeneous Graph Learning with Pretrained Node Representations for Spatial Transcriptomic Tumor Immune Microenvironment Classification</h3>
           <div class="venue">Information Fusion</div>
@@ -865,6 +859,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge coauth" data-i18n="pub.coauth">Co-author</span>
+            <span class="badge q1">JCR Q1 · IF 7.6</span>
           </div>
           <h3>A Single-Cell Feature Selection Method Based on Subspace and Minimum Redundancy, Applicable to Multi-Omics</h3>
           <div class="venue">Pattern Recognition</div>
@@ -876,6 +871,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge co1st" data-i18n="pub.co1st_3rd">Co-1st (3rd)</span>
+            <span class="badge q1">JCR Q1 · IF 7.2</span>
           </div>
           <h3><a href="https://arxiv.org/abs/2604.24796" target="_blank" rel="noopener">A Multi-Stage Soft Computing Framework for Complex Disease Modelling and Decision Support: A Liver Cirrhosis Case Study</a></h3>
           <div class="venue">Applied Soft Computing</div>
@@ -900,6 +896,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q2">JCR Q2 · IF 2.8</span>
           </div>
           <h3>AlphaLiar: An Easy-to-use Hybrid Learning Agent for the Liar's Dice Game</h3>
           <div class="venue">IEEE Transactions on Games</div>
@@ -1006,12 +1003,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="review-grid">
       <div class="review">
         <div class="yr">2026</div>
-        <div class="name">ICRA <span class="badge co1st" style="margin-left:6px;font-size:10px">CCF B</span></div>
+        <div class="name">ICRA <span class="badge ccf" style="margin-left:6px;font-size:10px">CCF B</span></div>
         <div class="desc" data-i18n="review.icra">IEEE International Conference on Robotics and Automation — flagship robotics conference (CCF B).</div>
       </div>
       <div class="review">
         <div class="yr">2026</div>
-        <div class="name">ICANN</div>
+        <div class="name">ICANN <span class="badge ccf" style="margin-left:6px;font-size:10px">CCF C</span></div>
         <div class="desc" data-i18n="review.icann">International Conference on Artificial Neural Networks (CCF C).</div>
       </div>
       <div class="review">
