@@ -343,6 +343,7 @@ h2.section-title{
 .badge.published{background:rgba(92,242,163,.1);color:var(--ok);border-color:rgba(92,242,163,.3)}
 .badge.submitted{background:rgba(255,209,102,.1);color:var(--warn);border-color:rgba(255,209,102,.3)}
 .badge.accepted{background:rgba(92,242,163,.1);color:var(--ok);border-color:rgba(92,242,163,.3)}
+.badge.review{background:rgba(92,242,214,.08);color:var(--accent);border-color:rgba(92,242,214,.28)}
 .badge.prep{background:rgba(168,132,255,.12);color:var(--accent-2);border-color:rgba(168,132,255,.3)}
 .badge.lead{background:rgba(92,242,214,.1);color:var(--accent);border-color:rgba(92,242,214,.3)}
 .badge.co1st{background:rgba(255,122,156,.10);color:var(--accent-3);border-color:rgba(255,122,156,.32)}
@@ -764,7 +765,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
             <span class="badge ccf">CCF C</span>
           </div>
           <h3>Enhancing Deep Reinforcement Learning for Robotic Motion Planning via Task Decomposition</h3>
-          <div class="venue">ICANN 2026 · 35th Int. Conf. on Artificial Neural Networks</div>
           <p data-i18n="pub.p3">Improving performance on MuJoCo Fetch manipulation tasks through transfer learning for deep reinforcement learning, guided by task decomposition.</p>
           <div class="tags"><span class="tag">DRL</span><span class="tag">Task Decomposition</span><span class="tag">MuJoCo</span></div>
         </article>
@@ -796,10 +796,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
-            <span class="badge q2">JCR Q2 · IF 3.5</span>
+            <span class="badge q2">JCR Q2 · IF 3.1</span>
           </div>
           <h3>Observation-Contract Audits Reveal State Dominance in Diffusion Policy Benchmarks</h3>
-          <div class="venue">Applied Intelligence</div>
+          <div class="venue">Knowledge and Information Systems</div>
           <p data-i18n="pub.p10">An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.</p>
           <div class="tags"><span class="tag">Diffusion Policy</span><span class="tag">Benchmarking</span><span class="tag">Auditing</span></div>
         </article>
@@ -837,14 +837,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div class="cat-head">
         <span class="cat-num">03</span>
         <h3 data-i18n="pub.cat3">AI for Biomedical Engineering</h3>
-        <span class="cat-count">3 papers</span>
+        <span class="cat-count">4 papers</span>
       </div>
       <div class="cat-line"></div>
       <div class="cards">
 
         <article class="card">
           <div class="meta">
-            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge review" data-i18n="pub.review">Under Review</span>
             <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
             <span class="badge q1">JCR Q1 · IF 15.5</span>
           </div>
@@ -874,9 +874,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
             <span class="badge q1">JCR Q1 · IF 7.2</span>
           </div>
           <h3><a href="https://arxiv.org/abs/2604.24796" target="_blank" rel="noopener">A Multi-Stage Soft Computing Framework for Complex Disease Modelling and Decision Support: A Liver Cirrhosis Case Study</a></h3>
-          <div class="venue">Applied Soft Computing</div>
           <p data-i18n="pub.p11">A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study — combining interpretable feature selection, fuzzy modelling and clinical decision rules.</p>
           <div class="tags"><span class="tag">Soft Computing</span><span class="tag">Decision Support</span><span class="tag">Clinical AI</span></div>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
+            <span class="badge q1">JCR Q1 · IF 19.8</span>
+          </div>
+          <h3>γδ T Cells in Cancer Immunotherapy, 2000–2025: A Bibliometric Analysis and Clinical-Trial Evidence Map</h3>
+          <div class="venue">Cellular &amp; Molecular Immunology</div>
+          <p data-i18n="pub.p12">A bibliometric analysis combined with a PRISMA-ScR clinical-trial evidence map, charting the growth phases, intellectual structure, emerging frontiers and translational pipeline of γδ T-cell cancer immunotherapy from 2000 to 2025.</p>
+          <div class="tags"><span class="tag">γδ T Cells</span><span class="tag">Cancer Immunotherapy</span><span class="tag">Bibliometric</span></div>
         </article>
 
       </div>
@@ -894,7 +905,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
         <article class="card">
           <div class="meta">
-            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge review" data-i18n="pub.review">Under Review</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
             <span class="badge ccf">CCF C</span>
             <span class="badge q2">JCR Q2 · IF 2.8</span>
@@ -1209,7 +1220,7 @@ const I18N = {
     "pub.tag":"publications",
     "pub.title":"Research across robotic learning, vision & bio-AI.",
     "pub.sub":"Eleven papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing, AI for biomedical engineering and game AI.",
-    "pub.published":"Published","pub.submitted":"Submitted","pub.accepted":"Accepted","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.coauth":"Co-author",
+    "pub.published":"Published","pub.submitted":"Submitted","pub.accepted":"Accepted","pub.review":"Under Review","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.coauth":"Co-author",
     "pub.cat1":"Robotic Manipulation & Planning",
     "pub.cat2":"Computer Vision",
     "pub.cat3":"AI for Biomedical Engineering",
@@ -1344,7 +1355,7 @@ const I18N = {
     "pub.tag":"论文发表",
     "pub.title":"覆盖机器人学习、计算机视觉与生物医学 AI 的研究。",
     "pub.sub":"十一篇论文，涵盖迁移学习、进化运动规划、分层控制、实例分割、扩散策略评测、AI 在生物医学工程的应用，以及博弈 AI。",
-    "pub.published":"已发表","pub.submitted":"在投","pub.accepted":"已接收","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.coauth":"合作作者",
+    "pub.published":"已发表","pub.submitted":"在投","pub.accepted":"已接收","pub.review":"评审中","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.coauth":"合作作者",
     "pub.cat1":"机器人操作与运动规划",
     "pub.cat2":"计算机视觉",
     "pub.cat3":"人工智能在生物医学工程的应用",
