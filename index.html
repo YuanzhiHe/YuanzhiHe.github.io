@@ -3,8 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Yuanzhi He — Robotics & RL PhD Researcher</title>
+<title>Yuanzhi He · Robotics & RL PhD Researcher</title>
 <meta name="description" content="Yuanzhi He · PhD researcher at Cardiff University working on deep reinforcement learning, evolutionary strategies, and vision-language-action models for robotic manipulation." />
+<meta property="og:title" content="Yuanzhi He · Robotics & RL PhD Researcher" />
+<meta property="og:description" content="PhD researcher at Cardiff University working on deep RL, evolutionary strategies, and vision-language-action models for robotic manipulation." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yuanzhihe.github.io/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0906'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%23c9a35a'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,6 +30,7 @@
   --ok:#8bbf86;
   --shadow:0 20px 60px -20px rgba(201,163,90,.18);
   --radius:14px;
+  --ease:cubic-bezier(.32,.72,0,1);
 }
 
 *{box-sizing:border-box}
@@ -33,6 +39,15 @@ body{overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 ::selection{background:var(--accent);color:#1b1206}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.hero h1,h2.section-title{text-wrap:balance}
+.btn:active{transform:translateY(0) scale(.97)}
+.lang-toggle button:active{transform:scale(.95)}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
 
 /* ---------- background grid + canvas ---------- */
 .bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
@@ -108,7 +123,7 @@ section + section{padding-top:40px}
 }
 
 /* ---------- hero ---------- */
-.hero{padding-top:160px;padding-bottom:60px;min-height:90vh;display:flex;align-items:center}
+.hero{padding-top:160px;padding-bottom:60px;min-height:90vh;min-height:90dvh;display:flex;align-items:center}
 .hero-grid{display:grid;grid-template-columns:1.5fr .9fr;gap:60px;align-items:center}
 @media (max-width:920px){.hero-grid{grid-template-columns:1fr;gap:36px}}
 
@@ -139,7 +154,7 @@ section + section{padding-top:40px}
 .portrait-frame img{
   width:100%;height:100%;object-fit:cover;display:block;z-index:1;position:relative;
   filter:contrast(1.02) saturate(.95);
-  transition:transform .6s ease;
+  transition:transform .6s var(--ease);
 }
 .portrait-frame:hover img{transform:scale(1.02)}
 .portrait-corner{
@@ -198,7 +213,7 @@ section + section{padding-top:40px}
 .btn{
   display:inline-flex;align-items:center;gap:10px;
   padding:13px 22px;border-radius:999px;font-weight:500;font-size:14px;
-  border:1px solid var(--line);transition:transform .2s ease, border-color .2s ease, background .2s ease;
+  border:1px solid var(--line);transition:transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
   cursor:pointer;
 }
 .btn:hover{transform:translateY(-2px)}
@@ -271,7 +286,7 @@ h2.section-title{
   position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
   aspect-ratio: 1.05/1; display:flex;align-items:center;justify-content:center;
   background:linear-gradient(180deg,rgba(28,23,16,.55),rgba(17,14,9,.6));
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  transition:transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
   text-align:center;padding:14px;
 }
 .sponsor:hover{transform:translateY(-4px);border-color:rgba(201,163,90,.4);box-shadow:var(--shadow)}
@@ -327,7 +342,7 @@ h2.section-title{
 .card{
   position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
   background:linear-gradient(180deg,rgba(28,23,16,.55),rgba(17,14,9,.4));
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  transition:transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
   overflow:hidden;
 }
 .card::before{
@@ -376,7 +391,7 @@ h2.section-title{
 .review{
   position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:22px;
   background:linear-gradient(180deg,rgba(28,23,16,.55),rgba(17,14,9,.4));
-  transition:transform .25s ease, border-color .25s ease;
+  transition:transform .45s var(--ease), border-color .45s var(--ease);
 }
 .review:hover{transform:translateY(-4px);border-color:rgba(216,189,131,.45)}
 .review .yr{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:700;color:var(--accent-2);letter-spacing:-.02em}
@@ -532,13 +547,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="section-head">
       <div>
         <div class="section-tag" data-i18n="about.tag">about</div>
-        <h2 class="section-title" data-i18n="about.title">Teaching robots to learn — sample‑efficiently.</h2>
+        <h2 class="section-title" data-i18n="about.title">Teaching robots to learn, sample‑efficiently.</h2>
       </div>
       <p class="section-sub" data-i18n="about.sub">PhD researcher fascinated by how robots can acquire dexterous skills with minimal data, by combining deep RL, evolutionary search and modern VLA models.</p>
     </div>
     <div class="about-grid">
       <div>
-        <p data-i18n="about.p1">I'm <strong>Yuanzhi He</strong>, a fully‑funded PhD student at Cardiff University's School of Computer Science &amp; Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision‑language‑action</strong> models — applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.</p>
+        <p data-i18n="about.p1">I'm <strong>Yuanzhi He</strong>, a fully‑funded PhD student at Cardiff University's School of Computer Science &amp; Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision‑language‑action</strong> models, applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.</p>
         <p data-i18n="about.p2">I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. From mid‑2026 I'm joining the <strong>National Institute of Informatics (NII, Tokyo)</strong> to work on sim‑to‑real for dual‑arm VLA manipulation.</p>
         <p data-i18n="about.p3">Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.</p>
       </div>
@@ -565,7 +580,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="section-tag" data-i18n="affil.tag">affiliations</div>
         <h2 class="section-title" data-i18n="affil.title">Where I've trained, interned &amp; researched.</h2>
       </div>
-      <p class="section-sub" data-i18n="affil.sub">A small constellation of universities and labs that shaped my work — from Birmingham to Zurich, Shenzhen to Tokyo.</p>
+      <p class="section-sub" data-i18n="affil.sub">A small constellation of universities and labs that shaped my work, from Birmingham to Zurich, Shenzhen to Tokyo.</p>
     </div>
 
     <div class="sponsor-strip">
@@ -636,7 +651,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="section-head">
       <div>
         <div class="section-tag" data-i18n="edu.tag">education &amp; experience</div>
-        <h2 class="section-title" data-i18n="edu.title">A research path across three countries — 8 years in the UK, half a year in Japan.</h2>
+        <h2 class="section-title" data-i18n="edu.title">A research path across three countries: 8 years in the UK, half a year in Japan.</h2>
       </div>
     </div>
     <div class="timeline">
@@ -754,9 +769,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
             <span class="badge ccf">CCF C</span>
           </div>
-          <h3>Sample-efficient Low-level Motion Planning for Robotic Manipulation Tasks via Zero-shot Transfer Learning</h3>
+          <h3><a href="https://arxiv.org/abs/2606.06041" target="_blank" rel="noopener">Sample-efficient Low-level Motion Planning for Robotic Manipulation Tasks via Zero-shot Transfer Learning</a></h3>
           <div class="venue">ICANN 2026 · 35th Int. Conf. on Artificial Neural Networks</div>
-          <p data-i18n="pub.p2">A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks — validated on a real Franka Emika robot.</p>
+          <p data-i18n="pub.p2">A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks, validated on a real Franka Emika robot.</p>
           <div class="tags"><span class="tag">Evolutionary Strategies</span><span class="tag">Zero-shot</span><span class="tag">Franka FR3</span></div>
         </article>
 
@@ -791,7 +806,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           </div>
           <h3>Diagnosing Benchmark-Faithful Evaluation in CALVIN: Export Truncation, Teacher Semantics, and Symbolic Reset Fidelity</h3>
           <div class="venue">Journal of Supercomputing</div>
-          <p data-i18n="pub.p7">A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics — examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.</p>
+          <p data-i18n="pub.p7">A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics, examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.</p>
           <div class="tags"><span class="tag">CALVIN</span><span class="tag">Benchmarking</span><span class="tag">VLA</span></div>
         </article>
 
@@ -828,7 +843,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           </div>
           <h3>EvoMask: Evolutionary Multi-Signal Mask Scoring for Training-Free Indoor Instance Segmentation</h3>
           <div class="venue">PRCV · Pattern Recognition and Computer Vision</div>
-          <p data-i18n="pub.p6">A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy — no per-domain fine-tuning required.</p>
+          <p data-i18n="pub.p6">A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy, with no per-domain fine-tuning required.</p>
           <div class="tags"><span class="tag">Instance Seg.</span><span class="tag">Training-free</span><span class="tag">Evolutionary</span></div>
         </article>
 
@@ -878,7 +893,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           </div>
           <h3><a href="https://arxiv.org/abs/2604.24796" target="_blank" rel="noopener">A Multi-Stage Soft Computing Framework for Complex Disease Modelling and Decision Support: A Liver Cirrhosis Case Study</a></h3>
           <div class="venue" data-i18n="pub.tbd">Venue TBD</div>
-          <p data-i18n="pub.p11">A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study — combining interpretable feature selection, fuzzy modelling and clinical decision rules.</p>
+          <p data-i18n="pub.p11">A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study, combining interpretable feature selection, fuzzy modelling and clinical decision rules.</p>
           <div class="tags"><span class="tag">Soft Computing</span><span class="tag">Decision Support</span><span class="tag">Clinical AI</span></div>
         </article>
 
@@ -916,7 +931,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           </div>
           <h3>AlphaLiar: An Easy-to-use Hybrid Learning Agent for the Liar's Dice Game</h3>
           <div class="venue">IEEE Transactions on Games</div>
-          <p data-i18n="pub.p5">A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning — wrapped in an easy-to-use UI for casual play and analysis.</p>
+          <p data-i18n="pub.p5">A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning, wrapped in an easy-to-use UI for casual play and analysis.</p>
           <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">Game AI</span></div>
         </article>
 
@@ -956,7 +971,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
       <article class="card">
         <div class="meta"><span class="badge lead">Lead</span></div>
-        <h3 data-i18n="proj.t3">AlphaLiar — Hybrid Game-AI Agent</h3>
+        <h3 data-i18n="proj.t3">AlphaLiar · Hybrid Game-AI Agent</h3>
         <div class="venue" data-i18n="proj.v3">Independent project · 2024</div>
         <p data-i18n="proj.p3">An agent for the imperfect-information dice game Liar's Dice, blending Monte Carlo Tree Search with a deep autoencoder belief model and reinforcement-learned policy. Comes with a friendly play-against-the-AI UI.</p>
         <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">UI</span></div>
@@ -966,7 +981,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="meta"><span class="badge lead">Lead</span><span class="badge published">2024</span></div>
         <h3 data-i18n="proj.t4">Few-shot DRL Transfer for Fetch Tasks</h3>
         <div class="venue">TAROS 2024</div>
-        <p data-i18n="proj.p4">Few-shot transfer learning recipe for deep RL agents on MuJoCo Fetch manipulation benchmarks — boosting sample efficiency and task success rates.</p>
+        <p data-i18n="proj.p4">Few-shot transfer learning recipe for deep RL agents on MuJoCo Fetch manipulation benchmarks, boosting sample efficiency and task success rates.</p>
         <div class="tags"><span class="tag">DRL</span><span class="tag">Transfer</span><span class="tag">Fetch</span></div>
       </article>
 
@@ -990,7 +1005,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="meta"><span class="badge">Teaching</span></div>
         <h3 data-i18n="proj.t7">Student Supervision</h3>
         <div class="venue" data-i18n="proj.v7">Cardiff University · 2024–present</div>
-        <p data-i18n="proj.p7">Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV — providing weekly mentorship, technical guidance and feedback on writing.</p>
+        <p data-i18n="proj.p7">Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV, providing weekly mentorship, technical guidance and feedback on writing.</p>
         <div class="tags"><span class="tag">Mentorship</span><span class="tag">Dissertation</span></div>
       </article>
 
@@ -1020,7 +1035,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div class="review">
         <div class="yr">2026</div>
         <div class="name">ICRA <span class="badge ccfb" style="margin-left:6px;font-size:10px">CCF B</span></div>
-        <div class="desc" data-i18n="review.icra">IEEE International Conference on Robotics and Automation — flagship robotics conference (CCF B).</div>
+        <div class="desc" data-i18n="review.icra">IEEE International Conference on Robotics and Automation, the flagship robotics conference (CCF B).</div>
       </div>
       <div class="review">
         <div class="yr">2026</div>
@@ -1040,7 +1055,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div class="review">
         <div class="yr">2024</div>
         <div class="name">TAROS</div>
-        <div class="desc" data-i18n="review.taros">Towards Autonomous Robotic Systems — IEEE-sponsored UK annual robotics conference.</div>
+        <div class="desc" data-i18n="review.taros">Towards Autonomous Robotic Systems, an IEEE-sponsored UK annual robotics conference.</div>
       </div>
     </div>
   </div>
@@ -1130,7 +1145,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div>
         <div class="section-tag" data-i18n="contact.tag">contact</div>
         <h3 data-i18n="contact.title">Open to research collaborations, internships &amp; chats about robot learning.</h3>
-        <p data-i18n="contact.p1">Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work — drop a line.</p>
+        <p data-i18n="contact.p1">Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work, drop a line.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="mailto:HeY65@cardiff.ac.uk">HeY65@cardiff.ac.uk</a>
           <a class="btn btn-ghost" href="https://github.com/YuanzhiHe" target="_blank" rel="noopener">github.com/YuanzhiHe ↗</a>
@@ -1159,6 +1174,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 // stop the browser from auto-restoring scroll on refresh (was sometimes
 // landing the user at the bottom of the page on reload).
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 window.addEventListener('load', () => {
   if (location.hash) {
@@ -1195,16 +1212,16 @@ const I18N = {
     "hero.stat3":"Reviewer roles",
     "hero.stat4":"Students supervised",
     "hero.typed": [
-      "Teaching robots to learn — sample-efficiently.",
+      "Teaching robots to learn, sample-efficiently.",
       "Bridging deep RL, evolutionary search and VLA models.",
       "From MuJoCo Fetch to a real Franka FR3.",
       "Sim · to · Real."
     ],
 
     "about.tag":"about",
-    "about.title":"Teaching robots to learn — sample-efficiently.",
+    "about.title":"Teaching robots to learn, sample-efficiently.",
     "about.sub":"PhD researcher fascinated by how robots can acquire dexterous skills with minimal data, by combining deep RL, evolutionary search and modern VLA models.",
-    "about.p1":"I'm <strong>Yuanzhi He</strong>, a fully-funded PhD student at Cardiff University's School of Computer Science & Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision-language-action</strong> models — applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.",
+    "about.p1":"I'm <strong>Yuanzhi He</strong>, a fully-funded PhD student at Cardiff University's School of Computer Science & Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision-language-action</strong> models, applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.",
     "about.p2":"I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. From mid-2026 I'm joining the <strong>National Institute of Informatics (NII, Tokyo)</strong> to work on sim-to-real for dual-arm VLA manipulation.",
     "about.p3":"Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.",
     "about.focus":"Research focus",
@@ -1217,7 +1234,7 @@ const I18N = {
 
     "affil.tag":"affiliations",
     "affil.title":"Where I've trained, interned & researched.",
-    "affil.sub":"A small constellation of universities and labs that shaped my work — from Birmingham to Zurich, Shenzhen to Tokyo.",
+    "affil.sub":"A small constellation of universities and labs that shaped my work, from Birmingham to Zurich, Shenzhen to Tokyo.",
     "affil.cardiff":"Cardiff University · PhD",
     "affil.bham":"University of Birmingham · MEng",
     "affil.eth":"ETH Zürich · EXCITE Summer School",
@@ -1227,7 +1244,7 @@ const I18N = {
     "affil.pumch":"PUMCH · Incoming Visit",
 
     "edu.tag":"education & experience",
-    "edu.title":"A research path across three countries — 8 years in the UK, half a year in Japan.",
+    "edu.title":"A research path across three countries: 8 years in the UK, half a year in Japan.",
     "edu.cardiff.title":"PhD, Computer Science & Informatics",
     "edu.cardiff.org":"Cardiff University · Fully-funded scholarship",
     "edu.cardiff.b1":"Researching deep RL, evolutionary strategies, flow matching, and vision-language-action methods for robotic manipulation.",
@@ -1260,16 +1277,16 @@ const I18N = {
     "pub.cat3":"AI for Biomedical Engineering",
     "pub.cat4":"Game AI",
     "pub.p1":"Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.",
-    "pub.p2":"A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks — validated on a real Franka Emika robot.",
+    "pub.p2":"A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks, validated on a real Franka Emika robot.",
     "pub.p3":"Improving performance on MuJoCo Fetch manipulation tasks through transfer learning for deep reinforcement learning, guided by task decomposition.",
     "pub.p4":"A novel hierarchical TD framework that improves manipulation performance while maintaining the fast inference and scalability of prior solutions.",
-    "pub.p5":"A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning — wrapped in an easy-to-use UI for casual play and analysis.",
-    "pub.p6":"A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy — no per-domain fine-tuning required.",
-    "pub.p7":"A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics — examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.",
+    "pub.p5":"A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning, wrapped in an easy-to-use UI for casual play and analysis.",
+    "pub.p6":"A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy, with no per-domain fine-tuning required.",
+    "pub.p7":"A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics, examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.",
     "pub.p8":"A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.",
     "pub.p9":"A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.",
     "pub.p10":"An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.",
-    "pub.p11":"A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study — combining interpretable feature selection, fuzzy modelling and clinical decision rules.",
+    "pub.p11":"A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study, combining interpretable feature selection, fuzzy modelling and clinical decision rules.",
     "pub.p12":"A bibliometric analysis combined with a PRISMA-ScR clinical-trial evidence map, charting the growth phases, intellectual structure, emerging frontiers and translational pipeline of γδ T-cell cancer immunotherapy from 2000 to 2025.",
     "pub.tbd":"Venue TBD",
     "pub.venue4":"Manuscript in preparation",
@@ -1283,29 +1300,29 @@ const I18N = {
     "proj.p1":"An end-to-end hierarchical TD framework that combines evolutionary low-level optimisation with high-level task decomposition. Targets fast inference and zero-shot generalisation across manipulation tasks on the Franka Emika FR3.",
     "proj.t2":"Sim-to-Real VLA on Dual-Arm Manipulation",
     "proj.p2":"Exploring vision-language-action models for sim-to-real transfer on dual-arm manipulation, with an emphasis on robustness and language-conditioned generalisation.",
-    "proj.t3":"AlphaLiar — Hybrid Game-AI Agent",
+    "proj.t3":"AlphaLiar · Hybrid Game-AI Agent",
     "proj.v3":"Independent project · 2024",
     "proj.p3":"An agent for the imperfect-information dice game Liar's Dice, blending Monte Carlo Tree Search with a deep autoencoder belief model and reinforcement-learned policy. Comes with a friendly play-against-the-AI UI.",
     "proj.t4":"Few-shot DRL Transfer for Fetch Tasks",
-    "proj.p4":"Few-shot transfer learning recipe for deep RL agents on MuJoCo Fetch manipulation benchmarks — boosting sample efficiency and task success rates.",
+    "proj.p4":"Few-shot transfer learning recipe for deep RL agents on MuJoCo Fetch manipulation benchmarks, boosting sample efficiency and task success rates.",
     "proj.t5":"CV for Robotic Process Automation",
     "proj.p5":"Restructured a Cascade R-CNN pipeline to detect target UI elements on financial-institution websites, achieving mAP > 0.95 across label classes.",
     "proj.t6":"Uncertainty Modelling in Meta-Learning",
     "proj.p6":"Refined an uncertainty model and built a self-training pipeline (replacing self-ensembling) for 3D medical image segmentation, under Prof. Xizhao Wang.",
     "proj.t7":"Student Supervision",
     "proj.v7":"Cardiff University · 2024–present",
-    "proj.p7":"Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV — providing weekly mentorship, technical guidance and feedback on writing.",
+    "proj.p7":"Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV, providing weekly mentorship, technical guidance and feedback on writing.",
     "proj.t8":"Biomedical Imaging Project",
     "proj.p8":"Project on deep-learning-based medical image classification & segmentation, alongside lectures on multimodal/multiscale imaging.",
 
     "review.tag":"academic service",
     "review.title":"Reviewer for international robotics & AI venues.",
     "review.sub":"Giving back to the community by reviewing for top robotics and neural-network conferences.",
-    "review.icra":"IEEE International Conference on Robotics and Automation — flagship robotics conference (CCF B).",
+    "review.icra":"IEEE International Conference on Robotics and Automation, the flagship robotics conference (CCF B).",
     "review.icann":"International Conference on Artificial Neural Networks (CCF C).",
     "review.prcv":"Chinese Conference on Pattern Recognition and Computer Vision (CCF C).",
     "review.cbs":"IEEE International Conference on Cyborg and Bionic Systems.",
-    "review.taros":"Towards Autonomous Robotic Systems — IEEE-sponsored UK annual robotics conference.",
+    "review.taros":"Towards Autonomous Robotic Systems, an IEEE-sponsored UK annual robotics conference.",
 
     "member.tag":"professional membership",
     "member.title":"Member of international robotics & neural-network societies.",
@@ -1320,7 +1337,7 @@ const I18N = {
 
     "contact.tag":"contact",
     "contact.title":"Open to research collaborations, internships & chats about robot learning.",
-    "contact.p1":"Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work — drop a line.",
+    "contact.p1":"Whether you're a student looking for a co-supervisor on robotics projects, a researcher with a wild idea about evolutionary RL, or a recruiter interested in my work, drop a line.",
     "contact.loc":"Cardiff, United Kingdom"
   },
   zh: {
@@ -1346,7 +1363,7 @@ const I18N = {
     ],
 
     "about.tag":"关于",
-    "about.title":"教机器人学习 — 但要更高的样本效率。",
+    "about.title":"教机器人学习，但要更高的样本效率。",
     "about.sub":"博士研究方向：让机器人在最小数据下学到灵巧技能，融合深度强化学习、进化搜索与现代 VLA 模型。",
     "about.p1":"我是 <strong>何远知</strong>，卡迪夫大学计算机科学与信息学院全奖博士生。研究方向集中在<strong>深度强化学习</strong>、<strong>进化策略</strong>、<strong>流匹配（Flow Matching）</strong>与<strong>视觉-语言-动作模型</strong>，并应用到 <strong>Franka Emika FR3</strong> 等真实机器人操作任务上。",
     "about.p2":"我尤其关注 <em>样本效率</em>：迁移学习、任务分解与分层控制如何让真实机器人在不依赖巨量仿真步数的前提下，学到复杂技能。2026 年中起，我将前往<strong>国立情报学研究所（NII，东京）</strong>担任研究实习生，研究双臂 VLA 操作的仿真到实机迁移。",
@@ -1427,7 +1444,7 @@ const I18N = {
     "proj.p1":"端到端的分层 TD 框架：底层使用进化算法做运动优化，顶层做任务分解。目标是在 Franka FR3 上以快速推理实现操作任务的零样本泛化。",
     "proj.t2":"双臂机器人 Sim-to-Real VLA",
     "proj.p2":"探索 VLA 模型在双臂机器人操作上的仿真到实机迁移，重点研究鲁棒性与语言条件下的泛化能力。",
-    "proj.t3":"AlphaLiar — 混合学习的博弈 AI",
+    "proj.t3":"AlphaLiar · 混合学习的博弈 AI",
     "proj.v3":"个人项目 · 2024",
     "proj.p3":"针对不完全信息骰子游戏「骗子骰」的智能体：MCTS + 深度自编码器（信念建模）+ 强化学习策略，并提供「人 vs AI」对战界面。",
     "proj.t4":"Few-shot DRL 迁移在 Fetch 任务上的应用",
@@ -1499,6 +1516,7 @@ function startTyped(){
   if(typedTimer) clearTimeout(typedTimer);
   const lines = I18N[currentLang]['hero.typed'];
   const el = document.getElementById('typed');
+  if(REDUCE_MOTION){ el.textContent = lines[0]; return; }
   let i=0, j=0, deleting=false;
   function tick(){
     const full = lines[i];
@@ -1606,7 +1624,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
       ctx.fillStyle = grd;
       ctx.beginPath(); ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2); ctx.fill();
     }
-    requestAnimationFrame(tick);
+    if(!REDUCE_MOTION) requestAnimationFrame(tick);
   }
   tick();
 })();
