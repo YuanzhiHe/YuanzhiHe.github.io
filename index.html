@@ -244,6 +244,7 @@ section + section{padding-top:40px}
 .stat-breakdown b{color:var(--accent);font-weight:700;font-size:13px}
 .stat-breakdown span:nth-child(2) b{color:var(--accent-3)}
 .stat-breakdown span:nth-child(3) b{color:var(--accent-2)}
+.stat-breakdown span:nth-child(4) b{color:var(--fg-1)}
 .stat-breakdown i{font-style:normal;letter-spacing:.04em;text-transform:uppercase}
 
 /* ---------- section title ---------- */
@@ -364,10 +365,13 @@ h2.section-title{
 .badge.co1st{background:rgba(201,139,90,.10);color:var(--accent-3);border-color:rgba(201,139,90,.32)}
 .badge.coauth{background:rgba(255,255,255,.04);color:var(--fg-1);border-color:var(--line)}
 .badge.ccf{background:rgba(224,184,101,.10);color:var(--warn);border-color:rgba(224,184,101,.32);font-weight:600}
+.badge.ccfa{background:rgba(139,191,134,.12);color:var(--ok);border-color:rgba(139,191,134,.34);font-weight:600}
 .badge.ccfb{background:rgba(201,139,90,.12);color:var(--accent-3);border-color:rgba(201,139,90,.34);font-weight:600}
 .badge.q1{background:rgba(139,191,134,.10);color:var(--ok);border-color:rgba(139,191,134,.32);font-weight:600}
 .badge.q2{background:rgba(216,189,131,.10);color:var(--accent-2);border-color:rgba(216,189,131,.32);font-weight:600}
 .badge.q3{background:rgba(201,139,90,.10);color:var(--accent-3);border-color:rgba(201,139,90,.32);font-weight:600}
+.badge.revision{background:rgba(216,189,131,.14);color:var(--accent-2);border-color:rgba(216,189,131,.34);font-weight:600}
+.badge.corresp{background:rgba(201,163,90,.14);color:var(--accent);border-color:rgba(201,163,90,.36);font-weight:600}
 .card h3{margin:0 0 6px;font-size:17px;line-height:1.35;font-weight:600}
 .card h3 a{color:inherit;transition:color .25s ease}
 .card h3 a::before{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--radius)}
@@ -526,16 +530,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
     <div class="hero-stats">
       <div class="stat">
-        <div class="num">12</div>
+        <div class="num">18</div>
         <div class="lbl" data-i18n="hero.stat1">Papers authored</div>
         <div class="stat-breakdown">
-          <span><b>8</b><i data-i18n="hero.stat1a">1st</i></span>
-          <span><b>3</b><i data-i18n="hero.stat1b">Co-1st</i></span>
+          <span><b>13</b><i data-i18n="hero.stat1a">1st</i></span>
+          <span><b>2</b><i data-i18n="hero.stat1b">Co-1st</i></span>
+          <span><b>2</b><i data-i18n="hero.stat1d">Corresp.</i></span>
           <span><b>1</b><i data-i18n="hero.stat1c">Co-auth</i></span>
         </div>
       </div>
       <div class="stat"><div class="num">7</div><div class="lbl" data-i18n="hero.stat2">Institutions</div></div>
-      <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="hero.stat3">Reviewer roles</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl" data-i18n="hero.stat3">Reviewer roles</div></div>
       <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="hero.stat4">Students supervised</div></div>
     </div>
   </div>
@@ -740,18 +745,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="section-tag" data-i18n="pub.tag">publications</div>
         <h2 class="section-title" data-i18n="pub.title">Research across robotic learning, vision &amp; bio-AI.</h2>
       </div>
-      <p class="section-sub" data-i18n="pub.sub">Twelve papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing, AI for biomedical engineering and game AI.</p>
+      <p class="section-sub" data-i18n="pub.sub">Eighteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering and game AI.</p>
     </div>
-    <!-- ===== Category 1: Robotic Manipulation & Planning ===== -->
+    <!-- ===== Category 1: Robotic Manipulation, Locomotion & Planning ===== -->
     <div class="pub-cat">
       <div class="cat-head">
         <span class="cat-num">01</span>
-        <h3 data-i18n="pub.cat1">Robotic Manipulation &amp; Planning</h3>
-        <span class="cat-count">6 papers</span>
+        <h3 data-i18n="pub.cat1">Robotic Manipulation, Locomotion &amp; Planning</h3>
+        <span class="cat-count">11 papers</span>
       </div>
       <div class="cat-line"></div>
       <div class="cards">
-
         <article class="card">
           <div class="meta">
             <span class="badge published" data-i18n="pub.published">Published</span>
@@ -762,7 +766,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <p data-i18n="pub.p1">Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.</p>
           <div class="tags"><span class="tag">DRL</span><span class="tag">Transfer Learning</span><span class="tag">MuJoCo</span><span class="tag">Fetch</span></div>
         </article>
-
         <article class="card">
           <div class="meta">
             <span class="badge accepted" data-i18n="pub.accepted">Accepted</span>
@@ -774,7 +777,39 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <p data-i18n="pub.p2">A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks, validated on a real Franka Emika robot.</p>
           <div class="tags"><span class="tag">Evolutionary Strategies</span><span class="tag">Zero-shot</span><span class="tag">Franka FR3</span></div>
         </article>
-
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccfb">CCF B</span>
+          </div>
+          <h3>From Position to Torque: Recovering Control Bandwidth in Learned Quadrupedal Locomotion</h3>
+          <div class="venue">ICRA 2027 · IEEE Int. Conf. on Robotics and Automation</div>
+          <p data-i18n="pub.p13">A torque policy learned in a single stage from a low-gain PD position policy, with no pre-trained teacher. It recovers high-frequency command authority the position interface gives up, halves the rough-terrain fall rate and is deployed on a physical Unitree Go2 at 100 Hz.</p>
+          <div class="tags"><span class="tag">Quadruped</span><span class="tag">Torque Control</span><span class="tag">PPO</span><span class="tag">Unitree Go2</span><span class="tag">Sim-to-Real</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccfa">CCF A</span>
+          </div>
+          <h3>OptiVLA: Optimization-in-the-Loop Vision-Language-Action Policies with Conditional Flow Matching</h3>
+          <div class="venue">AAAI 2027 · AAAI Conf. on Artificial Intelligence</div>
+          <p data-i18n="pub.p18">A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then refines its proposals at inference with an improved Cross-Entropy Method against a reusable task-space cost library. Raises success from 66.3% to 68.8% across six RLBench tasks and transfers zero-shot to a real Franka Research 3 arm (5/5 vs. 0/5 on three contact-rich tasks) at ~18 Hz.</p>
+          <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">iCEM</span><span class="tag">RLBench</span><span class="tag">Franka FR3</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge revision" data-i18n="pub.revision">Major Revision</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q2">JCR Q2 · IF 3.5</span>
+          </div>
+          <h3>Benchmark-Path Fidelity in Parallel Robot-Policy Evaluation: A CALVIN Case Study</h3>
+          <div class="venue">Journal of Supercomputing</div>
+          <p data-i18n="pub.p7">A diagnostic study of how parallel evaluation paths in CALVIN can drift from the intended benchmark semantics — export truncation, teacher semantics and symbolic reset fidelity — together with concrete fixes.</p>
+          <div class="tags"><span class="tag">CALVIN</span><span class="tag">Benchmarking</span><span class="tag">VLA</span></div>
+        </article>
         <article class="card">
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
@@ -782,11 +817,55 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
             <span class="badge ccf">CCF C</span>
           </div>
           <h3>Enhancing Deep Reinforcement Learning for Robotic Motion Planning via Task Decomposition</h3>
-          <div class="venue" data-i18n="pub.tbd">Venue TBD</div>
+          <div class="venue">IEEE MSN 2026 · Int. Conf. on Mobility, Sensing and Networking</div>
           <p data-i18n="pub.p3">Improving performance on MuJoCo Fetch manipulation tasks through transfer learning for deep reinforcement learning, guided by task decomposition.</p>
           <div class="tags"><span class="tag">DRL</span><span class="tag">Task Decomposition</span><span class="tag">MuJoCo</span></div>
         </article>
-
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccf">CCF C</span>
+          </div>
+          <h3>Detector Confidence Signals Presence Rather Than Occlusion in Cluttered Manipulation</h3>
+          <div class="venue">IEEE MSN 2026 · Int. Conf. on Mobility, Sensing and Networking</div>
+          <p data-i18n="pub.p14">An empirical study showing that detector confidence in cluttered manipulation scenes tracks object presence rather than degree of occlusion, and what that means for confidence-gated perception pipelines.</p>
+          <div class="tags"><span class="tag">Perception</span><span class="tag">Occlusion</span><span class="tag">Manipulation</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge ccfa">CCF A</span>
+            <span class="badge q1">JCR Q1 · IF 30.4</span>
+          </div>
+          <h3>What Transfers in Robot Learning? Taxonomy and Evidence from Domain Randomization to VLA Models</h3>
+          <div class="venue">ACM Computing Surveys</div>
+          <p data-i18n="pub.p15">A survey that builds a taxonomy of what actually transfers in robot learning, tracing the evidence from domain randomization through to vision-language-action models.</p>
+          <div class="tags"><span class="tag">Survey</span><span class="tag">Transfer</span><span class="tag">VLA</span><span class="tag">Domain Randomization</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q2">JCR Q2 · IF 3.5</span>
+          </div>
+          <h3>When Retrieved Context Helps a Frozen Robot Policy: Rollout-Adaptive Source Prompting</h3>
+          <div class="venue">Applied Intelligence</div>
+          <p data-i18n="pub.p16">A rollout-adaptive source-prompting scheme that decides when retrieved context actually helps a frozen robot policy, rather than assuming retrieval is always beneficial.</p>
+          <div class="tags"><span class="tag">Retrieval</span><span class="tag">Frozen Policy</span><span class="tag">Prompting</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q1">JCR Q1 · IF 4.9</span>
+          </div>
+          <h3>Observation-Contract Audits Reveal State Dominance in Diffusion Policy Benchmarks</h3>
+          <div class="venue">Scientific Reports</div>
+          <p data-i18n="pub.p10">An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.</p>
+          <div class="tags"><span class="tag">Diffusion Policy</span><span class="tag">Benchmarking</span><span class="tag">Auditing</span></div>
+        </article>
         <article class="card">
           <div class="meta">
             <span class="badge prep" data-i18n="pub.prep">In Preparation</span>
@@ -797,30 +876,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <p data-i18n="pub.p4">A novel hierarchical TD framework that improves manipulation performance while maintaining the fast inference and scalability of prior solutions.</p>
           <div class="tags"><span class="tag">Hierarchical RL</span><span class="tag">Evolutionary</span><span class="tag">TD</span></div>
         </article>
-
-        <article class="card">
-          <div class="meta">
-            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
-            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
-            <span class="badge q2">JCR Q2 · IF 2.7</span>
-          </div>
-          <h3>Diagnosing Benchmark-Faithful Evaluation in CALVIN: Export Truncation, Teacher Semantics, and Symbolic Reset Fidelity</h3>
-          <div class="venue">Journal of Supercomputing</div>
-          <p data-i18n="pub.p7">A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics, examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.</p>
-          <div class="tags"><span class="tag">CALVIN</span><span class="tag">Benchmarking</span><span class="tag">VLA</span></div>
-        </article>
-
-        <article class="card">
-          <div class="meta">
-            <span class="badge prep" data-i18n="pub.prep">In Preparation</span>
-            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
-          </div>
-          <h3>Observation-Contract Audits Reveal State Dominance in Diffusion Policy Benchmarks</h3>
-          <div class="venue" data-i18n="pub.tbd">Venue TBD</div>
-          <p data-i18n="pub.p10">An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.</p>
-          <div class="tags"><span class="tag">Diffusion Policy</span><span class="tag">Benchmarking</span><span class="tag">Auditing</span></div>
-        </article>
-
       </div>
     </div>
 
@@ -833,7 +888,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="cat-line"></div>
       <div class="cards">
-
         <article class="card">
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
@@ -841,73 +895,78 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
             <span class="badge ccf">CCF C</span>
           </div>
           <h3>EvoMask: Evolutionary Multi-Signal Mask Scoring for Training-Free Indoor Instance Segmentation</h3>
-          <div class="venue">PRCV · Pattern Recognition and Computer Vision</div>
+          <div class="venue">ACM MMAsia 2026 · ACM Multimedia Asia</div>
           <p data-i18n="pub.p6">A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy, with no per-domain fine-tuning required.</p>
           <div class="tags"><span class="tag">Instance Seg.</span><span class="tag">Training-free</span><span class="tag">Evolutionary</span></div>
         </article>
-
       </div>
     </div>
 
-    <!-- ===== Category 3: Biomedical AI ===== -->
+    <!-- ===== Category 3: AI for Biomedical Engineering ===== -->
     <div class="pub-cat">
       <div class="cat-head">
         <span class="cat-num">03</span>
         <h3 data-i18n="pub.cat3">AI for Biomedical Engineering</h3>
-        <span class="cat-count">4 papers</span>
+        <span class="cat-count">5 papers</span>
       </div>
       <div class="cat-line"></div>
       <div class="cards">
-
         <article class="card">
           <div class="meta">
-            <span class="badge inreview" data-i18n="pub.review">Under Review</span>
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
-            <span class="badge q1">JCR Q1 · IF 15.5</span>
+            <span class="badge q1">JCR Q1 · IF 10.8</span>
           </div>
           <h3>Heterogeneous Graph Learning with Pretrained Node Representations for Spatial Transcriptomic Tumor Immune Microenvironment Classification</h3>
-          <div class="venue">Information Fusion</div>
+          <div class="venue">Patterns (Cell Press)</div>
           <p data-i18n="pub.p8">A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.</p>
           <div class="tags"><span class="tag">Graph Learning</span><span class="tag">Spatial Omics</span><span class="tag">Bio-AI</span></div>
         </article>
-
         <article class="card">
           <div class="meta">
             <span class="badge published" data-i18n="pub.published">Published</span>
             <span class="badge coauth" data-i18n="pub.coauth">Co-author</span>
             <span class="badge ccfb">CCF B</span>
-            <span class="badge q1">JCR Q1 · IF 7.6</span>
+            <span class="badge q1">JCR Q1 · IF 9.1</span>
           </div>
           <h3><a href="https://authors.elsevier.com/c/1nCnJ77nKv-Rd" target="_blank" rel="noopener">A Single-Cell Feature Selection Method Based on Subspace and Minimum Redundancy, Applicable to Multi-Omics</a></h3>
           <div class="venue">Pattern Recognition</div>
           <p data-i18n="pub.p9">A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.</p>
           <div class="tags"><span class="tag">Feature Selection</span><span class="tag">Single-cell</span><span class="tag">Multi-omics</span></div>
         </article>
-
         <article class="card">
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
-            <span class="badge co1st" data-i18n="pub.co1st_3rd">Co-1st (3rd)</span>
-            <span class="badge q1">JCR Q1 · IF 7.2</span>
+            <span class="badge corresp" data-i18n="pub.corresp">Corresponding</span>
+            <span class="badge q1">JCR Q1 · IF 5.5</span>
+          </div>
+          <h3>Sparse Autoencoder Dictionaries for Data-Quality Auditing in Pathology Foundation Models</h3>
+          <div class="venue">Computerized Medical Imaging and Graphics</div>
+          <p data-i18n="pub.p17">Sparse-autoencoder dictionaries used as an interpretable auditing tool, surfacing data-quality artefacts that pathology foundation models have absorbed from their training corpora.</p>
+          <div class="tags"><span class="tag">Sparse Autoencoder</span><span class="tag">Pathology</span><span class="tag">Interpretability</span></div>
+        </article>
+        <article class="card">
+          <div class="meta">
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge corresp" data-i18n="pub.corresp">Corresponding</span>
+            <span class="badge q1">JCR Q1 · IF 3.4</span>
           </div>
           <h3><a href="https://arxiv.org/abs/2604.24796" target="_blank" rel="noopener">A Multi-Stage Soft Computing Framework for Complex Disease Modelling and Decision Support: A Liver Cirrhosis Case Study</a></h3>
-          <div class="venue" data-i18n="pub.tbd">Venue TBD</div>
+          <div class="venue">Computational Biology and Chemistry</div>
           <p data-i18n="pub.p11">A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study, combining interpretable feature selection, fuzzy modelling and clinical decision rules.</p>
           <div class="tags"><span class="tag">Soft Computing</span><span class="tag">Decision Support</span><span class="tag">Clinical AI</span></div>
         </article>
-
         <article class="card">
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
-            <span class="badge q1">JCR Q1 · IF 19.8</span>
+            <span class="badge q1">JCR Q1 · IF 6.2</span>
           </div>
-          <h3>γδ T Cells in Cancer Immunotherapy, 2000–2025: A Bibliometric Analysis and Clinical-Trial Evidence Map</h3>
-          <div class="venue">Cellular &amp; Molecular Immunology</div>
-          <p data-i18n="pub.p12">A bibliometric analysis combined with a PRISMA-ScR clinical-trial evidence map, charting the growth phases, intellectual structure, emerging frontiers and translational pipeline of γδ T-cell cancer immunotherapy from 2000 to 2025.</p>
-          <div class="tags"><span class="tag">γδ T Cells</span><span class="tag">Cancer Immunotherapy</span><span class="tag">Bibliometric</span></div>
+          <h3>&gamma;&delta; T Cells in Cancer Immunotherapy, 2000&ndash;2025: A Bibliometric Analysis and Clinical-Trial Evidence Map</h3>
+          <div class="venue">Critical Reviews in Oncology/Hematology</div>
+          <p data-i18n="pub.p12">A bibliometric analysis combined with a PRISMA-ScR clinical-trial evidence map, charting the growth phases, intellectual structure, emerging frontiers and translational pipeline of &gamma;&delta; T-cell cancer immunotherapy from 2000 to 2025.</p>
+          <div class="tags"><span class="tag">&gamma;&delta; T Cells</span><span class="tag">Cancer Immunotherapy</span><span class="tag">Bibliometric</span></div>
         </article>
-
       </div>
     </div>
 
@@ -920,18 +979,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="cat-line"></div>
       <div class="cards">
-
         <article class="card">
           <div class="meta">
-            <span class="badge prep" data-i18n="pub.prep">In Preparation</span>
+            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+            <span class="badge q3">JCR Q3 · IF 2.4</span>
           </div>
           <h3>AlphaLiar: An Easy-to-use Hybrid Learning Agent for the Liar's Dice Game</h3>
-          <div class="venue" data-i18n="pub.tbd">Venue TBD</div>
+          <div class="venue">Entertainment Computing</div>
           <p data-i18n="pub.p5">A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning, wrapped in an easy-to-use UI for casual play and analysis.</p>
           <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">Game AI</span></div>
         </article>
-
       </div>
     </div>
 
@@ -964,6 +1022,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="venue">Research Intern · NII Tokyo</div>
         <p data-i18n="proj.p2">Exploring vision-language-action models for sim-to-real transfer on dual-arm manipulation, with an emphasis on robustness and language-conditioned generalisation.</p>
         <div class="tags"><span class="tag">VLA</span><span class="tag">Sim-to-Real</span><span class="tag">Dual-Arm</span></div>
+      </article>
+      <article class="card">
+        <div class="meta"><span class="badge lead">Lead</span><span class="badge submitted">2026</span></div>
+        <h3 data-i18n="proj.t9">P2T · Direct-Torque Control for Quadrupedal Locomotion</h3>
+        <div class="venue">PhD research · Cardiff University</div>
+        <p data-i18n="proj.p9">Learned quadruped controllers almost always emit joint position targets that a fixed PD loop tracks, which caps command bandwidth. P2T learns a direct-torque policy in a single co-training stage from a low-gain PD position policy &mdash; no pre-trained teacher, no distillation. Under realistic 5&ndash;10&nbsp;ms latency it retains 1.7&times; more high-frequency command authority, cuts the rough-terrain fall rate to under half of both position baselines, and runs on a physical Unitree Go2 at 100&nbsp;Hz through the low-level torque interface.</p>
+        <div class="tags"><span class="tag">Unitree Go2</span><span class="tag">PPO</span><span class="tag">Torque Control</span><span class="tag">Isaac Sim</span><span class="tag">Sim-to-Real</span></div>
+      </article>
+      <article class="card">
+        <div class="meta"><span class="badge lead">Lead</span><span class="badge submitted">2026</span></div>
+        <h3 data-i18n="proj.t10">OptiVLA · Optimization-in-the-Loop VLA Policies</h3>
+        <div class="venue">PhD research · Cardiff University</div>
+        <p data-i18n="proj.p10">A two-stage manipulation framework that keeps a frozen LLaVA-style VLM outside the action decoder: a zero-initialised projection grafts the language embedding onto a point-cloud conditional-flow-matching policy, then an improved Cross-Entropy Method refines the sampled action chunk at inference against a reusable task-space cost library. 66.3% &rarr; 68.8% across six RLBench tasks, 5/5 vs. 0/5 on three contact-rich tasks after zero-shot transfer to a real Franka Research 3, at roughly 18&nbsp;Hz.</p>
+        <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">iCEM</span><span class="tag">RLBench</span><span class="tag">Point Cloud</span></div>
       </article>
 
       <article class="card">
@@ -1043,6 +1115,21 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="yr">2026</div>
         <div class="name">PRCV <span class="badge ccf" style="margin-left:6px;font-size:10px">CCF C</span></div>
         <div class="desc" data-i18n="review.prcv">Chinese Conference on Pattern Recognition and Computer Vision (CCF C).</div>
+      </div>
+      <div class="review">
+        <div class="yr">2026</div>
+        <div class="name">PRICAI <span class="badge ccf" style="margin-left:6px;font-size:10px">CCF C</span></div>
+        <div class="desc" data-i18n="review.pricai">Pacific Rim International Conference on Artificial Intelligence (CCF C).</div>
+      </div>
+      <div class="review">
+        <div class="yr">2026</div>
+        <div class="name">MMAsia <span class="badge ccf" style="margin-left:6px;font-size:10px">CCF C</span></div>
+        <div class="desc" data-i18n="review.mmasia">ACM Multimedia Asia, the Asian edition of ACM Multimedia (CCF C).</div>
+      </div>
+      <div class="review">
+        <div class="yr">2026</div>
+        <div class="name">MSN <span class="badge ccf" style="margin-left:6px;font-size:10px">CCF C</span></div>
+        <div class="desc" data-i18n="review.msn">IEEE International Conference on Mobility, Sensing and Networking (CCF C).</div>
       </div>
       <div class="review">
         <div class="yr">2026</div>
@@ -1201,7 +1288,7 @@ const I18N = {
     "hero.role":"Robotic Manipulation × Reinforcement Learning × Vision-Language-Action",
     "hero.cta1":"Read my work",
     "hero.cta2":"Get in touch",
-    "hero.stat1":"Papers authored",
+    "hero.stat1":"Papers authored","hero.stat1d":"Corresp.",
     "hero.stat1a":"1st",
     "hero.stat1b":"Co-1st",
     "hero.stat1c":"Co-auth",
@@ -1267,9 +1354,9 @@ const I18N = {
 
     "pub.tag":"publications",
     "pub.title":"Research across robotic learning, vision & bio-AI.",
-    "pub.sub":"Twelve papers spanning transfer learning, evolutionary motion planning, hierarchical control, instance segmentation, diffusion policy auditing, AI for biomedical engineering and game AI.",
-    "pub.published":"Published","pub.submitted":"Submitted","pub.accepted":"Accepted","pub.review":"Under Review","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.coauth":"Co-author",
-    "pub.cat1":"Robotic Manipulation & Planning",
+    "pub.sub":"Eighteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering and game AI.",
+    "pub.published":"Published","pub.submitted":"Submitted","pub.accepted":"Accepted","pub.review":"Under Review","pub.revision":"Major Revision","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.corresp":"Corresponding","pub.coauth":"Co-author",
+    "pub.cat1":"Robotic Manipulation, Locomotion & Planning",
     "pub.cat2":"Computer Vision",
     "pub.cat3":"AI for Biomedical Engineering",
     "pub.cat4":"Game AI",
@@ -1279,12 +1366,18 @@ const I18N = {
     "pub.p4":"A novel hierarchical TD framework that improves manipulation performance while maintaining the fast inference and scalability of prior solutions.",
     "pub.p5":"A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning, wrapped in an easy-to-use UI for casual play and analysis.",
     "pub.p6":"A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy, with no per-domain fine-tuning required.",
-    "pub.p7":"A diagnostic study of how CALVIN's evaluation pipeline can drift from intended semantics, examining export truncation, teacher semantics and symbolic reset fidelity, with concrete fixes.",
+    "pub.p7":"A diagnostic study of how parallel evaluation paths in CALVIN can drift from the intended benchmark semantics \u2014 export truncation, teacher semantics and symbolic reset fidelity \u2014 together with concrete fixes.",
     "pub.p8":"A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.",
     "pub.p9":"A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.",
     "pub.p10":"An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.",
     "pub.p11":"A multi-stage soft-computing framework for complex disease modelling and decision support, demonstrated on a liver-cirrhosis case study, combining interpretable feature selection, fuzzy modelling and clinical decision rules.",
     "pub.p12":"A bibliometric analysis combined with a PRISMA-ScR clinical-trial evidence map, charting the growth phases, intellectual structure, emerging frontiers and translational pipeline of γδ T-cell cancer immunotherapy from 2000 to 2025.",
+    "pub.p13":"A torque policy learned in a single stage from a low-gain PD position policy, with no pre-trained teacher. It recovers high-frequency command authority the position interface gives up, halves the rough-terrain fall rate and is deployed on a physical Unitree Go2 at 100 Hz.",
+    "pub.p14":"An empirical study showing that detector confidence in cluttered manipulation scenes tracks object presence rather than degree of occlusion, and what that means for confidence-gated perception pipelines.",
+    "pub.p15":"A survey that builds a taxonomy of what actually transfers in robot learning, tracing the evidence from domain randomization through to vision-language-action models.",
+    "pub.p16":"A rollout-adaptive source-prompting scheme that decides when retrieved context actually helps a frozen robot policy, rather than assuming retrieval is always beneficial.",
+    "pub.p17":"Sparse-autoencoder dictionaries used as an interpretable auditing tool, surfacing data-quality artefacts that pathology foundation models have absorbed from their training corpora.",
+    "pub.p18":"A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then refines its proposals at inference with an improved Cross-Entropy Method against a reusable task-space cost library. Raises success from 66.3% to 68.8% across six RLBench tasks and transfers zero-shot to a real Franka Research 3 arm (5/5 vs. 0/5 on three contact-rich tasks) at ~18 Hz.",
     "pub.tbd":"Venue TBD",
     "pub.venue4":"Manuscript in preparation",
     "pub.venue5":"Manuscript in preparation · Game AI",
@@ -1309,6 +1402,10 @@ const I18N = {
     "proj.t7":"Student Supervision",
     "proj.v7":"Cardiff University · 2024–present",
     "proj.p7":"Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV, providing weekly mentorship, technical guidance and feedback on writing.",
+    "proj.t9":"P2T · Direct-Torque Control for Quadrupedal Locomotion",
+    "proj.p9":"Learned quadruped controllers almost always emit joint position targets that a fixed PD loop tracks, which caps command bandwidth. P2T learns a direct-torque policy in a single co-training stage from a low-gain PD position policy — no pre-trained teacher, no distillation. Under realistic 5–10 ms latency it retains 1.7× more high-frequency command authority, cuts the rough-terrain fall rate to under half of both position baselines, and runs on a physical Unitree Go2 at 100 Hz through the low-level torque interface.",
+    "proj.t10":"OptiVLA · Optimization-in-the-Loop VLA Policies",
+    "proj.p10":"A two-stage manipulation framework that keeps a frozen LLaVA-style VLM outside the action decoder: a zero-initialised projection grafts the language embedding onto a point-cloud conditional-flow-matching policy, then an improved Cross-Entropy Method refines the sampled action chunk at inference against a reusable task-space cost library. 66.3% → 68.8% across six RLBench tasks, 5/5 vs. 0/5 on three contact-rich tasks after zero-shot transfer to a real Franka Research 3, at roughly 18 Hz.",
     "proj.t8":"Biomedical Imaging Project",
     "proj.p8":"Project on deep-learning-based medical image classification & segmentation, alongside lectures on multimodal/multiscale imaging.",
 
@@ -1318,6 +1415,9 @@ const I18N = {
     "review.icra":"IEEE International Conference on Robotics and Automation, the flagship robotics conference (CCF B).",
     "review.icann":"International Conference on Artificial Neural Networks (CCF C).",
     "review.prcv":"Chinese Conference on Pattern Recognition and Computer Vision (CCF C).",
+    "review.pricai":"Pacific Rim International Conference on Artificial Intelligence (CCF C).",
+    "review.mmasia":"ACM Multimedia Asia, the Asian edition of ACM Multimedia (CCF C).",
+    "review.msn":"IEEE International Conference on Mobility, Sensing and Networking (CCF C).",
     "review.cbs":"IEEE International Conference on Cyborg and Bionic Systems.",
     "review.taros":"Towards Autonomous Robotic Systems, an IEEE-sponsored UK annual robotics conference.",
 
@@ -1349,6 +1449,7 @@ const I18N = {
     "hero.stat1a":"一作",
     "hero.stat1b":"共一",
     "hero.stat1c":"合作",
+    "hero.stat1d":"通讯",
     "hero.stat2":"学术机构",
     "hero.stat3":"审稿身份",
     "hero.stat4":"指导学生",
@@ -1411,9 +1512,9 @@ const I18N = {
 
     "pub.tag":"论文发表",
     "pub.title":"覆盖机器人学习、计算机视觉与生物医学 AI 的研究。",
-    "pub.sub":"十二篇论文，涵盖迁移学习、进化运动规划、分层控制、实例分割、扩散策略评测、AI 在生物医学工程的应用，以及博弈 AI。",
-    "pub.published":"已发表","pub.submitted":"在投","pub.accepted":"已接收","pub.review":"评审中","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.coauth":"合作作者",
-    "pub.cat1":"机器人操作与运动规划",
+    "pub.sub":"十八篇论文，涵盖迁移学习、进化运动规划、分层控制、四足运动控制、实例分割、评测基准审计、AI 在生物医学工程的应用，以及博弈 AI。",
+    "pub.published":"已发表","pub.submitted":"在投","pub.accepted":"已接收","pub.review":"评审中","pub.revision":"大修","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.corresp":"通讯作者","pub.coauth":"合作作者",
+    "pub.cat1":"机器人操作、运动控制与规划",
     "pub.cat2":"计算机视觉",
     "pub.cat3":"人工智能在生物医学工程的应用",
     "pub.cat4":"博弈 AI",
@@ -1423,12 +1524,18 @@ const I18N = {
     "pub.p4":"提出一种新颖的分层任务分解（TD）框架，在保持已有方案推理速度与可扩展性的前提下，提升机器人操作任务的表现。",
     "pub.p5":"结合蒙特卡洛树搜索、深度自编码器与强化学习的混合智能体，并配套易于使用的人机对战界面。",
     "pub.p6":"一种无需训练的室内实例分割方法，使用进化式多信号掩码评分策略，无需逐域微调。",
-    "pub.p7":"对 CALVIN 评测流水线偏离原始语义的诊断研究，分析导出截断、教师语义与符号化重置一致性等问题，并给出具体修复方案。",
+    "pub.p7":"针对 CALVIN 并行评测路径偏离基准原始语义的诊断研究，分析导出截断、教师语义与符号化重置一致性等问题，并给出具体修复方案。",
     "pub.p8":"一种异构图学习方法，借助预训练节点表示，对空间转录组数据中的肿瘤免疫微环境进行分类。",
     "pub.p9":"基于子空间与最小冗余准则的特征选择方法，针对单细胞分析场景设计，适用于多组学数据。",
     "pub.p10":"提出一种 Observation-Contract 审计框架，揭示状态主导信号如何影响扩散策略评测分数，推动更公正的协议设计。",
     "pub.p11":"一个面向复杂疾病建模与决策支持的多阶段软计算框架，并以肝硬化案例进行验证——结合可解释特征选择、模糊建模与临床决策规则。",
     "pub.p12":"将文献计量分析与 PRISMA-ScR 临床试验证据图谱相结合，梳理 2000–2025 年 γδ T 细胞肿瘤免疫治疗领域的发展阶段、知识结构、新兴前沿与临床转化管线。",
+    "pub.p13":"以单阶段方式从低增益 PD 位置策略中学得力矩策略，无需预训练教师网络。该方法恢复了位置控制接口所放弃的高频指令带宽，将崎岖地形跌倒率降低一半以上，并在真实 Unitree Go2 上以 100 Hz 部署。",
+    "pub.p14":"实证研究表明，在杂乱操作场景中检测器置信度反映的是物体“是否存在”而非“遮挡程度”，并讨论了这对基于置信度门控的感知流水线意味着什么。",
+    "pub.p15":"一篇综述，构建机器人学习中“什么在迁移”的分类体系，梳理从域随机化到视觉-语言-动作（VLA）模型的证据链。",
+    "pub.p16":"提出一种随 rollout 自适应的来源提示方案，判断检索到的上下文在何时才真正有助于冻结的机器人策略，而非默认检索总是有益。",
+    "pub.p17":"将稀疏自编码器字典用作可解释的审计工具，揭示病理基础模型从训练语料中吸收的数据质量缺陷。",
+    "pub.p18":"一个两阶段 VLA 框架：将冻结的 LLaVA 风格视觉语言模型置于点云条件流匹配策略之外，再在推理阶段用改进的交叉熵方法（iCEM）针对可复用的任务空间代价库精修其候选动作。在六个 RLBench 任务上将成功率从 66.3% 提升到 68.8%，并零样本迁移到真实 Franka Research 3 机械臂（三个接触密集任务上 5/5 对比基线 0/5），控制频率约 18 Hz。",
     "pub.tbd":"期刊/会议待定",
     "pub.venue4":"撰写中",
     "pub.venue5":"撰写中 · 博弈 AI",
@@ -1453,6 +1560,10 @@ const I18N = {
     "proj.t7":"指导学生科研",
     "proj.v7":"卡迪夫大学 · 2024 至今",
     "proj.p7":"协助指导 1 名硕士与 4 名本科生的毕设项目，方向涵盖机器人、强化学习与 CV，提供每周指导、技术答疑与写作反馈。",
+    "proj.t9":"P2T · 四足机器人直接力矩控制",
+    "proj.p9":"学习式四足控制器几乎都输出关节位置目标，由固定 PD 环跟踪，这限制了指令带宽。P2T 以单阶段协同训练方式，从低增益 PD 位置策略中直接学得力矩策略——无需预训练教师，也无需蒸馏。在真实的 5–10 ms 指令延迟下，它保留了 1.7 倍的高频指令控制权，将崎岖地形跌倒率降至两个位置控制基线的一半以下，并通过底层力矩接口在真实 Unitree Go2 上以 100 Hz 运行。",
+    "proj.t10":"OptiVLA · 优化在环的视觉-语言-动作策略",
+    "proj.p10":"一个两阶段操作框架：将冻结的 LLaVA 风格视觉语言模型置于动作解码器之外，用零初始化投影把语言嵌入嫁接到点云条件流匹配策略上；再在推理阶段用改进的交叉熵方法（iCEM），针对可复用的任务空间代价库精修采样得到的动作块。在六个 RLBench 任务上成功率从 66.3% 提升到 68.8%，零样本迁移到真实 Franka Research 3 后，在三个接触密集任务上取得 5/5（基线 0/5），控制频率约 18 Hz。",
     "proj.t8":"生物医学成像实战项目",
     "proj.p8":"基于深度学习的医学图像分类与分割项目，配合多模态/多尺度成像与计算机辅助分析等课程。",
 
@@ -1462,6 +1573,9 @@ const I18N = {
     "review.icra":"IEEE 国际机器人与自动化大会，机器人领域旗舰会议（CCF B 类）。",
     "review.icann":"国际人工神经网络大会（CCF C 类）。",
     "review.prcv":"中国模式识别与计算机视觉大会（CCF C 类）。",
+    "review.pricai":"环太平洋人工智能国际会议（CCF C 类）。",
+    "review.mmasia":"ACM Multimedia Asia，ACM 多媒体会议亚洲分会（CCF C 类）。",
+    "review.msn":"IEEE 移动性、感知与网络国际会议（CCF C 类）。",
     "review.cbs":"IEEE 类生命体与仿生系统国际会议。",
     "review.taros":"IEEE 主办的英国年度机器人会议 Towards Autonomous Robotic Systems。",
 
