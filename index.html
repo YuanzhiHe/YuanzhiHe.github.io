@@ -558,7 +558,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     </div>
     <div class="about-grid">
       <div>
-        <p data-i18n="about.p1">I'm <strong>Yuanzhi He</strong>, a fully‑funded PhD student at Cardiff University's School of Computer Science &amp; Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision‑language‑action</strong> models, applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.</p>
+        <p data-i18n="about.p1">I'm <strong>Yuanzhi He</strong>, a fully‑funded PhD student at Cardiff University's School of Computer Science &amp; Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision‑language‑action</strong> models, applied to robotic manipulation and legged locomotion on platforms like the <strong>Franka Emika FR3</strong> and the <strong>Unitree Go2</strong>.</p>
         <p data-i18n="about.p2">I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. I'm currently at the <strong>National Institute of Informatics (NII, Tokyo)</strong> as a research intern, working on sim‑to‑real transfer for dual‑arm VLA manipulation.</p>
         <p data-i18n="about.p3">Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.</p>
       </div>
@@ -1191,6 +1191,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="skill"><span>Gazebo</span><div class="bar"><span style="--w:75%"></span></div></div>
           <div class="skill"><span>CoppeliaSim</span><div class="bar"><span style="--w:70%"></span></div></div>
           <div class="skill"><span>Franka FR3</span><div class="bar"><span style="--w:82%"></span></div></div>
+          <div class="skill"><span>Unitree Go2</span><div class="bar"><span style="--w:78%"></span></div></div>
         </div>
       </div>
       <div class="skillcol">
@@ -1290,14 +1291,14 @@ const I18N = {
     "hero.typed": [
       "Teaching robots to learn, sample-efficiently.",
       "Bridging deep RL, evolutionary search and VLA models.",
-      "From MuJoCo Fetch to a real Franka FR3.",
+      "From MuJoCo Fetch to a real Franka FR3 and Unitree Go2.",
       "Sim · to · Real."
     ],
 
     "about.tag":"about",
     "about.title":"Teaching robots to learn, sample-efficiently.",
     "about.sub":"PhD researcher fascinated by how robots can acquire dexterous skills with minimal data, by combining deep RL, evolutionary search and modern VLA models.",
-    "about.p1":"I'm <strong>Yuanzhi He</strong>, a fully-funded PhD student at Cardiff University's School of Computer Science & Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision-language-action</strong> models, applied to robotic manipulation on platforms like the <strong>Franka Emika FR3</strong>.",
+    "about.p1":"I'm <strong>Yuanzhi He</strong>, a fully-funded PhD student at Cardiff University's School of Computer Science & Informatics. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision-language-action</strong> models, applied to robotic manipulation and legged locomotion on platforms like the <strong>Franka Emika FR3</strong> and the <strong>Unitree Go2</strong>.",
     "about.p2":"I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. I'm currently at the <strong>National Institute of Informatics (NII, Tokyo)</strong> as a research intern, working on sim-to-real transfer for dual-arm VLA manipulation.",
     "about.p3":"Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.",
     "about.focus":"Research focus",
@@ -1446,14 +1447,14 @@ const I18N = {
     "hero.typed": [
       "教机器人——以更少的数据，学到更多的技能。",
       "在深度强化学习、进化算法与 VLA 模型之间架桥。",
-      "从 MuJoCo Fetch 到真实的 Franka FR3。",
+      "从 MuJoCo Fetch 到真实的 Franka FR3 与 Unitree Go2。",
       "仿真 · 到 · 实机。"
     ],
 
     "about.tag":"关于",
     "about.title":"教机器人学习，但要更高的样本效率。",
     "about.sub":"博士研究方向：让机器人在最小数据下学到灵巧技能，融合深度强化学习、进化搜索与现代 VLA 模型。",
-    "about.p1":"我是 <strong>何远知</strong>，卡迪夫大学计算机科学与信息学院全奖博士生。研究方向集中在<strong>深度强化学习</strong>、<strong>进化策略</strong>、<strong>流匹配（Flow Matching）</strong>与<strong>视觉-语言-动作模型</strong>，并应用到 <strong>Franka Emika FR3</strong> 等真实机器人操作任务上。",
+    "about.p1":"我是 <strong>何远知</strong>，卡迪夫大学计算机科学与信息学院全奖博士生。研究方向集中在<strong>深度强化学习</strong>、<strong>进化策略</strong>、<strong>流匹配（Flow Matching）</strong>与<strong>视觉-语言-动作模型</strong>，并应用到 <strong>Franka Emika FR3</strong>、<strong>Unitree Go2</strong> 等真实机器人的操作与运动控制任务上。",
     "about.p2":"我尤其关注 <em>样本效率</em>：迁移学习、任务分解与分层控制如何让真实机器人在不依赖巨量仿真步数的前提下，学到复杂技能。我目前在<strong>国立情报学研究所（NII，东京）</strong>担任研究实习生，研究双臂 VLA 操作的仿真到实机迁移。",
     "about.p3":"实验室之外，我经常出现在羽毛球场、壁球馆、自行车骑行路上，或者一盘围棋的对面。",
     "about.focus":"研究方向",
