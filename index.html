@@ -530,12 +530,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
     <div class="hero-stats">
       <div class="stat">
-        <div class="num">18</div>
+        <div class="num">19</div>
         <div class="lbl" data-i18n="hero.stat1">Papers authored</div>
         <div class="stat-breakdown">
           <span><b>13</b><i data-i18n="hero.stat1a">1st</i></span>
           <span><b>2</b><i data-i18n="hero.stat1b">Co-1st</i></span>
-          <span><b>2</b><i data-i18n="hero.stat1d">Corresp.</i></span>
+          <span><b>3</b><i data-i18n="hero.stat1d">Corresp.</i></span>
           <span><b>1</b><i data-i18n="hero.stat1c">Co-auth</i></span>
         </div>
       </div>
@@ -743,9 +743,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="section-head">
       <div>
         <div class="section-tag" data-i18n="pub.tag">publications</div>
-        <h2 class="section-title" data-i18n="pub.title">Research across robotic learning, vision &amp; bio-AI.</h2>
+        <h2 class="section-title" data-i18n="pub.title">Research across robotic learning, vision, bio-AI &amp; materials.</h2>
       </div>
-      <p class="section-sub" data-i18n="pub.sub">Eighteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering and game AI.</p>
+      <p class="section-sub" data-i18n="pub.sub">Nineteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering, AI for materials science and game AI.</p>
     </div>
     <!-- ===== Category 1: Robotic Manipulation, Locomotion & Planning ===== -->
     <div class="pub-cat">
@@ -957,7 +957,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         </article>
         <article class="card">
           <div class="meta">
-            <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
+            <span class="badge inreview" data-i18n="pub.review">Under Review</span>
             <span class="badge co1st" data-i18n="pub.co1st">Co-1st (2nd)</span>
             <span class="badge q1">JCR Q1 · IF 6.2</span>
           </div>
@@ -988,6 +988,29 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="venue">Entertainment Computing</div>
           <p data-i18n="pub.p5">A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning, wrapped in an easy-to-use UI for casual play and analysis.</p>
           <div class="tags"><span class="tag">MCTS</span><span class="tag">Autoencoder</span><span class="tag">RL</span><span class="tag">Game AI</span></div>
+        </article>
+      </div>
+    </div>
+
+    <!-- ===== Category 5: AI for Materials Science ===== -->
+    <div class="pub-cat">
+      <div class="cat-head">
+        <span class="cat-num">05</span>
+        <h3 data-i18n="pub.cat5">AI for Materials Science</h3>
+        <span class="cat-count">1 paper</span>
+      </div>
+      <div class="cat-line"></div>
+      <div class="cards">
+        <article class="card">
+          <div class="meta">
+            <span class="badge revision" data-i18n="pub.revision">Major Revision</span>
+            <span class="badge corresp" data-i18n="pub.corresp">Corresponding</span>
+            <span class="badge q2">JCR Q2 · IF 6.3</span>
+          </div>
+          <h3>Mapping and Ranking Plasmonic SERS Substrates from Micrographs with a Physics-Labelled Microstructure Surrogate</h3>
+          <div class="venue">Nanoscale Advances · Royal Society of Chemistry</div>
+          <p data-i18n="pub.p19">An image-to-design pipeline for plasmonic SERS substrates. A gradient-boosting surrogate, trained on synthetic substrates labelled by a physics enhancement-factor kernel, reads gap-resolved microstructure straight from electron micrographs and returns both a quantitative design map and a substrate ranking &mdash; consistent with measured enhancement across five external substrates.</p>
+          <div class="tags"><span class="tag">SERS</span><span class="tag">Plasmonics</span><span class="tag">Surrogate Model</span><span class="tag">Electron Microscopy</span><span class="tag">Gradient Boosting</span></div>
         </article>
       </div>
     </div>
@@ -1346,13 +1369,14 @@ const I18N = {
     "edu.szu.b1":"Refined uncertainty model under Prof. Xizhao Wang; built a self-training model replacing self-ensembling for 3D medical image segmentation.",
 
     "pub.tag":"publications",
-    "pub.title":"Research across robotic learning, vision & bio-AI.",
-    "pub.sub":"Eighteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering and game AI.",
+    "pub.title":"Research across robotic learning, vision, bio-AI & materials.",
+    "pub.sub":"Nineteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering, AI for materials science and game AI.",
     "pub.published":"Published","pub.submitted":"Submitted","pub.accepted":"Accepted","pub.review":"Under Review","pub.revision":"Major Revision","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.corresp":"Corresponding","pub.coauth":"Co-author",
     "pub.cat1":"Robotic Manipulation, Locomotion & Planning",
     "pub.cat2":"Computer Vision",
     "pub.cat3":"AI for Biomedical Engineering",
     "pub.cat4":"Game AI",
+    "pub.cat5":"AI for Materials Science",
     "pub.p1":"Improved performance on a set of MuJoCo Fetch robotic manipulation tasks by combining transfer learning techniques with deep reinforcement learning.",
     "pub.p2":"A novel framework using transfer learning + reward redesign to enhance evolutionary methods on existing and newly proposed manipulation tasks, validated on a real Franka Emika robot.",
     "pub.p3":"Improving performance on MuJoCo Fetch manipulation tasks through transfer learning for deep reinforcement learning, guided by task decomposition.",
@@ -1371,6 +1395,7 @@ const I18N = {
     "pub.p16":"A rollout-adaptive source-prompting scheme that decides when retrieved context actually helps a frozen robot policy, rather than assuming retrieval is always beneficial.",
     "pub.p17":"Sparse-autoencoder dictionaries used as an interpretable auditing tool, surfacing data-quality artefacts that pathology foundation models have absorbed from their training corpora.",
     "pub.p18":"A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then refines its proposals at inference with an improved Cross-Entropy Method against a reusable task-space cost library. Raises success from 66.3% to 68.8% across six RLBench tasks and transfers zero-shot to a real Franka Research 3 arm (5/5 vs. 0/5 on three contact-rich tasks) at ~18 Hz.",
+    "pub.p19":"An image-to-design pipeline for plasmonic SERS substrates. A gradient-boosting surrogate, trained on synthetic substrates labelled by a physics enhancement-factor kernel, reads gap-resolved microstructure straight from electron micrographs and returns both a quantitative design map and a substrate ranking — consistent with measured enhancement across five external substrates.",
     "pub.tbd":"Venue TBD",
     "pub.venue4":"Manuscript in preparation",
     "pub.venue5":"Manuscript in preparation · Game AI",
@@ -1502,13 +1527,14 @@ const I18N = {
     "edu.szu.b1":"在王熙照教授指导下改进不确定性模型；构建自训练模型替代自集成模型，应用于 3D 医学图像分割。",
 
     "pub.tag":"论文发表",
-    "pub.title":"覆盖机器人学习、计算机视觉与生物医学 AI 的研究。",
-    "pub.sub":"十八篇论文，涵盖迁移学习、进化运动规划、分层控制、四足运动控制、实例分割、评测基准审计、AI 在生物医学工程的应用，以及博弈 AI。",
+    "pub.title":"覆盖机器人学习、计算机视觉、生物医学 AI 与材料科学的研究。",
+    "pub.sub":"十九篇论文，涵盖迁移学习、进化运动规划、分层控制、四足运动控制、实例分割、评测基准审计、AI 在生物医学工程与材料科学的应用，以及博弈 AI。",
     "pub.published":"已发表","pub.submitted":"在投","pub.accepted":"已接收","pub.review":"评审中","pub.revision":"大修","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.corresp":"通讯作者","pub.coauth":"合作作者",
     "pub.cat1":"机器人操作、运动控制与规划",
     "pub.cat2":"计算机视觉",
     "pub.cat3":"人工智能在生物医学工程的应用",
     "pub.cat4":"博弈 AI",
+    "pub.cat5":"人工智能在材料科学的应用",
     "pub.p1":"通过结合迁移学习与深度强化学习，提升 MuJoCo Fetch 系列机器人操作任务上的表现。",
     "pub.p2":"提出一种结合迁移学习与奖励重构的新框架，在现有与新提出的机器人操作任务上提升进化算法效果，并在真实 Franka Emika 机器人上得到验证。",
     "pub.p3":"以任务分解为引导，使用迁移学习提升深度强化学习在 MuJoCo Fetch 任务上的表现。",
@@ -1527,6 +1553,7 @@ const I18N = {
     "pub.p16":"提出一种随 rollout 自适应的来源提示方案，判断检索到的上下文在何时才真正有助于冻结的机器人策略，而非默认检索总是有益。",
     "pub.p17":"将稀疏自编码器字典用作可解释的审计工具，揭示病理基础模型从训练语料中吸收的数据质量缺陷。",
     "pub.p18":"一个两阶段 VLA 框架：将冻结的 LLaVA 风格视觉语言模型置于点云条件流匹配策略之外，再在推理阶段用改进的交叉熵方法（iCEM）针对可复用的任务空间代价库精修其候选动作。在六个 RLBench 任务上将成功率从 66.3% 提升到 68.8%，并零样本迁移到真实 Franka Research 3 机械臂（三个接触密集任务上 5/5 对比基线 0/5），控制频率约 18 Hz。",
+    "pub.p19":"面向等离子体 SERS 基底的“图像到设计”流水线：以物理增强因子核标注合成基底、训练梯度提升代理模型，直接从电镜图像中读取间隙分辨的微结构，输出定量设计图谱与基底排序，并在五个外部基底上与实测增强结果保持一致。",
     "pub.tbd":"期刊/会议待定",
     "pub.venue4":"撰写中",
     "pub.venue5":"撰写中 · 博弈 AI",
