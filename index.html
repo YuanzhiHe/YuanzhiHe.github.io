@@ -818,8 +818,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           </div>
           <h3>OptiVLA: Inference-Time Optimization for Zero-Shot Sim-to-Real Manipulation</h3>
           <div class="venue">AAMAS 2027 · Int. Conf. on Autonomous Agents and Multiagent Systems</div>
-          <p data-i18n="pub.p18">A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then refines its proposals at inference with an improved Cross-Entropy Method against a reusable task-space cost library. Raises success from 66.3% to 68.8% across six RLBench tasks and transfers zero-shot to a real Franka Research 3 arm (5/5 vs. 0/5 on three contact-rich tasks) at ~18 Hz.</p>
-          <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">iCEM</span><span class="tag">RLBench</span><span class="tag">Franka FR3</span></div>
+          <p data-i18n="pub.p18">A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then at inference scores the candidate action chunks it proposes against a reusable task-space cost library and executes the lowest-cost one. Raises a strong base policy from 65.0% to 69.0% across six RLBench tasks under a matched three-seed protocol, and transfers zero-shot to a real Franka arm with 5/5 on each of three contact-rich tasks, where the base policy and a planner without learned proposals fail every trial.</p>
+          <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">Best-of-K</span><span class="tag">RLBench</span><span class="tag">Franka FR3</span></div>
         </article>
         <article class="card">
           <div class="meta">
@@ -891,10 +891,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <div class="meta">
             <span class="badge submitted" data-i18n="pub.submitted">Submitted</span>
             <span class="badge lead" data-i18n="pub.lead">1st Author</span>
-            <span class="badge ccf">CCF C</span>
           </div>
-          <h3>EvoMask: Evolutionary Multi-Signal Mask Scoring for Training-Free Indoor Instance Segmentation</h3>
-          <div class="venue">ACM MMAsia 2026 · ACM Multimedia Asia</div>
+          <h3>EvoMask: High-Recall Proposal Compression for Cluttered Indoor Instance Segmentation</h3>
+          <div class="venue">The Visual Computer</div>
           <p data-i18n="pub.p6">A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy, with no per-domain fine-tuning required.</p>
           <div class="tags"><span class="tag">Instance Seg.</span><span class="tag">Training-free</span><span class="tag">Evolutionary</span></div>
         </article>
@@ -1049,8 +1048,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="meta"><span class="badge lead">Lead</span><span class="badge submitted">2026</span></div>
         <h3 data-i18n="proj.t10">OptiVLA · Inference-Time Optimization for Sim-to-Real Manipulation</h3>
         <div class="venue">PhD research · Cardiff University</div>
-        <p data-i18n="proj.p10">A two-stage manipulation framework that keeps a frozen LLaVA-style VLM outside the action decoder: a zero-initialised projection grafts the language embedding onto a point-cloud conditional-flow-matching policy, then an improved Cross-Entropy Method refines the sampled action chunk at inference against a reusable task-space cost library. 66.3% &rarr; 68.8% across six RLBench tasks, 5/5 vs. 0/5 on three contact-rich tasks after zero-shot transfer to a real Franka Research 3, at roughly 18&nbsp;Hz.</p>
-        <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">iCEM</span><span class="tag">RLBench</span><span class="tag">Point Cloud</span></div>
+        <p data-i18n="proj.p10">Behaviour-cloned VLA policies execute whichever trajectory they sampled without checking it against the scene, and generalise poorly once that scene moves. OptiVLA merges a frozen vision-language model&rsquo;s embedding into the conditioning of a point-cloud conditional-flow-matching policy through a zero-initialised projection. At inference the policy proposes K candidate action chunks and a structured task-space cost drawn from a reusable library scores each of them. Scoring eight proposals and executing the lowest-cost one raises a strong base policy from 65.0% to 69.0% across six RLBench tasks under a matched three-seed protocol, while the same budget spent on a round of iterative refinement over those proposals loses that margin on five of six tasks. Transferred zero-shot to a real Franka arm, the full controller succeeds on 5/5 trials of each of three contact-rich tasks, where the base policy and the planner without a learned proposal fail every trial.</p>
+        <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">Best-of-K</span><span class="tag">RLBench</span><span class="tag">Point Cloud</span></div>
       </article>
 
       <article class="card">
@@ -1399,7 +1398,7 @@ const I18N = {
     "pub.p15":"A survey that builds a taxonomy of what actually transfers in robot learning, tracing the evidence from domain randomization through to vision-language-action models.",
     "pub.p16":"A rollout-adaptive source-prompting scheme that decides when retrieved context actually helps a frozen robot policy, rather than assuming retrieval is always beneficial.",
     "pub.p17":"Sparse-autoencoder dictionaries used as an interpretable auditing tool, surfacing data-quality artefacts that pathology foundation models have absorbed from their training corpora.",
-    "pub.p18":"A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then refines its proposals at inference with an improved Cross-Entropy Method against a reusable task-space cost library. Raises success from 66.3% to 68.8% across six RLBench tasks and transfers zero-shot to a real Franka Research 3 arm (5/5 vs. 0/5 on three contact-rich tasks) at ~18 Hz.",
+    "pub.p18":"A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then at inference scores the candidate action chunks it proposes against a reusable task-space cost library and executes the lowest-cost one. Raises a strong base policy from 65.0% to 69.0% across six RLBench tasks under a matched three-seed protocol, and transfers zero-shot to a real Franka arm with 5/5 on each of three contact-rich tasks, where the base policy and a planner without learned proposals fail every trial.",
     "pub.p19":"An image-to-design pipeline for plasmonic SERS substrates. A gradient-boosting surrogate, trained on synthetic substrates labelled by a physics enhancement-factor kernel, reads gap-resolved microstructure straight from electron micrographs and returns both a quantitative design map and a substrate ranking — consistent with measured enhancement across five external substrates.",
     "pub.tbd":"Venue TBD",
     "pub.venue4":"Manuscript in preparation",
@@ -1426,7 +1425,7 @@ const I18N = {
     "proj.t9":"P2T · Direct-Torque Control for Quadrupedal Locomotion",
     "proj.p9":"Learned quadruped controllers almost always emit joint position targets that a fixed PD loop tracks, which caps command bandwidth. P2T learns a direct-torque policy in a single co-training stage from a low-gain PD position policy — no pre-trained teacher, no distillation. Under realistic 5–10 ms latency it retains 1.7× more high-frequency command authority, cuts the rough-terrain fall rate to under half of both position baselines, and runs on a physical Unitree Go2 at 100 Hz through the low-level torque interface.",
     "proj.t10":"OptiVLA · Inference-Time Optimization for Sim-to-Real Manipulation",
-    "proj.p10":"A two-stage manipulation framework that keeps a frozen LLaVA-style VLM outside the action decoder: a zero-initialised projection grafts the language embedding onto a point-cloud conditional-flow-matching policy, then an improved Cross-Entropy Method refines the sampled action chunk at inference against a reusable task-space cost library. 66.3% → 68.8% across six RLBench tasks, 5/5 vs. 0/5 on three contact-rich tasks after zero-shot transfer to a real Franka Research 3, at roughly 18 Hz.",
+    "proj.p10":"Behaviour-cloned VLA policies execute whichever trajectory they sampled without checking it against the scene, and generalise poorly once that scene moves. OptiVLA merges a frozen vision-language model's embedding into the conditioning of a point-cloud conditional-flow-matching policy through a zero-initialised projection. At inference the policy proposes K candidate action chunks and a structured task-space cost drawn from a reusable library scores each of them. Scoring eight proposals and executing the lowest-cost one raises a strong base policy from 65.0% to 69.0% across six RLBench tasks under a matched three-seed protocol, while the same budget spent on a round of iterative refinement over those proposals loses that margin on five of six tasks. Transferred zero-shot to a real Franka arm, the full controller succeeds on 5/5 trials of each of three contact-rich tasks, where the base policy and the planner without a learned proposal fail every trial.",
     "proj.t8":"Biomedical Imaging Project",
     "proj.p8":"Project on deep-learning-based medical image classification & segmentation, alongside lectures on multimodal/multiscale imaging.",
 
@@ -1558,7 +1557,7 @@ const I18N = {
     "pub.p15":"一篇综述，构建机器人学习中“什么在迁移”的分类体系，梳理从域随机化到视觉-语言-动作（VLA）模型的证据链。",
     "pub.p16":"提出一种随 rollout 自适应的来源提示方案，判断检索到的上下文在何时才真正有助于冻结的机器人策略，而非默认检索总是有益。",
     "pub.p17":"将稀疏自编码器字典用作可解释的审计工具，揭示病理基础模型从训练语料中吸收的数据质量缺陷。",
-    "pub.p18":"一个两阶段 VLA 框架：将冻结的 LLaVA 风格视觉语言模型置于点云条件流匹配策略之外，再在推理阶段用改进的交叉熵方法（iCEM）针对可复用的任务空间代价库精修其候选动作。在六个 RLBench 任务上将成功率从 66.3% 提升到 68.8%，并零样本迁移到真实 Franka Research 3 机械臂（三个接触密集任务上 5/5 对比基线 0/5），控制频率约 18 Hz。",
+    "pub.p18":"一个两阶段 VLA 框架：将冻结的 LLaVA 风格视觉语言模型置于点云条件流匹配策略之外，推理阶段由策略提出候选动作块，用可复用的任务空间代价库逐条打分并执行代价最低者。在六个 RLBench 任务上以同等三随机种子协议将强基线从 65.0% 提升到 69.0%；零样本迁移到真实 Franka 机械臂后，在三个接触密集任务上各取得 5/5，而基线与无学习式候选的规划器全部失败。",
     "pub.p19":"面向等离子体 SERS 基底的“图像到设计”流水线：以物理增强因子核标注合成基底、训练梯度提升代理模型，直接从电镜图像中读取间隙分辨的微结构，输出定量设计图谱与基底排序，并在五个外部基底上与实测增强结果保持一致。",
     "pub.tbd":"期刊/会议待定",
     "pub.venue4":"撰写中",
@@ -1585,7 +1584,7 @@ const I18N = {
     "proj.t9":"P2T · 四足机器人直接力矩控制",
     "proj.p9":"学习式四足控制器几乎都输出关节位置目标，由固定 PD 环跟踪，这限制了指令带宽。P2T 以单阶段协同训练方式，从低增益 PD 位置策略中直接学得力矩策略——无需预训练教师，也无需蒸馏。在真实的 5–10 ms 指令延迟下，它保留了 1.7 倍的高频指令控制权，将崎岖地形跌倒率降至两个位置控制基线的一半以下，并通过底层力矩接口在真实 Unitree Go2 上以 100 Hz 运行。",
     "proj.t10":"OptiVLA · 面向仿真到实机操作的推理时优化",
-    "proj.p10":"一个两阶段操作框架：将冻结的 LLaVA 风格视觉语言模型置于动作解码器之外，用零初始化投影把语言嵌入嫁接到点云条件流匹配策略上；再在推理阶段用改进的交叉熵方法（iCEM），针对可复用的任务空间代价库精修采样得到的动作块。在六个 RLBench 任务上成功率从 66.3% 提升到 68.8%，零样本迁移到真实 Franka Research 3 后，在三个接触密集任务上取得 5/5（基线 0/5），控制频率约 18 Hz。",
+    "proj.p10":"行为克隆训练出的 VLA 策略会直接执行自己采样到的轨迹，不去核对它与当前场景是否相符，场景一变泛化就明显变差。OptiVLA 用零初始化投影，把冻结视觉语言模型的嵌入融入点云条件流匹配策略的条件输入；推理阶段由策略提出 K 条候选动作块，再用取自可复用代价库的结构化任务空间代价逐条打分。在六个 RLBench 任务上，对八条候选打分并执行代价最低的一条，使强基线在同等三随机种子协议下从 65.0% 提升到 69.0%；而把同样的预算改用于对这些候选做一轮迭代精修，则在六个任务中的五个上丢掉了这一提升。零样本迁移到真实 Franka 机械臂后，完整控制器在三个接触密集任务上各取得 5/5，而基线策略和没有学习式候选的规划器全部失败。",
     "proj.t8":"生物医学成像实战项目",
     "proj.p8":"基于深度学习的医学图像分类与分割项目，配合多模态/多尺度成像与计算机辅助分析等课程。",
 
