@@ -1047,7 +1047,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </article>
       <article class="card">
         <div class="meta"><span class="badge lead">Lead</span><span class="badge submitted">2026</span></div>
-        <h3 data-i18n="proj.t10">OptiVLA · Optimization-in-the-Loop VLA Policies</h3>
+        <h3 data-i18n="proj.t10">OptiVLA · Inference-Time Optimization for Sim-to-Real Manipulation</h3>
         <div class="venue">PhD research · Cardiff University</div>
         <p data-i18n="proj.p10">A two-stage manipulation framework that keeps a frozen LLaVA-style VLM outside the action decoder: a zero-initialised projection grafts the language embedding onto a point-cloud conditional-flow-matching policy, then an improved Cross-Entropy Method refines the sampled action chunk at inference against a reusable task-space cost library. 66.3% &rarr; 68.8% across six RLBench tasks, 5/5 vs. 0/5 on three contact-rich tasks after zero-shot transfer to a real Franka Research 3, at roughly 18&nbsp;Hz.</p>
         <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">iCEM</span><span class="tag">RLBench</span><span class="tag">Point Cloud</span></div>
@@ -1425,7 +1425,7 @@ const I18N = {
     "proj.p7":"Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV, providing weekly mentorship, technical guidance and feedback on writing.",
     "proj.t9":"P2T · Direct-Torque Control for Quadrupedal Locomotion",
     "proj.p9":"Learned quadruped controllers almost always emit joint position targets that a fixed PD loop tracks, which caps command bandwidth. P2T learns a direct-torque policy in a single co-training stage from a low-gain PD position policy — no pre-trained teacher, no distillation. Under realistic 5–10 ms latency it retains 1.7× more high-frequency command authority, cuts the rough-terrain fall rate to under half of both position baselines, and runs on a physical Unitree Go2 at 100 Hz through the low-level torque interface.",
-    "proj.t10":"OptiVLA · Optimization-in-the-Loop VLA Policies",
+    "proj.t10":"OptiVLA · Inference-Time Optimization for Sim-to-Real Manipulation",
     "proj.p10":"A two-stage manipulation framework that keeps a frozen LLaVA-style VLM outside the action decoder: a zero-initialised projection grafts the language embedding onto a point-cloud conditional-flow-matching policy, then an improved Cross-Entropy Method refines the sampled action chunk at inference against a reusable task-space cost library. 66.3% → 68.8% across six RLBench tasks, 5/5 vs. 0/5 on three contact-rich tasks after zero-shot transfer to a real Franka Research 3, at roughly 18 Hz.",
     "proj.t8":"Biomedical Imaging Project",
     "proj.p8":"Project on deep-learning-based medical image classification & segmentation, alongside lectures on multimodal/multiscale imaging.",
@@ -1584,7 +1584,7 @@ const I18N = {
     "proj.p7":"协助指导 1 名硕士与 4 名本科生的毕设项目，方向涵盖机器人、强化学习与 CV，提供每周指导、技术答疑与写作反馈。",
     "proj.t9":"P2T · 四足机器人直接力矩控制",
     "proj.p9":"学习式四足控制器几乎都输出关节位置目标，由固定 PD 环跟踪，这限制了指令带宽。P2T 以单阶段协同训练方式，从低增益 PD 位置策略中直接学得力矩策略——无需预训练教师，也无需蒸馏。在真实的 5–10 ms 指令延迟下，它保留了 1.7 倍的高频指令控制权，将崎岖地形跌倒率降至两个位置控制基线的一半以下，并通过底层力矩接口在真实 Unitree Go2 上以 100 Hz 运行。",
-    "proj.t10":"OptiVLA · 优化在环的视觉-语言-动作策略",
+    "proj.t10":"OptiVLA · 面向仿真到实机操作的推理时优化",
     "proj.p10":"一个两阶段操作框架：将冻结的 LLaVA 风格视觉语言模型置于动作解码器之外，用零初始化投影把语言嵌入嫁接到点云条件流匹配策略上；再在推理阶段用改进的交叉熵方法（iCEM），针对可复用的任务空间代价库精修采样得到的动作块。在六个 RLBench 任务上成功率从 66.3% 提升到 68.8%，零样本迁移到真实 Franka Research 3 后，在三个接触密集任务上取得 5/5（基线 0/5），控制频率约 18 Hz。",
     "proj.t8":"生物医学成像实战项目",
     "proj.p8":"基于深度学习的医学图像分类与分割项目，配合多模态/多尺度成像与计算机辅助分析等课程。",
