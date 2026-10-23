@@ -530,10 +530,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
     <div class="hero-stats">
       <div class="stat">
-        <div class="num">19</div>
+        <div class="num">20</div>
         <div class="lbl" data-i18n="hero.stat1">Papers authored</div>
         <div class="stat-breakdown">
-          <span><b>13</b><i data-i18n="hero.stat1a">1st</i></span>
+          <span><b>14</b><i data-i18n="hero.stat1a">1st</i></span>
           <span><b>2</b><i data-i18n="hero.stat1b">Co-1st</i></span>
           <span><b>3</b><i data-i18n="hero.stat1d">Corresp.</i></span>
           <span><b>1</b><i data-i18n="hero.stat1c">Co-auth</i></span>
@@ -745,7 +745,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
         <div class="section-tag" data-i18n="pub.tag">publications</div>
         <h2 class="section-title" data-i18n="pub.title">Research across robotic learning, vision, bio-AI &amp; materials.</h2>
       </div>
-      <p class="section-sub" data-i18n="pub.sub">Nineteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering, AI for materials science and game AI.</p>
+      <p class="section-sub" data-i18n="pub.sub">Twenty papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering, AI for materials science and game AI.</p>
     </div>
     <!-- ===== Category 1: Robotic Manipulation, Locomotion & Planning ===== -->
     <div class="pub-cat">
@@ -907,10 +907,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div class="cat-head">
         <span class="cat-num">03</span>
         <h3 data-i18n="pub.cat3">AI for Biomedical Engineering</h3>
-        <span class="cat-count">5 papers</span>
+        <span class="cat-count">6 papers</span>
       </div>
       <div class="cat-line"></div>
       <div class="cards">
+        <article class="card">
+          <div class="meta">
+            <span class="badge accepted" data-i18n="pub.accepted">Accepted</span>
+            <span class="badge lead" data-i18n="pub.lead">1st Author</span>
+          </div>
+          <h3>Experimental Validation of AI-Prioritized Therapeutic Targets: A Systematic Review and Descriptive Quantitative Synthesis</h3>
+          <div class="venue">International Journal of Drug Discovery and Pharmacology</div>
+          <p data-i18n="pub.p20">Systematically reviewed 305 reports across 303 research families linking AI-prioritized therapeutic targets to functional testing, separating target-specific evidence from the incremental value of AI-based selection.</p>
+          <div class="tags"><span class="tag">Systematic Review</span><span class="tag">Target Discovery</span><span class="tag">Functional Validation</span></div>
+        </article>
         <article class="card">
           <div class="meta">
             <span class="badge published" data-i18n="pub.published">Published</span>
@@ -1376,7 +1386,7 @@ const I18N = {
 
     "pub.tag":"publications",
     "pub.title":"Research across robotic learning, vision, bio-AI & materials.",
-    "pub.sub":"Nineteen papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering, AI for materials science and game AI.",
+    "pub.sub":"Twenty papers spanning transfer learning, evolutionary motion planning, hierarchical control, quadrupedal locomotion, instance segmentation, benchmark auditing, AI for biomedical engineering, AI for materials science and game AI.",
     "pub.published":"Published","pub.submitted":"Submitted","pub.accepted":"Accepted","pub.review":"Under Review","pub.revision":"Major Revision","pub.prep":"In Preparation","pub.lead":"1st Author","pub.co1st":"Co-1st (2nd)","pub.co1st_3rd":"Co-1st (3rd)","pub.corresp":"Corresponding","pub.coauth":"Co-author",
     "pub.cat1":"Robotic Manipulation, Locomotion & Planning",
     "pub.cat2":"Computer Vision",
@@ -1402,6 +1412,7 @@ const I18N = {
     "pub.p17":"Sparse-autoencoder dictionaries used as an interpretable auditing tool, surfacing data-quality artefacts that pathology foundation models have absorbed from their training corpora.",
     "pub.p18":"A two-stage VLA framework that keeps a frozen LLaVA-style VLM external to a point-cloud conditional-flow-matching policy, then at inference scores the candidate action chunks it proposes against a reusable task-space cost library and executes the lowest-cost one. Raises a strong base policy from 65.0% to 69.0% across six RLBench tasks under a matched three-seed protocol, and transfers zero-shot to a real Franka arm with 5/5 on each of three contact-rich tasks, where the base policy and a planner without learned proposals fail every trial.",
     "pub.p19":"An image-to-design pipeline for plasmonic SERS substrates. A gradient-boosting surrogate, trained on synthetic substrates labelled by a physics enhancement-factor kernel, reads gap-resolved microstructure straight from electron micrographs and returns both a quantitative design map and a substrate ranking — consistent with measured enhancement across five external substrates.",
+    "pub.p20":"Systematically reviewed 305 reports across 303 research families linking AI-prioritized therapeutic targets to functional testing, separating target-specific evidence from the incremental value of AI-based selection.",
     "pub.tbd":"Venue TBD",
     "pub.venue4":"Manuscript in preparation",
     "pub.venue5":"Manuscript in preparation · Game AI",
@@ -1535,7 +1546,7 @@ const I18N = {
 
     "pub.tag":"论文发表",
     "pub.title":"覆盖机器人学习、计算机视觉、生物医学 AI 与材料科学的研究。",
-    "pub.sub":"十九篇论文，涵盖迁移学习、进化运动规划、分层控制、四足运动控制、实例分割、评测基准审计、AI 在生物医学工程与材料科学的应用，以及博弈 AI。",
+    "pub.sub":"二十篇论文，涵盖迁移学习、进化运动规划、分层控制、四足运动控制、实例分割、评测基准审计、AI 在生物医学工程与材料科学的应用，以及博弈 AI。",
     "pub.published":"已发表","pub.submitted":"在投","pub.accepted":"已接收","pub.review":"评审中","pub.revision":"大修","pub.prep":"撰写中","pub.lead":"第一作者","pub.co1st":"共一（二）","pub.co1st_3rd":"共一（三）","pub.corresp":"通讯作者","pub.coauth":"合作作者",
     "pub.cat1":"机器人操作、运动控制与规划",
     "pub.cat2":"计算机视觉",
@@ -1561,6 +1572,7 @@ const I18N = {
     "pub.p17":"将稀疏自编码器字典用作可解释的审计工具，揭示病理基础模型从训练语料中吸收的数据质量缺陷。",
     "pub.p18":"一个两阶段 VLA 框架：将冻结的 LLaVA 风格视觉语言模型置于点云条件流匹配策略之外，推理阶段由策略提出候选动作块，用可复用的任务空间代价库逐条打分并执行代价最低者。在六个 RLBench 任务上以同等三随机种子协议将强基线从 65.0% 提升到 69.0%；零样本迁移到真实 Franka 机械臂后，在三个接触密集任务上各取得 5/5，而基线与无学习式候选的规划器全部失败。",
     "pub.p19":"面向等离子体 SERS 基底的“图像到设计”流水线：以物理增强因子核标注合成基底、训练梯度提升代理模型，直接从电镜图像中读取间隙分辨的微结构，输出定量设计图谱与基底排序，并在五个外部基底上与实测增强结果保持一致。",
+    "pub.p20":"系统综述 303 个研究家族的 305 篇报告，梳理 AI 优先筛选治疗靶点后的功能验证证据，区分靶点特异性效应与 AI 筛选的增量价值。",
     "pub.tbd":"期刊/会议待定",
     "pub.venue4":"撰写中",
     "pub.venue5":"撰写中 · 博弈 AI",
