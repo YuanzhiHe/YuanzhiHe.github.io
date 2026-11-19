@@ -34,3 +34,7 @@ Check both languages, topic and status filters, search and empty state, overview
 ## Experience wording
 
 Use `Role · Institution` for every research/appointment heading. Put the school, laboratory or research area underneath. Put the geographical location after the date. The PUMCH entry describes online research collaboration, not an on-site appointment. Keep the Chinese and English wording aligned. CV files are maintained locally and are not hosted on the website.
+
+## Institution marks and visiting research
+
+Institution marks use fixed logo slots so adjacent labels align. Size each mark by its visible artwork, keeping its original aspect ratio; PNG whitespace is contained inside the slot rather than changing the official artwork. The NII role is described as Visiting Researcher; KTH uses the same wording for its NII research visits for doctoral and master’s students: https://www.kth.se/en/2.674/aktuellt/apply-to-international-internship-program-in-informatics-at-nii-in-tokyo-1.1246740. Zhejiang University is listed in two periods: visiting research in February–June 2027 and postdoctoral research from July 2027. Display dates directly without incoming/planned labels.
