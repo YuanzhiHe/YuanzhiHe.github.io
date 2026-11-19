@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Yuanzhi He · Robotics & RL PhD Researcher</title>
-<meta name="description" content="Yuanzhi He · PhD researcher at Cardiff University working on deep reinforcement learning, evolutionary strategies, and vision-language-action models for robotic manipulation." />
+<meta name="description" content="Yuanzhi He · Cardiff PhD researcher in robot learning and incoming postdoctoral researcher in Lei Zhao's group at Zhejiang University, expected July 2027." />
 <meta property="og:title" content="Yuanzhi He · Robotics & RL PhD Researcher" />
-<meta property="og:description" content="PhD researcher at Cardiff University working on deep RL, evolutionary strategies, and vision-language-action models for robotic manipulation." />
+<meta property="og:description" content="Cardiff PhD researcher in robot learning. Joining Lei Zhao's group at Zhejiang University around February 2027; postdoctoral research expected to start in July 2027." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://yuanzhihe.github.io/" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0906'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%23c9a35a'/%3E%3C/svg%3E" />
@@ -279,7 +279,7 @@ h2.section-title{
 
 /* ---------- sponsors / affiliations ---------- */
 .sponsor-strip{
-  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
 }
 @media (max-width:1000px){.sponsor-strip{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:560px){.sponsor-strip{grid-template-columns:repeat(2,1fr)}}
@@ -302,6 +302,7 @@ h2.section-title{
 }
 .sponsor:hover img.logo-img{opacity:1;transform:scale(1.04)}
 .sponsor .name{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);letter-spacing:.06em;line-height:1.35}
+.sponsor .wordmark{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;letter-spacing:.08em;color:var(--fg-0);line-height:60px}
 .sponsor::after{
   content:attr(data-meta);position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;
   font-size:10px;color:var(--fg-2);letter-spacing:.08em;
@@ -539,7 +540,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           <span><b>1</b><i data-i18n="hero.stat1c">Co-auth</i></span>
         </div>
       </div>
-      <div class="stat"><div class="num">7</div><div class="lbl" data-i18n="hero.stat2">Institutions</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl" data-i18n="hero.stat2">Institutions</div></div>
       <div class="stat"><div class="num">9</div><div class="lbl" data-i18n="hero.stat3">Reviewer roles</div></div>
       <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="hero.stat4">Students supervised</div></div>
     </div>
@@ -560,6 +561,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <div>
         <p data-i18n="about.p1">I'm <strong>Yuanzhi He</strong>, a fully‑funded PhD student at Cardiff University's School of Computational and Mathematical Sciences. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision‑language‑action</strong> models, applied to robotic manipulation and legged locomotion on platforms like the <strong>Franka Emika FR3</strong> and the <strong>Unitree Go2</strong>.</p>
         <p data-i18n="about.p2">I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. I'm currently at the <strong>National Institute of Informatics (NII, Tokyo)</strong> as a research intern, working on torque‑level control for learned quadrupedal locomotion on the Unitree Go2.</p>
+        <p data-i18n="about.next">I will join <a href="https://person.zju.edu.cn/0009839/788370.html" target="_blank" rel="noopener">Dr. Lei Zhao's group</a> in the <strong>Intelligent Vision Lab, College of Computer Science and Technology, Zhejiang University</strong>, around <strong>February 2027</strong>, with my postdoctoral research expected to start in <strong>July 2027</strong>.</p>
         <p data-i18n="about.p3">Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.</p>
       </div>
       <aside class="about-card">
@@ -583,18 +585,26 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="section-head">
       <div>
         <div class="section-tag" data-i18n="affil.tag">affiliations</div>
-        <h2 class="section-title" data-i18n="affil.title">Where I've trained, interned &amp; researched.</h2>
+        <h2 class="section-title" data-i18n="affil.title">Research connections: past, present &amp; upcoming.</h2>
       </div>
-      <p class="section-sub" data-i18n="affil.sub">A small constellation of universities and labs that shaped my work, from Birmingham to Zurich, Shenzhen to Tokyo.</p>
+      <p class="section-sub" data-i18n="affil.sub">Education, internships, research collaborations and my next step in Hangzhou.</p>
     </div>
 
     <div class="sponsor-strip">
 
-      <!-- PUMCH (upcoming) -->
-      <div class="sponsor" data-meta="2026.12 — " title="Peking Union Medical College Hospital · Chinese Academy of Medical Sciences">
+      <!-- Zhejiang University (incoming) -->
+      <div class="sponsor" data-meta="2027 · Incoming" title="Zhejiang University · Intelligent Vision Lab · Lei Zhao's group">
+        <div class="logo">
+          <div class="wordmark" aria-hidden="true">ZJU</div>
+          <div class="name" data-i18n="affil.zju">Zhejiang University · Incoming Postdoc</div>
+        </div>
+      </div>
+
+      <!-- PUMCH (ongoing research collaboration) -->
+      <div class="sponsor" data-meta="~2026.04 — present" title="Peking Union Medical College Hospital · Online research collaboration">
         <div class="logo">
           <img class="logo-img no-invert" src="PUMCH.jpeg" alt="PUMCH" loading="lazy">
-          <div class="name" data-i18n="affil.pumch">PUMCH · Incoming Visit</div>
+          <div class="name" data-i18n="affil.pumch">PUMCH · Research Collaborator</div>
         </div>
       </div>
 
@@ -656,10 +666,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="section-head">
       <div>
         <div class="section-tag" data-i18n="edu.tag">education &amp; experience</div>
-        <h2 class="section-title" data-i18n="edu.title">A research path across three countries: 8 years in the UK, half a year in Japan.</h2>
+        <h2 class="section-title" data-i18n="edu.title">Education, research experience &amp; what's next.</h2>
       </div>
     </div>
     <div class="timeline">
+      <div class="tl">
+        <div>
+          <div class="meta" data-i18n="edu.zju.meta">07/2027 (expected start) · Hangzhou, China</div>
+          <h3 data-i18n="edu.zju.title">Incoming Postdoctoral Researcher · Zhejiang University</h3>
+          <div class="org" data-i18n="edu.zju.org">Intelligent Vision Lab · College of Computer Science and Technology</div>
+          <ul>
+            <li data-i18n="edu.zju.b1">Joining Dr. Lei Zhao's group around February 2027; postdoctoral research expected to start in July 2027.</li>
+          </ul>
+        </div>
+      </div>
       <div class="tl">
         <div>
           <div class="meta">10/2023 — 07/2027 · Cardiff, UK</div>
@@ -674,11 +694,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta">12/2026 —  · Beijing, China</div>
-          <h3 data-i18n="edu.pumch.title">Visiting Researcher · PUMCH (incoming)</h3>
+          <div class="meta" data-i18n="edu.pumch.meta">c. 04/2026 — present · Remote collaboration</div>
+          <h3 data-i18n="edu.pumch.title">Research Collaborator · PUMCH</h3>
           <div class="org" data-i18n="edu.pumch.org">Peking Union Medical College Hospital · Chinese Academy of Medical Sciences</div>
           <ul>
-            <li data-i18n="edu.pumch.b1">Bringing robot-learning &amp; medical-imaging research to a top clinical research setting; planned focus on AI-assisted clinical workflows.</li>
+            <li data-i18n="edu.pumch.b1">Ongoing online research collaboration with the PUMCH team since around April 2026, contributing to collaborative biomedical AI projects.</li>
           </ul>
         </div>
       </div>
@@ -797,7 +817,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
           </div>
           <h3>Benchmark-Path Fidelity in Parallel Robot-Policy Evaluation: A CALVIN Case Study</h3>
           <div class="venue">Journal of Supercomputing</div>
-          <p data-i18n="pub.p7">A diagnostic study of how parallel evaluation paths in CALVIN can drift from the intended benchmark semantics — export truncation, teacher semantics and symbolic reset fidelity — together with concrete fixes.</p>
+          <p data-i18n="pub.p7">A diagnostic study of how parallel evaluation paths in CALVIN can drift from the intended benchmark semantics. It examines export truncation, teacher semantics and symbolic reset fidelity, and provides concrete fixes.</p>
           <div class="tags"><span class="tag">CALVIN</span><span class="tag">Benchmarking</span><span class="tag">VLA</span></div>
         </article>
         <article class="card">
@@ -1341,6 +1361,7 @@ const I18N = {
     "about.p1":"I'm <strong>Yuanzhi He</strong>, a fully-funded PhD student at Cardiff University's School of Computational and Mathematical Sciences. My research lives at the intersection of <strong>deep reinforcement learning</strong>, <strong>evolutionary strategies</strong>, <strong>flow matching</strong>, and <strong>vision-language-action</strong> models, applied to robotic manipulation and legged locomotion on platforms like the <strong>Franka Emika FR3</strong> and the <strong>Unitree Go2</strong>.",
     "about.p2":"I'm especially interested in <em>sample efficiency</em>: how transfer learning, task decomposition and hierarchical control let real robots learn complex skills without million-step simulation budgets. I'm currently at the <strong>National Institute of Informatics (NII, Tokyo)</strong> as a research intern, working on torque-level control for learned quadrupedal locomotion on the Unitree Go2.",
     "about.p3":"Outside the lab you'll find me on a badminton court, a squash court, on the bike, or sat across a Go board.",
+    "about.next":"I will join <a href=\"https://person.zju.edu.cn/0009839/788370.html\" target=\"_blank\" rel=\"noopener\">Dr. Lei Zhao's group</a> in the <strong>Intelligent Vision Lab, College of Computer Science and Technology, Zhejiang University</strong>, around <strong>February 2027</strong>, with my postdoctoral research expected to start in <strong>July 2027</strong>.",
     "about.focus":"Research focus",
     "about.f1":"Deep Reinforcement Learning",
     "about.f2":"Evolutionary Strategies",
@@ -1350,18 +1371,23 @@ const I18N = {
     "about.f6":"Sim-to-Real Transfer",
 
     "affil.tag":"affiliations",
-    "affil.title":"Where I've trained, interned & researched.",
-    "affil.sub":"A small constellation of universities and labs that shaped my work, from Birmingham to Zurich, Shenzhen to Tokyo.",
+    "affil.title":"Research connections: past, present & upcoming.",
+    "affil.sub":"Education, internships, research collaborations and my next step in Hangzhou.",
+    "affil.zju":"Zhejiang University · Incoming Postdoc",
     "affil.cardiff":"Cardiff University · PhD",
     "affil.bham":"University of Birmingham · MEng",
     "affil.eth":"ETH Zürich · EXCITE Summer School",
     "affil.nii":"NII Tokyo · Research Intern",
     "affil.szu":"Shenzhen Univ. · Big Data Lab Intern",
     "affil.gientech":"GienTech · CV / RPA Intern",
-    "affil.pumch":"PUMCH · Incoming Visit",
+    "affil.pumch":"PUMCH · Research Collaborator",
 
     "edu.tag":"education & experience",
-    "edu.title":"A research path across three countries: 8 years in the UK, half a year in Japan.",
+    "edu.title":"Education, research experience & what's next.",
+    "edu.zju.meta":"07/2027 (expected start) · Hangzhou, China",
+    "edu.zju.title":"Incoming Postdoctoral Researcher · Zhejiang University",
+    "edu.zju.org":"Intelligent Vision Lab · College of Computer Science and Technology",
+    "edu.zju.b1":"Joining Dr. Lei Zhao's group around February 2027; postdoctoral research expected to start in July 2027.",
     "edu.cardiff.title":"PhD, School of Computational and Mathematical Sciences",
     "edu.cardiff.org":"Cardiff University · Fully-funded scholarship",
     "edu.cardiff.b1":"Researching deep RL, evolutionary strategies, flow matching, and vision-language-action methods for robotic manipulation.",
@@ -1370,9 +1396,10 @@ const I18N = {
     "edu.nii.title":"Research Intern · NII",
     "edu.nii.org":"National Institute of Informatics",
     "edu.nii.b1":"Single-stage torque control for learned quadrupedal locomotion: recovers the command bandwidth a position interface gives up, halves the rough-terrain fall rate and runs on a physical Unitree Go2 at 100 Hz.",
-    "edu.pumch.title":"Visiting Researcher · PUMCH (incoming)",
+    "edu.pumch.meta":"c. 04/2026 — present · Remote collaboration",
+    "edu.pumch.title":"Research Collaborator · PUMCH",
     "edu.pumch.org":"Peking Union Medical College Hospital · Chinese Academy of Medical Sciences",
-    "edu.pumch.b1":"Bringing robot-learning & medical-imaging research to a top clinical research setting; planned focus on AI-assisted clinical workflows.",
+    "edu.pumch.b1":"Ongoing online research collaboration with the PUMCH team since around April 2026, contributing to collaborative biomedical AI projects.",
     "edu.bham.title":"MEng, Computer Science & Software Engineering",
     "edu.bham.org":"University of Birmingham · International Achievement & Excellence Scholarships",
     "edu.bham.b1":"Integrated 4-year undergraduate-Master programme.",
@@ -1400,7 +1427,7 @@ const I18N = {
     "pub.p4":"A novel hierarchical TD framework that improves manipulation performance while maintaining the fast inference and scalability of prior solutions.",
     "pub.p5":"A hybrid agent combining Monte Carlo Tree Search, a deep autoencoder, and reinforcement learning, wrapped in an easy-to-use UI for casual play and analysis.",
     "pub.p6":"A training-free indoor instance segmentation method using an evolutionary, multi-signal mask scoring strategy, with no per-domain fine-tuning required.",
-    "pub.p7":"A diagnostic study of how parallel evaluation paths in CALVIN can drift from the intended benchmark semantics \u2014 export truncation, teacher semantics and symbolic reset fidelity \u2014 together with concrete fixes.",
+    "pub.p7":"A diagnostic study of how parallel evaluation paths in CALVIN can drift from the intended benchmark semantics. It examines export truncation, teacher semantics and symbolic reset fidelity, and provides concrete fixes.",
     "pub.p8":"A heterogeneous graph-learning approach that leverages pretrained node representations to classify the tumor immune microenvironment from spatial transcriptomics data.",
     "pub.p9":"A subspace-based feature selection method with a minimum-redundancy criterion, designed for single-cell analyses and applicable across multi-omics modalities.",
     "pub.p10":"An observation-contract auditing framework that exposes how state-dominant signals influence diffusion-policy benchmark scores, motivating fairer protocol design.",
@@ -1501,6 +1528,7 @@ const I18N = {
     "about.p1":"我是 <strong>何远知</strong>，卡迪夫大学计算与数学科学学院全奖博士生。研究方向集中在<strong>深度强化学习</strong>、<strong>进化策略</strong>、<strong>流匹配（Flow Matching）</strong>与<strong>视觉-语言-动作模型</strong>，并应用到 <strong>Franka Emika FR3</strong>、<strong>Unitree Go2</strong> 等真实机器人的操作与运动控制任务上。",
     "about.p2":"我尤其关注 <em>样本效率</em>：迁移学习、任务分解与分层控制如何让真实机器人在不依赖巨量仿真步数的前提下，学到复杂技能。我目前在<strong>国立情报学研究所（NII，东京）</strong>担任研究实习生，研究学习式四足运动中的力矩级控制，并在 Unitree Go2 上完成实机部署。",
     "about.p3":"实验室之外，我经常出现在羽毛球场、壁球馆、自行车骑行路上，或者一盘围棋的对面。",
+    "about.next":"我将于<strong>2027年2月左右</strong>加入<strong>浙江大学计算机科学与技术学院智能视觉实验室</strong>的<a href=\"https://person.zju.edu.cn/0009839/788370.html\" target=\"_blank\" rel=\"noopener\">赵磊老师课题组</a>，预计于<strong>2027年7月</strong>开始博士后工作。",
     "about.focus":"研究方向",
     "about.f1":"深度强化学习",
     "about.f2":"进化策略",
@@ -1510,18 +1538,23 @@ const I18N = {
     "about.f6":"仿真到实机迁移",
 
     "affil.tag":"学术轨迹",
-    "affil.title":"我学习、实习与研究过的地方。",
-    "affil.sub":"一串塑造了我研究脉络的学校与实验室——从伯明翰到苏黎世，从深圳到东京。",
+    "affil.title":"学术联系与经历：过去、现在与下一站。",
+    "affil.sub":"教育、实习与科研合作，以及即将在杭州开启的下一阶段。",
+    "affil.zju":"浙江大学 · 即将加入（博士后）",
     "affil.cardiff":"卡迪夫大学 · 博士",
     "affil.bham":"伯明翰大学 · 工学硕士",
     "affil.eth":"苏黎世联邦理工 · EXCITE 暑期学校",
     "affil.nii":"国立情报学研究所 · 研究实习",
     "affil.szu":"深圳大学 · 大数据实验室实习",
     "affil.gientech":"中电金信 · CV/RPA 实习",
-    "affil.pumch":"北京协和医院 · 即将访问",
+    "affil.pumch":"北京协和医院 · 科研合作者",
 
     "edu.tag":"教育与经历",
-    "edu.title":"横跨三国的研究路径——英国 8 年，日本半年。",
+    "edu.title":"教育、科研经历与下一阶段。",
+    "edu.zju.meta":"2027.07（预计开始） · 中国杭州",
+    "edu.zju.title":"即将赴任博士后 · 浙江大学",
+    "edu.zju.org":"计算机科学与技术学院 · 智能视觉实验室",
+    "edu.zju.b1":"计划于2027年2月左右加入赵磊老师课题组，预计2027年7月开始博士后工作。",
     "edu.cardiff.title":"博士 · 计算与数学科学学院",
     "edu.cardiff.org":"卡迪夫大学 · 全额奖学金",
     "edu.cardiff.b1":"研究深度强化学习、进化策略、流匹配与视觉-语言-动作方法在机器人操作中的应用。",
@@ -1530,9 +1563,10 @@ const I18N = {
     "edu.nii.title":"研究实习生 · NII",
     "edu.nii.org":"国立情报学研究所，日本东京",
     "edu.nii.b1":"学习式四足运动的单阶段力矩控制：找回位置控制接口所损失的指令带宽，崎岖地形跌倒率减半，并在真实 Unitree Go2 上以 100 Hz 运行。",
-    "edu.pumch.title":"访问研究员 · 协和（即将赴任）",
+    "edu.pumch.meta":"约2026.04 — 至今 · 线上科研合作",
+    "edu.pumch.title":"科研合作者 · 北京协和医院",
     "edu.pumch.org":"中国医学科学院 · 北京协和医院",
-    "edu.pumch.b1":"将机器人学习与医学影像研究带入顶级临床研究环境，计划聚焦 AI 辅助的临床流程。",
+    "edu.pumch.b1":"自2026年4月左右起，与协和团队持续开展线上科研合作，参与生物医学人工智能相关合作项目。",
     "edu.bham.title":"工学硕士 · 计算机科学与软件工程",
     "edu.bham.org":"伯明翰大学 · 国际成就/卓越奖学金",
     "edu.bham.b1":"四年制本硕连读项目。",
