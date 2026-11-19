@@ -594,7 +594,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <div class="sponsor-strip">
 
       <!-- Zhejiang University (incoming) -->
-      <div class="sponsor" data-meta="2027 · Incoming" title="Zhejiang University · Intelligent Vision Lab · Lei Zhao's group">
+      <div class="sponsor" data-meta="2027 · Incoming" data-i18n-meta="affil.zju.date" title="Zhejiang University · Intelligent Vision Lab · Lei Zhao's group">
         <div class="logo">
           <img class="logo-img zju-logo" src="Zhejiang-University-official.png" alt="Zhejiang University official emblem" loading="lazy">
           <div class="name" data-i18n="affil.zju">Zhejiang University · Incoming Postdoc</div>
@@ -602,7 +602,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
 
       <!-- PUMCH (ongoing research collaboration) -->
-      <div class="sponsor" data-meta="2026.04 — present" title="Peking Union Medical College Hospital · Online research collaboration">
+      <div class="sponsor" data-meta="2026.04 — present" data-i18n-meta="affil.pumch.date" title="Peking Union Medical College Hospital · Online research collaboration">
         <div class="logo">
           <img class="logo-img no-invert" src="PUMCH.jpeg" alt="PUMCH" loading="lazy">
           <div class="name" data-i18n="affil.pumch">PUMCH · Research Collaborator</div>
@@ -1069,7 +1069,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <article class="card">
         <div class="meta"><span class="badge lead">Lead</span><span class="badge published" data-i18n="proj.active">2024 — present</span></div>
         <h3 data-i18n="proj.t1">Hierarchical Evolutionary Manipulation Framework</h3>
-        <div class="venue">PhD research · Cardiff University</div>
+        <div class="venue" data-i18n="proj.vphd">PhD research · Cardiff University</div>
         <p data-i18n="proj.p1">An end-to-end hierarchical TD framework that combines evolutionary low-level optimisation with high-level task decomposition. Targets fast inference and zero-shot generalisation across manipulation tasks on the Franka Emika FR3.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">MuJoCo</span><span class="tag">Isaac Sim</span><span class="tag">ROS 2</span></div>
       </article>
@@ -1077,14 +1077,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <article class="card">
         <div class="meta"><span class="badge lead">Lead</span><span class="badge submitted">2026</span></div>
         <h3 data-i18n="proj.t9">P2T · Direct-Torque Control for Quadrupedal Locomotion</h3>
-        <div class="venue">PhD research · Cardiff University</div>
+        <div class="venue" data-i18n="proj.vphd">PhD research · Cardiff University</div>
         <p data-i18n="proj.p9">Learned quadruped controllers almost always emit joint position targets that a fixed PD loop tracks, which caps command bandwidth. P2T learns a direct-torque policy in a single co-training stage from a low-gain PD position policy &mdash; no pre-trained teacher, no distillation. Under realistic 5&ndash;10&nbsp;ms latency it retains 1.7&times; more high-frequency command authority, cuts the rough-terrain fall rate to under half of both position baselines, and runs on a physical Unitree Go2 at 100&nbsp;Hz through the low-level torque interface.</p>
         <div class="tags"><span class="tag">Unitree Go2</span><span class="tag">PPO</span><span class="tag">Torque Control</span><span class="tag">Isaac Sim</span><span class="tag">Sim-to-Real</span></div>
       </article>
       <article class="card">
         <div class="meta"><span class="badge lead">Lead</span><span class="badge submitted">2026</span></div>
         <h3 data-i18n="proj.t10">OptiVLA · Inference-Time Optimization for Sim-to-Real Manipulation</h3>
-        <div class="venue">PhD research · Cardiff University</div>
+        <div class="venue" data-i18n="proj.vphd">PhD research · Cardiff University</div>
         <p data-i18n="proj.p10">Behaviour-cloned VLA policies execute whichever trajectory they sampled without checking it against the scene, and generalise poorly once that scene moves. OptiVLA merges a frozen vision-language model&rsquo;s embedding into the conditioning of a point-cloud conditional-flow-matching policy through a zero-initialised projection. At inference the policy proposes K candidate action chunks and a structured task-space cost drawn from a reusable library scores each of them. Scoring eight proposals and executing the lowest-cost one raises a strong base policy from 65.0% to 69.0% across six RLBench tasks under a matched three-seed protocol, while the same budget spent on a round of iterative refinement over those proposals loses that margin on five of six tasks. Transferred zero-shot to a real Franka arm, the full controller succeeds on 5/5 trials of each of three contact-rich tasks, where the base policy and the planner without a learned proposal fail every trial.</p>
         <div class="tags"><span class="tag">VLA</span><span class="tag">Flow Matching</span><span class="tag">Best-of-K</span><span class="tag">RLBench</span><span class="tag">Point Cloud</span></div>
       </article>
@@ -1108,7 +1108,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <article class="card">
         <div class="meta"><span class="badge">Intern</span></div>
         <h3 data-i18n="proj.t5">CV for Robotic Process Automation</h3>
-        <div class="venue">GienTech · 2021–22</div>
+        <div class="venue" data-i18n="proj.v5">GienTech · 2021–22</div>
         <p data-i18n="proj.p5">Restructured a Cascade R-CNN pipeline to detect target UI elements on financial-institution websites, achieving mAP &gt; 0.95 across label classes.</p>
         <div class="tags"><span class="tag">Cascade R-CNN</span><span class="tag">CV</span><span class="tag">RPA</span></div>
       </article>
@@ -1116,7 +1116,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <article class="card">
         <div class="meta"><span class="badge">Research</span></div>
         <h3 data-i18n="proj.t6">Uncertainty Modelling in Meta-Learning</h3>
-        <div class="venue">Shenzhen University · 2021</div>
+        <div class="venue" data-i18n="proj.v6">Shenzhen University · 2021</div>
         <p data-i18n="proj.p6">Refined an uncertainty model and built a self-training pipeline (replacing self-ensembling) for 3D medical image segmentation, under Prof. Xizhao Wang.</p>
         <div class="tags"><span class="tag">Meta-Learning</span><span class="tag">Self-Training</span><span class="tag">Med-Image</span></div>
       </article>
@@ -1132,7 +1132,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <article class="card">
         <div class="meta"><span class="badge">Summer School</span></div>
         <h3 data-i18n="proj.t8">Biomedical Imaging Project</h3>
-        <div class="venue">EXCITE · ETH Zürich · 2022</div>
+        <div class="venue" data-i18n="proj.v8">EXCITE · ETH Zürich · 2022</div>
         <p data-i18n="proj.p8">Project on deep-learning-based medical image classification &amp; segmentation, alongside lectures on multimodal/multiscale imaging.</p>
         <div class="tags"><span class="tag">DL</span><span class="tag">Med-Image</span><span class="tag">Segmentation</span></div>
       </article>
@@ -1377,6 +1377,7 @@ const I18N = {
     "affil.tag":"affiliations",
     "affil.title":"Research connections: past, present & upcoming.",
     "affil.sub":"Education, internships, research collaborations and my next step in Hangzhou.",
+    "affil.zju.date":"2027 · Incoming",
     "affil.zju":"Zhejiang University · Incoming Postdoc",
     "affil.cardiff":"Cardiff University · PhD",
     "affil.bham":"University of Birmingham · MEng",
@@ -1384,6 +1385,7 @@ const I18N = {
     "affil.nii":"NII Tokyo · Research Intern",
     "affil.szu":"Shenzhen Univ. · Big Data Lab Intern",
     "affil.gientech":"GienTech · CV / RPA Intern",
+    "affil.pumch.date":"2026.04 — present",
     "affil.pumch":"PUMCH · Research Collaborator",
 
     "edu.tag":"education & experience",
@@ -1473,6 +1475,10 @@ const I18N = {
     "proj.t6":"Uncertainty Modelling in Meta-Learning",
     "proj.p6":"Refined an uncertainty model and built a self-training pipeline (replacing self-ensembling) for 3D medical image segmentation, under Prof. Xizhao Wang.",
     "proj.t7":"Student Supervision",
+    "proj.vphd":"PhD research · Cardiff University",
+    "proj.v5":"GienTech · 2021–22",
+    "proj.v6":"Shenzhen University · 2021",
+    "proj.v8":"EXCITE · ETH Zürich · 2022",
     "proj.v7":"Cardiff University · 2024–present",
     "proj.p7":"Co-supervised 1 MSc and 4 BSc dissertation projects on robotics, RL and CV, providing weekly mentorship, technical guidance and feedback on writing.",
     "proj.t9":"P2T · Direct-Torque Control for Quadrupedal Locomotion",
@@ -1552,6 +1558,7 @@ const I18N = {
     "affil.tag":"学术轨迹",
     "affil.title":"学术联系与经历：过去、现在与下一站。",
     "affil.sub":"教育、实习与科研合作，以及即将在杭州开启的下一阶段。",
+    "affil.zju.date":"2027 · 即将加入",
     "affil.zju":"浙江大学 · 即将加入（博士后）",
     "affil.cardiff":"卡迪夫大学 · 博士",
     "affil.bham":"伯明翰大学 · 工学硕士",
@@ -1559,6 +1566,7 @@ const I18N = {
     "affil.nii":"国立情报学研究所 · 研究实习",
     "affil.szu":"深圳大学 · 大数据实验室实习",
     "affil.gientech":"中电金信 · CV/RPA 实习",
+    "affil.pumch.date":"2026.04 — 至今",
     "affil.pumch":"北京协和医院 · 科研合作者",
 
     "edu.tag":"教育与经历",
@@ -1648,6 +1656,10 @@ const I18N = {
     "proj.t6":"元学习中的不确定性建模",
     "proj.p6":"在王熙照教授指导下改进不确定性模型，构建自训练流水线替代自集成模型，用于 3D 医学图像分割。",
     "proj.t7":"指导学生科研",
+    "proj.vphd":"博士研究 · 卡迪夫大学",
+    "proj.v5":"中电金信 · 2021–22",
+    "proj.v6":"深圳大学 · 2021",
+    "proj.v8":"EXCITE · 苏黎世联邦理工学院 · 2022",
     "proj.v7":"卡迪夫大学 · 2024 至今",
     "proj.p7":"协助指导 1 名硕士与 4 名本科生的毕设项目，方向涵盖机器人、强化学习与 CV，提供每周指导、技术答疑与写作反馈。",
     "proj.t9":"P2T · 四足机器人直接力矩控制",
@@ -1703,6 +1715,10 @@ function applyLang(lang){
     if(typeof val === 'string'){
       el.innerHTML = val;
     }
+  });
+  document.querySelectorAll('[data-i18n-meta]').forEach(el=>{
+    const val = dict[el.getAttribute('data-i18n-meta')];
+    if(typeof val === 'string') el.setAttribute('data-meta', val);
   });
   document.getElementById('lang-en').classList.toggle('active', lang==='en');
   document.getElementById('lang-zh').classList.toggle('active', lang==='zh');
