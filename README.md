@@ -9,7 +9,6 @@ Live site: https://yuanzhihe.github.io/
 - `index.html`: semantic content, publication records, and embedded English/Chinese translations.
 - `styles.css`: responsive light academic layout and print rules.
 - `app.js`: language switching, topic/status/search filters, mobile navigation and publication anchors.
-- `assets/CV-en.pdf`, `assets/CV-zh.pdf`: current public academic CVs.
 - `portrait.jpg` and institution image files: existing portrait and official institution marks.
 
 ## Publications
@@ -29,4 +28,4 @@ Serve this directory with any static HTTP server. No package installation or bui
 
 ## Verification
 
-Check both languages, topic and status filters, search and empty state, overview expansion, mobile navigation, direct research-to-paper anchors, and CV downloads. Confirm all 20 publication records remain present and that a narrow mobile viewport has no horizontal overflow.
+Check both languages, topic and status filters, search and empty state, overview expansion, mobile navigation, and direct research-to-paper anchors. Confirm all 20 publication records remain present and that a narrow mobile viewport has no horizontal overflow.
