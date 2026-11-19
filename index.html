@@ -300,6 +300,7 @@ h2.section-title{
   opacity:.95;
   transition:opacity .3s ease, transform .3s ease;
 }
+.sponsor img.zju-logo{max-height:84px;border-radius:4px}
 .sponsor:hover img.logo-img{opacity:1;transform:scale(1.04)}
 .sponsor .name{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg-2);letter-spacing:.06em;line-height:1.35}
 .sponsor .wordmark{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;letter-spacing:.08em;color:var(--fg-0);line-height:60px}
@@ -595,13 +596,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       <!-- Zhejiang University (incoming) -->
       <div class="sponsor" data-meta="2027 · Incoming" title="Zhejiang University · Intelligent Vision Lab · Lei Zhao's group">
         <div class="logo">
-          <div class="wordmark" aria-hidden="true">ZJU</div>
+          <img class="logo-img zju-logo" src="Zhejiang-University-official.png" alt="Zhejiang University official emblem" loading="lazy">
           <div class="name" data-i18n="affil.zju">Zhejiang University · Incoming Postdoc</div>
         </div>
       </div>
 
       <!-- PUMCH (ongoing research collaboration) -->
-      <div class="sponsor" data-meta="~2026.04 — present" title="Peking Union Medical College Hospital · Online research collaboration">
+      <div class="sponsor" data-meta="2026.04 — present" title="Peking Union Medical College Hospital · Online research collaboration">
         <div class="logo">
           <img class="logo-img no-invert" src="PUMCH.jpeg" alt="PUMCH" loading="lazy">
           <div class="name" data-i18n="affil.pumch">PUMCH · Research Collaborator</div>
@@ -682,7 +683,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta">10/2023 — 07/2027 · Cardiff, UK</div>
+          <div class="meta" data-i18n="edu.cardiff.meta">10/2023 — 07/2027 · Cardiff, UK</div>
           <h3 data-i18n="edu.cardiff.title">PhD, School of Computational and Mathematical Sciences</h3>
           <div class="org" data-i18n="edu.cardiff.org">Cardiff University · Fully-funded scholarship</div>
           <ul>
@@ -694,17 +695,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta" data-i18n="edu.pumch.meta">c. 04/2026 — present · Remote collaboration</div>
+          <div class="meta" data-i18n="edu.pumch.meta">04/2026 — present · Remote collaboration</div>
           <h3 data-i18n="edu.pumch.title">Research Collaborator · PUMCH</h3>
           <div class="org" data-i18n="edu.pumch.org">Peking Union Medical College Hospital · Chinese Academy of Medical Sciences</div>
           <ul>
-            <li data-i18n="edu.pumch.b1">Ongoing online research collaboration with the PUMCH team since around April 2026, contributing to collaborative biomedical AI projects.</li>
+            <li data-i18n="edu.pumch.b1">Ongoing online research collaboration with the PUMCH team since April 2026, contributing to collaborative biomedical AI projects.</li>
           </ul>
         </div>
       </div>
       <div class="tl">
         <div>
-          <div class="meta">07/2026 — 12/2026 · Tokyo, Japan</div>
+          <div class="meta" data-i18n="edu.nii.meta">07/2026 — 12/2026 · Tokyo, Japan</div>
           <h3 data-i18n="edu.nii.title">Research Intern · NII</h3>
           <div class="org" data-i18n="edu.nii.org">National Institute of Informatics</div>
           <ul>
@@ -714,7 +715,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta">09/2019 — 06/2023 · Birmingham, UK</div>
+          <div class="meta" data-i18n="edu.bham.meta">09/2019 — 06/2023 · Birmingham, UK</div>
           <h3 data-i18n="edu.bham.title">MEng, Computer Science &amp; Software Engineering</h3>
           <div class="org" data-i18n="edu.bham.org">University of Birmingham · International Achievement &amp; Excellence Scholarships</div>
           <ul>
@@ -725,9 +726,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta">09/2022 · Zürich, Switzerland</div>
+          <div class="meta" data-i18n="edu.eth.meta">09/2022 · Zürich, Switzerland</div>
           <h3 data-i18n="edu.eth.title">EXCITE Summer School · Biomedical Imaging</h3>
-          <div class="org">ETH Zürich</div>
+          <div class="org" data-i18n="edu.eth.org">ETH Zürich</div>
           <ul>
             <li data-i18n="edu.eth.b1">Multimodal/multiscale imaging and computer-aided analysis; project on medical image classification &amp; segmentation with deep learning.</li>
           </ul>
@@ -735,9 +736,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta">10/2021 — 01/2022 · Changsha, China</div>
+          <div class="meta" data-i18n="edu.gien.meta">10/2021 — 01/2022 · Changsha, China</div>
           <h3 data-i18n="edu.gien.title">CV in RPA · Intern</h3>
-          <div class="org">GienTech</div>
+          <div class="org" data-i18n="edu.gien.org">GienTech</div>
           <ul>
             <li data-i18n="edu.gien.b1">Reorganised cascade R-CNN for target element detection on financial websites; mAP &gt; 0.95 across all label classes.</li>
           </ul>
@@ -745,7 +746,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
       </div>
       <div class="tl">
         <div>
-          <div class="meta">05/2021 — 08/2021 · Shenzhen, China</div>
+          <div class="meta" data-i18n="edu.szu.meta">05/2021 — 08/2021 · Shenzhen, China</div>
           <h3 data-i18n="edu.szu.title">Uncertainty in Meta-Learning · Intern</h3>
           <div class="org" data-i18n="edu.szu.org">Shenzhen University · National Big Data Engineering Lab</div>
           <ul>
@@ -1391,26 +1392,34 @@ const I18N = {
     "edu.zju.title":"Incoming Postdoctoral Researcher · Zhejiang University",
     "edu.zju.org":"Intelligent Vision Lab · College of Computer Science and Technology",
     "edu.zju.b1":"Joining Dr. Lei Zhao's group around February 2027; postdoctoral research expected to start in July 2027.",
+    "edu.cardiff.meta":"10/2023 — 07/2027 · Cardiff, UK",
     "edu.cardiff.title":"PhD, School of Computational and Mathematical Sciences",
     "edu.cardiff.org":"Cardiff University · Fully-funded scholarship",
     "edu.cardiff.b1":"Researching deep RL, evolutionary strategies, flow matching, and vision-language-action methods for robotic manipulation.",
     "edu.cardiff.b2":"Awarded 1st prize, PGR Summer Workshop 2024.",
     "edu.cardiff.b3":"Co-supervised 1 MSc and 4 BSc dissertations with positive feedback.",
+    "edu.nii.meta":"07/2026 — 12/2026 · Tokyo, Japan",
     "edu.nii.title":"Research Intern · NII",
     "edu.nii.org":"National Institute of Informatics",
     "edu.nii.b1":"Single-stage torque control for learned quadrupedal locomotion: recovers the command bandwidth a position interface gives up, halves the rough-terrain fall rate and runs on a physical Unitree Go2 at 100 Hz.",
-    "edu.pumch.meta":"c. 04/2026 — present · Remote collaboration",
+    "edu.pumch.meta":"04/2026 — present · Remote collaboration",
     "edu.pumch.title":"Research Collaborator · PUMCH",
     "edu.pumch.org":"Peking Union Medical College Hospital · Chinese Academy of Medical Sciences",
-    "edu.pumch.b1":"Ongoing online research collaboration with the PUMCH team since around April 2026, contributing to collaborative biomedical AI projects.",
+    "edu.pumch.b1":"Ongoing online research collaboration with the PUMCH team since April 2026, contributing to collaborative biomedical AI projects.",
+    "edu.bham.meta":"09/2019 — 06/2023 · Birmingham, UK",
     "edu.bham.title":"MEng, Computer Science & Software Engineering",
     "edu.bham.org":"University of Birmingham · International Achievement & Excellence Scholarships",
     "edu.bham.b1":"Integrated 4-year undergraduate-Master programme.",
     "edu.bham.b2":"£1,500 International Achievement Bursary in 19/20 and 20/21; £1,500 International Excellence Scholarship in 19/20.",
+    "edu.eth.meta":"09/2022 · Zürich, Switzerland",
+    "edu.eth.org":"ETH Zürich",
     "edu.eth.title":"EXCITE Summer School · Biomedical Imaging",
     "edu.eth.b1":"Multimodal/multiscale imaging and computer-aided analysis; project on medical image classification & segmentation with deep learning.",
+    "edu.gien.meta":"10/2021 — 01/2022 · Changsha, China",
+    "edu.gien.org":"GienTech",
     "edu.gien.title":"CV in RPA · Intern",
     "edu.gien.b1":"Reorganised cascade R-CNN for target element detection on financial websites; mAP > 0.95 across all label classes.",
+    "edu.szu.meta":"05/2021 — 08/2021 · Shenzhen, China",
     "edu.szu.title":"Uncertainty in Meta-Learning · Intern",
     "edu.szu.org":"Shenzhen University · National Big Data Engineering Lab",
     "edu.szu.b1":"Refined uncertainty model under Prof. Xizhao Wang; built a self-training model replacing self-ensembling for 3D medical image segmentation.",
@@ -1558,26 +1567,34 @@ const I18N = {
     "edu.zju.title":"即将赴任博士后 · 浙江大学",
     "edu.zju.org":"计算机科学与技术学院 · 智能视觉实验室",
     "edu.zju.b1":"计划于2027年2月左右加入赵磊老师课题组，预计2027年7月开始博士后工作。",
+    "edu.cardiff.meta":"10/2023 — 07/2027 · 英国卡迪夫",
     "edu.cardiff.title":"博士 · 计算与数学科学学院",
     "edu.cardiff.org":"卡迪夫大学 · 全额奖学金",
     "edu.cardiff.b1":"研究深度强化学习、进化策略、流匹配与视觉-语言-动作方法在机器人操作中的应用。",
     "edu.cardiff.b2":"获 2024 年研究生院暑期研讨会一等奖。",
     "edu.cardiff.b3":"协助指导 1 名硕士生与 4 名本科生毕业论文，反馈良好。",
+    "edu.nii.meta":"07/2026 — 12/2026 · 日本东京",
     "edu.nii.title":"研究实习生 · NII",
     "edu.nii.org":"国立情报学研究所，日本东京",
     "edu.nii.b1":"学习式四足运动的单阶段力矩控制：找回位置控制接口所损失的指令带宽，崎岖地形跌倒率减半，并在真实 Unitree Go2 上以 100 Hz 运行。",
-    "edu.pumch.meta":"约2026.04 — 至今 · 线上科研合作",
+    "edu.pumch.meta":"2026.04 — 至今 · 线上科研合作",
     "edu.pumch.title":"科研合作者 · 北京协和医院",
     "edu.pumch.org":"中国医学科学院 · 北京协和医院",
-    "edu.pumch.b1":"自2026年4月左右起，与协和团队持续开展线上科研合作，参与生物医学人工智能相关合作项目。",
+    "edu.pumch.b1":"自2026年4月起，与协和团队持续开展线上科研合作，参与生物医学人工智能相关合作项目。",
+    "edu.bham.meta":"09/2019 — 06/2023 · 英国伯明翰",
     "edu.bham.title":"工学硕士 · 计算机科学与软件工程",
     "edu.bham.org":"伯明翰大学 · 国际成就/卓越奖学金",
     "edu.bham.b1":"四年制本硕连读项目。",
     "edu.bham.b2":"19/20、20/21 学年各获国际成就奖学金 1500 英镑；19/20 学年另获国际卓越奖学金 1500 英镑。",
+    "edu.eth.meta":"09/2022 · 瑞士苏黎世",
+    "edu.eth.org":"苏黎世联邦理工学院",
     "edu.eth.title":"EXCITE 暑期学校 · 生物医学成像",
     "edu.eth.b1":"系统学习多模态、多尺度成像与计算机辅助分析；完成基于深度学习的医学图像分类与分割项目。",
+    "edu.gien.meta":"10/2021 — 01/2022 · 中国长沙",
+    "edu.gien.org":"中电金信",
     "edu.gien.title":"机器人流程自动化中的计算机视觉 · 实习生",
     "edu.gien.b1":"重构 Cascade R-CNN，用于识别金融机构网站中的目标元素，所有标签类别 mAP > 0.95。",
+    "edu.szu.meta":"05/2021 — 08/2021 · 中国深圳",
     "edu.szu.title":"元学习中的不确定性建模 · 实习生",
     "edu.szu.org":"深圳大学 · 大数据系统计算技术国家工程实验室",
     "edu.szu.b1":"在王熙照教授指导下改进不确定性模型；构建自训练模型替代自集成模型，应用于 3D 医学图像分割。",
