@@ -38,3 +38,5 @@ Use `Role · Institution` for every research/appointment heading. Put the school
 ## Institution marks and visiting research
 
 Institution marks use fixed logo slots so adjacent labels align. Size each mark by its visible artwork, keeping its original aspect ratio; PNG whitespace is contained inside the slot rather than changing the official artwork. The NII role is described as Visiting Researcher; KTH uses the same wording for its NII research visits for doctoral and master’s students: https://www.kth.se/en/2.674/aktuellt/apply-to-international-internship-program-in-informatics-at-nii-in-tokyo-1.1246740. Zhejiang University is listed in two periods: visiting research in February–June 2027 and postdoctoral research from July 2027. Display dates directly without incoming/planned labels.
+
+Publication numbers run continuously from 1 to 20 across status groups and stay fixed during filtering. Keep the Zhejiang appointments in one entry, with both role-specific date ranges.
