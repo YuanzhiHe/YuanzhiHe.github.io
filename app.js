@@ -14,12 +14,21 @@ function filterPapers() {
   const query = search.value.trim().toLocaleLowerCase();
   const status = statusFilter.value;
   let count = 0;
+  const groupCounts = {confirmed: 0, revision: 0, submitted: 0};
   for (const paper of papers) {
+    const number = paper.querySelector('.pub-number');
+    const searchableText = paper.textContent.replace(number.textContent, '');
     const matches = (topic === 'all' || paper.dataset.topic === topic)
       && (status === 'all' || paper.dataset.status === status)
-      && (!query || paper.textContent.toLocaleLowerCase().includes(query));
+      && (!query || searchableText.toLocaleLowerCase().includes(query));
     paper.hidden = !matches;
-    if (matches) count++;
+    if (matches) {
+      count++;
+      const group = ['published', 'accepted'].includes(paper.dataset.status)
+        ? 'confirmed' : paper.dataset.status;
+      // Number only visible results, restarting within each status group.
+      number.textContent = `[${++groupCounts[group]}]`;
+    }
   }
   document.getElementById('paper-count').textContent = language === 'zh'
     ? `显示 ${count} / ${papers.length} 篇论文`
