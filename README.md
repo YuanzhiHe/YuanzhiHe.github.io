@@ -10,6 +10,7 @@ Live site: https://yuanzhihe.github.io/
 - `styles.css`: responsive light academic layout and print rules.
 - `app.js`: language switching, topic/status/search filters, mobile navigation and publication anchors.
 - `portrait.jpg` and institution image files: existing portrait and official institution marks.
+- `ETH-Zurich-official.svg`: black positive-version logo paths from the ETH Zurich official homepage, https://ethz.ch/en.html. Keep its aspect ratio and do not apply a brightness filter.
 
 ## Publications
 
@@ -29,3 +30,7 @@ Serve this directory with any static HTTP server. No package installation or bui
 ## Verification
 
 Check both languages, topic and status filters, search and empty state, overview expansion, mobile navigation, and direct research-to-paper anchors. Confirm all 20 publication records remain present and that a narrow mobile viewport has no horizontal overflow.
+
+## Experience wording
+
+Use `Role · Institution` for every research/appointment heading. Put the school, laboratory or research area underneath. Put the geographical location after the date. The PUMCH entry describes online research collaboration, not an on-site appointment. Keep the Chinese and English wording aligned. CV files are maintained locally and are not hosted on the website.
